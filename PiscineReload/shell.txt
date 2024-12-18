@@ -1,0 +1,3 @@
+[ EX02 - clean ]
+find . ( -name *~ -o -name #*# ) -print -delete
+
