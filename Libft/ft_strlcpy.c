@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 11:47:17 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/19 19:36:24 by cmayne-p         ###   ########.fr       */
+/*   Created: 2024/12/19 15:22:24 by cmayne-p          #+#    #+#             */
+/*   Updated: 2024/12/19 15:33:58 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+size_t	strlcpy(char *dst, const char *src, size_t size)
 {
-	return (c >= ' ' && c <= '~');
+		size_t	i;
+
+		i = 0;
+		while (i < size - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 }

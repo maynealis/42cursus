@@ -1,1 +1,74 @@
+[x] isalpha
+[x] isdigit
+[x] isascii
+[x] isprint
+
+[x] strlen
+[] memset // se tiene que comprobar si hace overflow??
+[] bzero
+[] memcpy
+[] memmove
+
+[] strlcpy
+[] strlcat
+[] touppper
+[] tolower
+[] strchr
+[] strrchr
+[] strncmp
+[] memchr
+[] memcmp
+[] strnstr
+[] atoi
+
+
+
+
+
+
+
+
+
 https://makori-mildred.medium.com/how-to-create-static-library-in-c-and-how-to-use-it-b8b3e1fde999
+
+Para arreglar el error de que no puedo:
+
+incomplete type 'void' is not assignable
+                dest[i] = src[i];
+
+https://anamartinezaguilar.medium.com/funciones-para-copiar-vectores-en-c-memcpy-y-memmove-9ce124778801
+
+[TODO]
+[] Els casos on es pasa un punter, no estic comprobant si es passa un punter buit.
+
+[ERRORS]
+[] 	There is an error in `ft_isalnum`.
+	The result of  on your library is 0
+	and the correct result of  on the standard library is 8
+	--------------------------------------------------------
+	There is an error in `ft_isalnum`.
+	The result of 
+	 on your library is 0
+	and the correct result of 
+	 on the standard library is 8
+	--------------------------------------------------------
+	There is an error in `ft_isalnum`.
+	The result of  on your library is 0
+	and the correct result of  on the standard library is 8
+	--------------------------------------------------------
+	There is an error in `ft_isalnum`.
+	The result of  on your library is 0
+	and the correct result of  on the standard library is 8
+	--------------------------------------------------------
+	There is an error in `ft_isalnum`.
+	The result of  on your library is 0
+	and the correct result of  on the standard library is 8
+	--------------------------------------------------------
+	There is an error in `ft_isalnum`.
+	The result of  on your library is 0
+	and the correct result of  on the standard library is 8
+	--------------------------------------------------------
+	There is an error in `ft_isalnum`.
+	The result of " on your library is 0
+	and the correct result of " on the standard library is 8
+	--------------------------------------------------------
