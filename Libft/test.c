@@ -12,6 +12,7 @@ int    show_error(char *name_ft, int input, int lib_val, int ori_val)
     return (1);
 }
 
+//TODO: hacer mas test y poner en size = 0
 int test_strlcpy()
 {
     char    src[] = "Hello world!";
@@ -22,8 +23,9 @@ int test_strlcpy()
     size_t  size;
     size_t     i;
 
-    size = 8;
+    size = 0;
     ft_res = ft_strlcpy(ft_dest, src, size);
+    
     or_res = strlcpy(or_dest, src, size);
     if (ft_res == or_res)
     {
@@ -48,6 +50,7 @@ int test_strlcpy()
         printf("--------------------------------------------------------\n");  
         return (1);
     }
+    
     printf("ft_strlcpy OK.\n");
     return (0);
 }
@@ -278,7 +281,7 @@ int main(void)
 	}
 
     err_count += test_strlcpy();
-
+    
     if (err_count == 0)
         printf("Passed all tests!");
     return (0);
