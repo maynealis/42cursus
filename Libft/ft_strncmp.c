@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 15:54:43 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/20 15:54:45 by cmayne-p         ###   ########.fr       */
+/*   Created: 2024/12/20 17:24:28 by cmayne-p          #+#    #+#             */
+/*   Updated: 2024/12/20 17:32:15 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
-	size_t	dst_size;
 
-	dst_size = ft_strlen(dst);
-	if (size < dst_size)
-		return (size);
 	i = 0;
-	while (i < size - dst_size - 1)
+	while (i < n && s1[i] != '\0' && s2[i] != '\0')
 	{
-		dst[dst_size + i] = src[i];
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
 	}
-	dst[dst_size + i] = '\0';
-	return (dst_size + ft_strlen(src));
+	return (s1[i] - s2[i]);
 }

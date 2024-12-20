@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 15:54:43 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/20 15:54:45 by cmayne-p         ###   ########.fr       */
+/*   Created: 2024/12/20 16:45:26 by cmayne-p          #+#    #+#             */
+/*   Updated: 2024/12/20 16:52:11 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+int	ft_tolower(int c)
 {
-	size_t	i;
-	size_t	dst_size;
-
-	dst_size = ft_strlen(dst);
-	if (size < dst_size)
-		return (size);
-	i = 0;
-	while (i < size - dst_size - 1)
-	{
-		dst[dst_size + i] = src[i];
-	}
-	dst[dst_size + i] = '\0';
-	return (dst_size + ft_strlen(src));
+	if (ft_isupper(c))
+		return (c - ('A' - 'a'));
+	return (c);
 }

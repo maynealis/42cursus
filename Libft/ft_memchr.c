@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 15:54:43 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/20 15:54:45 by cmayne-p         ###   ########.fr       */
+/*   Created: 2024/12/20 17:39:57 by cmayne-p          #+#    #+#             */
+/*   Updated: 2024/12/20 17:43:13 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t	i;
-	size_t	dst_size;
+	size_t			i;
+	unsigned char	*src;
 
-	dst_size = ft_strlen(dst);
-	if (size < dst_size)
-		return (size);
+	src = (unsigned char *)s;
 	i = 0;
-	while (i < size - dst_size - 1)
+	while (i < n)
 	{
-		dst[dst_size + i] = src[i];
+		if (src[i] == (unsigned char) c)
+			return (&src[i]);
+		i++;
 	}
-	dst[dst_size + i] = '\0';
-	return (dst_size + ft_strlen(src));
+	return (NULL);
 }

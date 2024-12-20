@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 15:54:43 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/20 15:54:45 by cmayne-p         ###   ########.fr       */
+/*   Created: 2024/12/20 16:54:36 by cmayne-p          #+#    #+#             */
+/*   Updated: 2024/12/20 17:16:52 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+//El casteo a unsigned char es para coger el bit menos significativo?
+char	*ft_strchr(const char *s, int c)
 {
 	size_t	i;
-	size_t	dst_size;
-
-	dst_size = ft_strlen(dst);
-	if (size < dst_size)
-		return (size);
+	size_t	size;
+	char	*str;
+	
+	str = (char *)s;
+	size = ft_strlen(s);
 	i = 0;
-	while (i < size - dst_size - 1)
+	while (i <= size)
 	{
-		dst[dst_size + i] = src[i];
+		if (s[i] == (unsigned char)c)
+			return (&str[i]);
+		i++;
 	}
-	dst[dst_size + i] = '\0';
-	return (dst_size + ft_strlen(src));
+	return (NULL);
 }

@@ -1,7 +1,7 @@
 #include "libft.h"
 #include <stdio.h> // For printf
-#include <ctype.h> // isalpha, isalnum, isdigit, isascii, isprint
-#include <string.h> // strlen, memset, bzero, memcpy, memmove
+#include <ctype.h> // isalpha, isalnum, isdigit, isascii, isprint, toupper, tolower
+#include <string.h> // strlen, memset, bzero, memcpy, memmove, strchr, strrchr, strncmp, memchr
 
 int    show_error(char *name_ft, int input, int lib_val, int ori_val)
 {
@@ -13,7 +13,8 @@ int    show_error(char *name_ft, int input, int lib_val, int ori_val)
 }
 
 //TODO: hacer mas test y poner en size = 0
-int test_strlcpy()
+/*
+int test_ft_strlcpy(void)
 {
     char    src[] = "Hello world!";
     char    ft_dest[13];
@@ -55,6 +56,115 @@ int test_strlcpy()
     return (0);
 }
 
+int	test_ft_strlcat(void)
+{	
+    char    src[] = "Alis!";
+    char    ft_dest[] = "Hello ";
+    char    or_dest[] = "Hello ";
+	size_t	ft_res;
+	size_t	or_res;
+	size_t	size;
+	size_t	i;
+
+	size = 12;
+	ft_res = ft_strlcat(ft_dest, src, size);
+	or_res = strlcat(or_dest, src, size);
+	if (ft_res == or_res)
+	{
+			i = -1;
+			while (++i < ft_res)
+			{
+				if (ft_dest[i] != or_dest[i])
+				{	
+                	printf("There is an error with ft_strlcat.\n");
+                	printf("Your version of strlcat function copy %zu bytes of %s into %s and returns %zu\n", size, src, ft_dest, ft_res);
+                	printf("The original strlcat function copy %zu bytes of %s into %s and returns %zu\n", size, src, or_dest, or_res);
+                	printf("--------------------------------------------------------\n");
+                	return (1);
+				}
+			}
+	}
+	else
+	{
+		printf("There is an error with ft_strlcpy.\n");
+        printf("Your version of strlcpy function copy %zu bytes of %s into %s and returns %zu\n", size, src, ft_dest, ft_res);
+        printf("The original strlcpy function copy %zu bytes of %s into %s and returns %zu\n", size, src, or_dest, or_res);
+        printf("--------------------------------------------------------\n");
+        return (1);
+	}
+
+    printf("ft_strlcat OK.\n");
+    return (0);
+}
+*/
+
+int	test_strchr()
+{
+	char	src[] = "Hello world!";
+
+	if (ft_strchr(src, 'z') != strchr(src, 'z'))
+	{
+		printf("Error with ft_strchr.\n");
+		return (1);
+	}
+	printf("ft_strchr OK.\n");
+	return (0);
+}
+
+int	test_strrchr()
+{
+	char	src[] = "Hello world!";
+
+	if (ft_strrchr(src, '\0') != strrchr(src, '\0'))
+	{
+		printf("Error with ft_strchr.\n");
+		return (1);
+	}
+	printf("ft_strrchr OK.\n");
+	return (0);
+}
+
+int	test_strncmp()
+{
+	char	s1[] = "Hello world!";
+	char	s2[] = "Hello there";
+
+	if (ft_strncmp(s1, s2, 10) != strncmp(s1, s2, 10))
+	{
+		printf("Error with ft_strncmp.\n");
+		return (1);
+	}
+	printf("ft_strncmp OK.\n");
+	return (0);
+}
+
+int	test_memchr()
+{
+	char	s1[] = "Hello world!";
+
+	if (ft_memchr(s1, 'w', 23) != memchr(s1, 'w', 23))
+	{
+		printf("Error with ft_memchr.\n");
+		return (1);
+	}
+	printf("ft_memchr OK.\n");
+	return (0);
+}
+
+int	test_memcmp()
+{
+	int	s1[] = {1, 2, 3, 4, 5};
+	int	s2[] = {1, 2, 3, 5, 5};
+
+	if (ft_memcmp(s1, s2, 5) != memcmp(s1, s2, 5))
+	{
+		printf("Error with ft_strncmp.\n");
+		return (1);
+	}
+	printf("ft_memcmp OK.\n");
+	return (0);
+}
+
 int main(void)
 {
 	int err_count;
@@ -70,16 +180,16 @@ int main(void)
         if ((ft_isdigit(i) && !isdigit(i)) || (!ft_isdigit(i) && isdigit(i)))
             err_count += show_error("ft_isdigit", i, ft_isdigit(i), isdigit(i));
         if ((ft_isalnum(i) && !isalnum(i)) || (!ft_isalnum(i) && isalnum(i)))
-		{
-			printf("ascii es %d\n", i);
-			printf("isalnum es %d\n", isalnum(i));
             err_count += show_error("ft_isalnum", i, ft_isalnum(i), isalnum(i));
-        }
 		if ((ft_isascii(i) && !isascii(i)) || (!ft_isascii(i) && isascii(i)))
             err_count += show_error("ft_isascii", i, ft_isascii(i), isascii(i));
         if ((ft_isprint(i) && !isprint(i)) || (!ft_isprint(i) && isprint(i)))
             err_count += show_error("ft_isprint", i, ft_isprint(i), isprint(i));
-    }
+    	if (ft_toupper(i) != toupper(i))
+			err_count += show_error("ft_toupper", i, ft_toupper(i), toupper(i));
+    	if (ft_tolower(i) != tolower(i))
+			err_count += show_error("ft_tolower", i, ft_tolower(i), tolower(i));
+	}
 	// Strlen tests
 	char	s1[] = "hello world!";
 	char	s2[] = "";
@@ -279,9 +389,19 @@ int main(void)
 			err_count++;
 		}
 	}
+	
+	// These tests runs in macOS because in Linux the functions strlcat and strlcpy
+	// doesn't exist. TODO: test unitarios para estas.
+	//err_count += test_ft_strlcpy();
+    //err_count += test_ft_strlcat();
 
-    err_count += test_strlcpy();
-    
+	err_count += test_strchr();
+	err_count += test_strrchr();
+	err_count += test_strncmp();
+	err_count += test_memchr();
+	err_count += test_memcmp();
+	printf("Pediente tests de strnstr...");
+
     if (err_count == 0)
         printf("Passed all tests!");
     return (0);
