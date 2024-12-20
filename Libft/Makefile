@@ -25,7 +25,8 @@ SRCS =	ft_isalpha.c \
 	ft_memset.c \
 	ft_bzero.c \
 	ft_memcpy.c \
-	ft_memmove.c 
+	ft_memmove.c \
+	ft_strlcpy.c
 OBJS = $(SRCS:.c=.o)
 
 # Default is the first target

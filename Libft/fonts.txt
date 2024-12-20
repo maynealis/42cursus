@@ -1,14 +1,17 @@
+18-12
 [x] isalpha
 [x] isdigit
 [x] isascii
 [x] isprint
 
+19-12
 [x] strlen
 [] memset // se tiene que comprobar si hace overflow??
 [] bzero
 [] memcpy
 [] memmove
 
+20-12
 [] strlcpy
 [] strlcat
 [] touppper
@@ -39,36 +42,7 @@ incomplete type 'void' is not assignable
 https://anamartinezaguilar.medium.com/funciones-para-copiar-vectores-en-c-memcpy-y-memmove-9ce124778801
 
 [TODO]
-[] Els casos on es pasa un punter, no estic comprobant si es passa un punter buit.
+[] Els casos on es pasa un punter, no estic comprobant si es passa un punter buit o no hi ha espai suficient!!
+[] Fer més testos on també es passin arrays d'int.
 
 [ERRORS]
-[] 	There is an error in `ft_isalnum`.
-	The result of  on your library is 0
-	and the correct result of  on the standard library is 8
-	--------------------------------------------------------
-	There is an error in `ft_isalnum`.
-	The result of 
-	 on your library is 0
-	and the correct result of 
-	 on the standard library is 8
-	--------------------------------------------------------
-	There is an error in `ft_isalnum`.
-	The result of  on your library is 0
-	and the correct result of  on the standard library is 8
-	--------------------------------------------------------
-	There is an error in `ft_isalnum`.
-	The result of  on your library is 0
-	and the correct result of  on the standard library is 8
-	--------------------------------------------------------
-	There is an error in `ft_isalnum`.
-	The result of  on your library is 0
-	and the correct result of  on the standard library is 8
-	--------------------------------------------------------
-	There is an error in `ft_isalnum`.
-	The result of  on your library is 0
-	and the correct result of  on the standard library is 8
-	--------------------------------------------------------
-	There is an error in `ft_isalnum`.
-	The result of " on your library is 0
-	and the correct result of " on the standard library is 8
-	--------------------------------------------------------

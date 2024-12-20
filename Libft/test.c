@@ -12,6 +12,46 @@ int    show_error(char *name_ft, int input, int lib_val, int ori_val)
     return (1);
 }
 
+int test_strlcpy()
+{
+    char    src[] = "Hello world!";
+    char    ft_dest[13];
+    char    or_dest[13];
+    size_t  ft_res;
+    size_t  or_res;
+    size_t  size;
+    size_t     i;
+
+    size = 8;
+    ft_res = ft_strlcpy(ft_dest, src, size);
+    or_res = strlcpy(or_dest, src, size);
+    if (ft_res == or_res)
+    {
+        i = -1;
+        while (++i < (ft_res < size ? ft_res : size))
+        {
+            if (ft_dest[i] != or_dest[i])
+            {
+                printf("There is an error with ft_strlcpy.\n");
+                printf("Your version of strlcpy function copy %zu bytes of %s into %s and returns %zu\n", size, src, ft_dest, ft_res);
+                printf("The original strlcpy function copy %zu bytes of %s into %s and returns %zu\n", size, src, or_dest, or_res);
+                printf("--------------------------------------------------------\n");
+                return (1);
+            }
+        }
+    }
+    else
+    {
+        printf("There is an error with ft_strlcpy.\n");
+        printf("Your version of strlcpy function copy %zu bytes of %s into %s and returns %zu\n", size, src, ft_dest, ft_res);
+        printf("The original strlcpy function copy %zu bytes of %s into %s and returns %zu\n", size, src, or_dest, or_res);
+        printf("--------------------------------------------------------\n");  
+        return (1);
+    }
+    printf("ft_strlcpy OK.\n");
+    return (0);
+}
+
 int main(void)
 {
 	int err_count;
@@ -236,6 +276,8 @@ int main(void)
 			err_count++;
 		}
 	}
+
+    err_count += test_strlcpy();
 
     if (err_count == 0)
         printf("Passed all tests!");
