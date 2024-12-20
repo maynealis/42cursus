@@ -6,11 +6,16 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:29:05 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/20 21:47:17 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2024/12/20 22:04:49 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	ft_isnegative(int c)
+{
+	return (c == '-');
+}
 
 int	ft_atoi(const char *nptr)
 {
@@ -21,11 +26,10 @@ int	ft_atoi(const char *nptr)
 	ptr = (char *)nptr;
 	size = ft_strlen(ptr);
 	i = 0;
-	while (i < size)
-	{
-		if (ft_isspace(i))
-			i++;
-	}
+	while (ft_isspace(ptr[i]))
+		i++;
+	if (ft_isdigit(ptr[i]))
+	// checkear si no es digit y saltar al siguiente y comprobar el negativo...
 }
 
 #include <stdio.h>
