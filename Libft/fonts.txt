@@ -6,24 +6,40 @@
 
 19-12
 [x] strlen
-[] memset // se tiene que comprobar si hace overflow??
-[] bzero
-[] memcpy
-[] memmove
+[x] memset // se tiene que comprobar si hace overflow??
+[x] bzero
+[x] memcpy
+[x] memmove
 
 20-12
-[] strlcpy
-[] strlcat
-[] touppper
-[] tolower
-[] strchr
-[] strrchr
-[] strncmp
-[] memchr
-[] memcmp
-[] strnstr
-[] atoi
+[x] strlcpy
+[x] strlcat
+[x] touppper
+[x] tolower
+[x] strchr
+[x] strrchr
+[x] strncmp
+[x] memchr
+[x] memcmp
+[x] strnstr
 
+21-12
+[x][x] atoi
+[x][] calloc
+[x][] strdup TODO: creo que se puede reutilizar una funcion de las anteriores.
+
+[PART 2]
+[][] substr
+[][] strjoin
+[][] strtrim
+[][] split
+[][] itoa
+[][] strmapi
+[][] striteri
+[][] putchar_fd
+[][] putstr_fd
+[][] putendl_fd
+[][] putnbr_fd
 
 
 

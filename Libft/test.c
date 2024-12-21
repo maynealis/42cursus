@@ -2,6 +2,7 @@
 #include <stdio.h> // For printf
 #include <ctype.h> // isalpha, isalnum, isdigit, isascii, isprint, toupper, tolower
 #include <string.h> // strlen, memset, bzero, memcpy, memmove, strchr, strrchr, strncmp, memchr
+#include <stdlib.h>  // atoi
 
 int    show_error(char *name_ft, int input, int lib_val, int ori_val)
 {
@@ -162,6 +163,42 @@ int	test_memcmp()
 		return (1);
 	}
 	printf("ft_memcmp OK.\n");
+	return (0);
+}
+
+int	test_atoi()
+{
+	if (atoi("0") != ft_atoi("0"))
+	{
+		printf("Error with ft_atoi.\n");
+		printf("Your result for %s is %d when for the original is %d\n", "0", ft_atoi("0"), atoi("0"));
+		return (1);
+	}
+	if (atoi("    -87a") != ft_atoi("    -87a"))
+	{
+		printf("Error with ft_atoi.\n");
+		printf("Your result for %s is %d when for the original is %d\n", "    -87a", ft_atoi("    -87a"), atoi("    -87a"));
+		return (1);
+	}
+	if (atoi("2147483648") != ft_atoi("2147483648"))
+	{
+		printf("Error with ft_atoi.\n");
+		printf("Your result for %s is %d when for the original is %d\n", "2147483648", ft_atoi("2147483648"), atoi("2147483648"));
+		return (1);
+	}
+	if (atoi("-2147483648") != ft_atoi("-2147483648"))
+	{
+		printf("Error with ft_atoi.\n");
+		printf("Your result for %s is %d when for the original is %d\n", "-2147483648", ft_atoi("-2147483648"), atoi("-2147483648"));
+		return (1);
+	}
+	if (atoi("-=147483648") != ft_atoi("-=147483648"))	
+	{
+		printf("Error with ft_atoi.\n");
+		printf("Your result for %s is %d when for the original is %d\n", "-=147483648", ft_atoi("-=147483648"), atoi("-=147483648"));
+		return (1);
+	}
+	printf("ft_atoi OK\n");
 	return (0);
 }
 
@@ -400,7 +437,8 @@ int main(void)
 	err_count += test_strncmp();
 	err_count += test_memchr();
 	err_count += test_memcmp();
-	printf("Pediente tests de strnstr...");
+	printf("Pediente tests de strnstr...\n");
+	err_count += test_atoi();
 
     if (err_count == 0)
         printf("Passed all tests!");

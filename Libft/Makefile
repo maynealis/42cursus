@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/18 16:18:25 by cmayne-p          #+#    #+#              #
-#    Updated: 2024/12/20 21:45:20 by cmayne-p         ###   ########.fr        #
+#    Updated: 2024/12/21 16:43:50 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,9 @@ SRCS = ft_isspace.c \
 	ft_memchr.c \
 	ft_memcmp.c \
 	ft_strnstr.c \
-	ft_atoi.c
+	ft_atoi.c \
+	ft_calloc.c \
+	ft_strdup.c
 OBJS = $(SRCS:.c=.o)
 
 # Default is the first target

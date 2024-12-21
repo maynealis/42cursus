@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 16:54:36 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/21 14:59:16 by cmayne-p         ###   ########.fr       */
+/*   Created: 2024/12/21 15:36:42 by cmayne-p          #+#    #+#             */
+/*   Updated: 2024/12/21 16:15:05 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//El casteo a unsigned char es para coger el bit menos significativo?
-char	*ft_strchr(const char *s, int c)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	i;
-	size_t	size;
-	char	*str;
+	void	*result;
 
-	str = (char *)s;
-	size = ft_strlen(s);
-	i = 0;
-	while (i <= size)
-	{
-		if (s[i] == (unsigned char)c)
-			return (&str[i]);
-		i++;
-	}
-	return (NULL);
+	if (nmemb == 0 || size == 0)
+		return ((void *)malloc(1));
+	if (nmemb > INT_MAX / size)
+		return ((void *)0);
+	result = malloc(nmemb * size);
+	ft_bzero(result, nmemb * size);
+	return (result);
 }

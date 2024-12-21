@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 16:54:36 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/21 14:59:16 by cmayne-p         ###   ########.fr       */
+/*   Created: 2024/12/21 16:48:25 by cmayne-p          #+#    #+#             */
+/*   Updated: 2024/12/21 19:10:48 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//El casteo a unsigned char es para coger el bit menos significativo?
-char	*ft_strchr(const char *s, int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char	*result;
 	size_t	i;
-	size_t	size;
-	char	*str;
 
-	str = (char *)s;
-	size = ft_strlen(s);
+	result = (char *)malloc(len);
+	if (result == NULL)
+		return (NULL);
 	i = 0;
-	while (i <= size)
+	while (i < len && s[start + i] != '\0')
 	{
-		if (s[i] == (unsigned char)c)
-			return (&str[i]);
+		result[i] = s[start + i];
 		i++;
 	}
-	return (NULL);
+	result[i] = '\0';
+	return (result);
 }

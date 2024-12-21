@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 16:54:36 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/21 14:59:16 by cmayne-p         ###   ########.fr       */
+/*   Created: 2024/12/21 16:15:22 by cmayne-p          #+#    #+#             */
+/*   Updated: 2024/12/21 16:48:09 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//El casteo a unsigned char es para coger el bit menos significativo?
-char	*ft_strchr(const char *s, int c)
+char	*ft_strdup(const char *s)
 {
-	size_t	i;
 	size_t	size;
-	char	*str;
+	size_t	i;
+	char	*result;
 
-	str = (char *)s;
 	size = ft_strlen(s);
-	i = 0;
-	while (i <= size)
+	result = (char *)malloc(size * sizeof(char) + 1);
+	if (result == NULL)
 	{
-		if (s[i] == (unsigned char)c)
-			return (&str[i]);
+		errno = ENOMEM;
+		return ((char *)0);
+	}
+	i = 0;
+	while (i < size + 1)
+	{
+		result[i] = s[i];
 		i++;
 	}
-	return (NULL);
+	return (result);
 }
