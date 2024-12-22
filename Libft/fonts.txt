@@ -28,9 +28,10 @@
 [x][] calloc
 [x][] strdup TODO: creo que se puede reutilizar una funcion de las anteriores.
 
+22-12
 [PART 2]
-[][] substr
-[][] strjoin
+[x][x] substr
+[x][x] strjoin
 [][] strtrim
 [][] split
 [][] itoa

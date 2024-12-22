@@ -1,3 +1,6 @@
+#Open files in 42 with vim
+.c.swp
+
 # Prerequisites
 *.d
 
