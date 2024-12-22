@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 16:36:55 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/21 16:43:38 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2024/12/22 12:19:02 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len); //for test
 int		ft_atoi(const char *nptr); //for test
 void	*ft_calloc(size_t nmemb, size_t size); // for test
 char	*ft_strdup(const char *s); // for test
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
