@@ -32,7 +32,8 @@
 [PART 2]
 [x][x] substr
 [x][x] strjoin
-[][] strtrim
+23-12
+[x][x] strtrim
 [][] split
 [][] itoa
 [][] strmapi
