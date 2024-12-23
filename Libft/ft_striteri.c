@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.h                                            :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 12:16:58 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/23 21:44:22 by cmayne-p         ###   ########.fr       */
+/*   Created: 2024/12/23 21:15:58 by cmayne-p          #+#    #+#             */
+/*   Updated: 2024/12/23 21:22:58 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTS_H
-# define TESTS_H
+#include "libft.h"
 
-# include <stdio.h> //printf
-# include <string.h> //strcmp
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	size_t	size;
+	size_t	i;
 
-void	do_test_ft_substr(void);
-void	do_test_ft_strjoin(void);
-void	do_test_ft_strtrim(void);
-void	do_test_ft_split(void);
-void	do_test_ft_itoa(void);
-void	do_test_ft_strmapi(void);
-void	do_test_ft_striteri(void);
-
-#endif /* TESTS_H*/
+	size = ft_strlen(s);
+	i = 0;
+	while (i < size)
+	{
+		f(i, &s[i]);
+		i++;
+	}
+}

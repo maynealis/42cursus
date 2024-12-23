@@ -1,43 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_ft_itoa.c                                     :+:      :+:    :+:   */
+/*   test_ft_strmapi.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 20:02:35 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/23 20:19:58 by cmayne-p         ###   ########.fr       */
+/*   Created: 2024/12/23 20:42:17 by cmayne-p          #+#    #+#             */
+/*   Updated: 2024/12/23 21:14:31 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
 #include "tests.h"
+#include "../libft.h"
 
-int	test_ft_itoa(int n, char *expected)
+static char ft_odd_toupper(unsigned int i, char c)
 {
-	char	*my_result;
+	if (i % 2 == 1)
+		return (char)ft_toupper(c);
+	return (c);
+}
 
-	my_result = ft_itoa(n);
+int	test_ft_strmapi(char const *s, char *expected)
+{
+	char *my_result;
+
+	my_result = ft_strmapi(s, ft_odd_toupper);
 	if ((my_result && !expected) || (!my_result && expected)
 		|| (my_result && strcmp(my_result, expected) != 0))
 	{
-		printf("FAIL: ft_itoa(%d) => %s (expected: %s)\n", n, my_result, expected);
+		printf("FAIL: ft_strmapi with the function upper.\n");
+		printf("My result: %s, and the expeted: %s\n", my_result, expected);
+		free(my_result);
 		return (1);
 	}
+	free(my_result);
 	return (0);
 }
 
-void	do_test_ft_itoa(void)
+void	do_test_ft_strmapi(void)
 {
 	int	err;
 
 	err = 0;
-	err += test_ft_itoa(0, "0");
-	err += test_ft_itoa(-0, "0");
-	err += test_ft_itoa(8956, "8956");
-	err += test_ft_itoa(-9024150, "-9024150");
-	err += test_ft_itoa(2147483647, "2147483647");
-	err += test_ft_itoa(-2147483648, "-2147483648");
+	err += test_ft_strmapi("abcdE", "aBcDE");
+	err += test_ft_strmapi("abcdE .a!", "aBcDE .A!");
 	if (!err)
-		printf("ft_itoa: Passed all tests!\n");
+		printf("ft_strmapi: Passed all tests!\n");
 }

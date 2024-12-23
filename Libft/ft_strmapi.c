@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.h                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 12:16:58 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/23 21:44:22 by cmayne-p         ###   ########.fr       */
+/*   Created: 2024/12/23 20:32:03 by cmayne-p          #+#    #+#             */
+/*   Updated: 2024/12/23 20:40:18 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTS_H
-# define TESTS_H
+#include "libft.h"
 
-# include <stdio.h> //printf
-# include <string.h> //strcmp
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char	*result;
+	size_t	size;
+	size_t	i;
 
-void	do_test_ft_substr(void);
-void	do_test_ft_strjoin(void);
-void	do_test_ft_strtrim(void);
-void	do_test_ft_split(void);
-void	do_test_ft_itoa(void);
-void	do_test_ft_strmapi(void);
-void	do_test_ft_striteri(void);
-
-#endif /* TESTS_H*/
+	size = ft_strlen(s);
+	result = (char *)malloc((size + 1) * sizeof(char));
+	if (result == NULL)
+		return (NULL);
+	i = 0;
+	while (i < size)
+	{
+		result[i] = f(i, s[i]);
+		i++;
+	}
+	return (result);
+}
