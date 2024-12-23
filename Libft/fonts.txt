@@ -35,7 +35,7 @@
 23-12
 [x][x] strtrim
 [][] split
-[][] itoa
+[x][-] itoa
 [][] strmapi
 [][] striteri
 [][] putchar_fd

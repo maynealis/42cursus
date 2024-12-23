@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/18 16:18:25 by cmayne-p          #+#    #+#              #
-#    Updated: 2024/12/23 10:37:40 by cmayne-p         ###   ########.fr        #
+#    Updated: 2024/12/23 17:39:14 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,9 @@ SRCS = ft_isspace.c \
 	ft_strdup.c \
 	ft_substr.c \
 	ft_strjoin.c \
-	ft_strtrim.c
+	ft_strtrim.c \
+	ft_split.c \
+	ft_itoa.c
 OBJS = $(SRCS:.c=.o)
 
 # Default is the first target

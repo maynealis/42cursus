@@ -6,11 +6,19 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:05:30 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/23 13:39:13 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2024/12/23 19:57:22 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static char	**ft_free(char **arr, size_t n)
+{
+	while (n > 0)
+		free(arr[--n]);
+	free(arr);
+	return (NULL);
+}
 
 static size_t	ft_count_words(char const *s, char c)
 {
@@ -32,29 +40,46 @@ static size_t	ft_count_words(char const *s, char c)
 	return (words);
 }
 
+static size_t	ft_end_next_word(char const *s, char c, size_t *start)
+{
+	size_t	end;
+
+	while (s[*start] == c)
+		(*start)++;
+	end = *start;
+	if (s[*start] != c && s[*start - 1] == c)
+	{
+		while (s[end] != c)
+			end++;
+	}
+	return (end);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	size_t	words;
+	size_t	i;
+	size_t	j;
 	size_t	n;
 	char	**result;
 
 	if (s == NULL)
-		return (NULL);	
+		return (NULL);
 	words = ft_count_words(s, c);
 	result = (char **)malloc((words + 1) * sizeof(char *));
 	if (result == NULL)
 		return (NULL);
 	n = 0;
+	j = 0;
 	while (n < words)
 	{
-		result[n] = (char *)malloc(sizeof(char) * ft_strlen(xxx))
+		i = j;
+		j = ft_end_next_word(s, c, &i);
+		result[n] = ft_substr(s, i, j - i);
+		if (result[n] == NULL)
+			return (ft_free(result, n));
 		n++;
 	}
-	return (NULL);
-}
-
-int	main()
-{
-	ft_split("   Hello world ", 32);
-	return (1);
+	result[n] = (void *)0;
+	return (result);
 }
