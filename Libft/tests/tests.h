@@ -23,5 +23,6 @@ void	do_test_ft_split(void);
 void	do_test_ft_itoa(void);
 void	do_test_ft_strmapi(void);
 void	do_test_ft_striteri(void);
+void	tests_fd(void);
 
 #endif /* TESTS_H*/

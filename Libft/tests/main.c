@@ -21,5 +21,8 @@ int	main(void)
 	do_test_ft_itoa();
 	do_test_ft_strmapi();
 	do_test_ft_striteri();
+	tests_fd();
+	printf("\n0b1: %d\n", 0x80000000);
+
 	return (0);
 }

@@ -15,7 +15,6 @@
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t		i;
-	size_t		j;
 	size_t		size_little;
 	char		*big_str;
 	const char	*empty_str;
@@ -26,7 +25,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	if (little == empty_str)
 		return ((char *)big);
 	i = 0;
-	j = 0;
 	while (i < len && big[i] != '\0')
 	{
 		if (ft_strncmp(big, little, size_little) == 0)

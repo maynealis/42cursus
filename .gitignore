@@ -1,5 +1,11 @@
+# macOS
+.DS_Store
+
+#Workspace vscode
+.vscode
+
 #Open files in 42 with vim
-.c.swp
+*.swp
 
 # Prerequisites
 *.d

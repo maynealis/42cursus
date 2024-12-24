@@ -34,6 +34,7 @@ void	do_test_ft_itoa(void)
 	err = 0;
 	err += test_ft_itoa(0, "0");
 	err += test_ft_itoa(-0, "0");
+	err += test_ft_itoa(401, "401");
 	err += test_ft_itoa(8956, "8956");
 	err += test_ft_itoa(-9024150, "-9024150");
 	err += test_ft_itoa(2147483647, "2147483647");

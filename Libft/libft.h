@@ -13,10 +13,13 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# define FT_INT_MIN 0x80000000
+# define FT_INT_MAX 0x7fffffff
 # include <stddef.h> // size_t
 # include <stdlib.h> // malloc
-# include <limits.h> //SIZE_MAX
+//# include <limits.h> //SIZE_MAX
 # include <errno.h> 
+# include <unistd.h> //write 
 
 int		ft_isupper(int c);
 int		ft_islower(int c);
@@ -51,5 +54,9 @@ char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
 #endif /*LIBFT_H*/
