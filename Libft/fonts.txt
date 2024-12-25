@@ -32,16 +32,19 @@
 [PART 2]
 [x][x] substr
 [x][x] strjoin
+
 23-12
 [x][x] strtrim
-[][] split
-[x][-] itoa
-[][] strmapi
-[][] striteri
-[][] putchar_fd
-[][] putstr_fd
-[][] putendl_fd
-[][] putnbr_fd
+[x][x] split
+[x][x] itoa
+[x][x] strmapi
+[x][x] striteri
+
+24-12
+[x][-] putchar_fd
+[x][-] putstr_fd
+[x][-] putendl_fd
+[x][-] putnbr_fd
 
 
 
