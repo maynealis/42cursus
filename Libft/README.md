@@ -1,8 +1,14 @@
 ## Next steps
-[1] Recerca debug with vscode
-[2] Documentar functions
-[3] Testejar functions
-[4] Fer els bonus
+- Recerca debug with vscode
+- Documentar functions
+- Testejar functions
+- Fer els bonus
+- check for leaks
+
+## TODO
+- TODO: ft_memmove: creo que no gestiono bien el tema de que el destino se sobreescriga con el src.
+- TODO: ft_strlen what to do when a NULL is passed? What happens if the string is not NULL-terminated and what happens if the size is bigger than size_t...?
+- TODO: ft_bzero quan pooso una n bastant gran, per exemple 128, peta. Suposo que perque estic accedint a posicions de memoria que no tinc permis. Hauria de restringir la funcio suposo? el bzero tambe peta en aquest cas...
 
 ## Progress
 
@@ -22,30 +28,30 @@
 
 ## List of functions
 ### Part 1
-|Function|Done|Test|Doc|
-|--------|----|----|---|
-|ft_isalpha|x|-||
-|ft_isdigit|x|-||
-|ft_isalnum|x|-||
-|ft_isascii|x|-||
-|ft_isprint|x|-||
-|ft_strlen|x|-||
-|ft_memset|x|-||
-|ft_bzero|x|-||
-|ft_memcpy|x|-||
-|ft_memmove|x|-||
-|ft_strlcpy|x|-||
-|ft_strlcat|x|-||
-|ft_toupper|x|-||
-|ft_tolower|x|-||
-|ft_strchr|x|-||
-|ft_strncmp|x|-||
-|ft_memchr|x|-||
-|ft_memcmp|x|-||
-|ft_strnstr|x|-||
-|ft_atoi|x|-||
-|ft_calloc|x|-||
-|ft_strndup|x|-||
+|Function|Done|Test|Doc|Notes|
+|--------|----|----|---|-----|
+|ft_isalpha|x|x|||
+|ft_isdigit|x|x|||
+|ft_isalnum|x|x|||
+|ft_isascii|x|x|||
+|ft_isprint|x|x|||
+|ft_strlen|x|x||TODO: what to do when a NULL is passed? What happens if the string is not NULL-terminated and wha    t happens if the size is bigger than size_t...?|
+|ft_memset|x|x|||
+|ft_bzero|x|x|||
+|ft_memcpy|x|-|||
+|ft_memmove|x|-|||
+|ft_strlcpy|x|-|||
+|ft_strlcat|x|-|||
+|ft_toupper|x|x|||
+|ft_tolower|x|x|||
+|ft_strchr|x|-|||
+|ft_strncmp|x|-|||
+|ft_memchr|x|-|||
+|ft_memcmp|x|-|||
+|ft_strnstr|x|-|||
+|ft_atoi|x|-|||
+|ft_calloc|x|-|||
+|ft_strndup|x|-|||
 
 ### Part 2
 |Function|Done|Test|Doc|
