@@ -1,15 +1,17 @@
 ## Next steps
-[] Recerca debug with vscode
-[] Documentar functions
-[] Testejar functions
-[] Fer els bonus
+[1] Recerca debug with vscode
+[2] Documentar functions
+[3] Testejar functions
+[4] Fer els bonus
 
 ## Progress
 
 |Research|Program|Testing|Doc|
+|--------|-------|-------|---|
 |-|33|||
 
 |date|hours|task|
+|----|-----|----|
 |18-12-24|3|Prepare structure project and functions ft_isalpha to ft_isprint|
 |19-12-24|8|Functions ft_strlen to ft_memmove|
 |20-12-24|4.5|Functions ft_strlcpy to ft_strnstr|
@@ -21,6 +23,7 @@
 ## List of functions
 ### Part 1
 |Function|Done|Test|Doc|
+|--------|----|----|---|
 |ft_isalpha|x|-||
 |ft_isdigit|x|-||
 |ft_isalnum|x|-||
@@ -46,6 +49,7 @@
 
 ### Part 2
 |Function|Done|Test|Doc|
+|--------|----|----|---|
 |ft_substr|x|x||
 |ft_strjoin|x|x||
 |ft_strtrim|x|x||
@@ -60,6 +64,7 @@
 
 ### Bonus
 |Function|Done|Test|Doc|
+|--------|----|----|---|
 |ft_lstnew||||
 |ft_lstadd_front||||
 |ft_lstsize||||
