@@ -47,9 +47,9 @@
 |ft_tolower|x|x|||
 |ft_strchr|x|x||Creo que no se le puede pasar NULL por definicion|
 |strrchr|x|x||Yo creo que esta bien pero war-machine dice que no...|
-|ft_strncmp|x|-|||
-|ft_memchr|x|-|||
-|ft_memcmp|x|-|||
+|ft_strncmp|x|x||Yo creo que esta bien...|
+|ft_memchr|x|x|||
+|ft_memcmp|x|x|||
 |ft_strnstr|x|-|||
 |ft_atoi|x|-|||
 |ft_calloc|x|-|||

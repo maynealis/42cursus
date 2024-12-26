@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 17:47:44 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/21 14:59:53 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:42:33 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 			return (str1[i] - str2[i]);
 		i++;
 	}
-	return (str1[i] - str2[i]);
+	return (0);
 }
