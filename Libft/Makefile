@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/18 16:18:25 by cmayne-p          #+#    #+#              #
-#    Updated: 2024/12/23 21:23:36 by cmayne-p         ###   ########.fr        #
+#    Updated: 2024/12/26 17:30:24 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,19 @@ SRCS = ft_isspace.c \
 	ft_putnbr_fd.c
 OBJS = $(SRCS:.c=.o)
 
+# --------------- BONUS ---------------
+SRCS_BONUS = ft_lstnew.c \
+			ft_lstadd_front.c \
+			ft_lstsize.c \
+			ft_lstlast.c \
+			ft_lstadd_back.c \
+			ft_lstdelone.c \
+			ft_lstclear.c \
+			ft_lstiter.c \
+			ft_lstmap.c
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+# ------------------------------------
+
 # Default is the first target
 all: $(NAME)
 
@@ -75,6 +88,12 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+bonus: $(OBJS) $(OBJS_BONUS)
+	ar rcs $(NAME) $(OBJS) $(OBJS_BONNUS)
+
+bonus_clean:
+	rm -rf $(OBJS_BONUS)
 
 # --------- Rules for tests ---------
 test: test.o $(NAME)
