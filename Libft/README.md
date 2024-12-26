@@ -14,7 +14,7 @@
 
 |Research|Program|Testing|Doc|
 |--------|-------|-------|---|
-|-|33|3.5||
+|-|34.5|7.5||
 
 |date|hours|task|
 |----|-----|----|
@@ -26,6 +26,7 @@
 |23-12-24|9|Functions ft_strtrim to ft_striteri|
 |24-12-24|2|Functions ft_putchar_fd to ft_putnbr_fd|
 |25-12-24|3.5|Tests for part1 functions|
+|26-12-24|5.5|Tests for part1 functions + Bonus functions done|
 
 ## List of functions
 ### Part 1
@@ -73,15 +74,15 @@
 ### Bonus
 |Function|Done|Test|Doc|
 |--------|----|----|---|
-|ft_lstnew||||
-|ft_lstadd_front||||
-|ft_lstsize||||
-|ft_lstlast||||
-|ft_lstadd_back||||
-|ft_lstdelone||||
-|ft_lstclear||||
-|ft_lstiter||||
-|ft_lstmap||||
+|ft_lstnew|x|||
+|ft_lstadd_front|x|||
+|ft_lstsize|x|||
+|ft_lstlast|x|||
+|ft_lstadd_back|x|||
+|ft_lstdelone|x|||
+|ft_lstclear|x|||
+|ft_lstiter|x|||
+|ft_lstmap|x|||
 
 
 
