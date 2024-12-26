@@ -6,7 +6,7 @@
 - check for leaks
 
 ## TODO
-- TODO: ft_memmove: creo que no gestiono bien el tema de que el destino se sobreescriga con el src.
+- TODO: ft_memmove: creo que no gestiono bien el tema de que el destino se sobreescriga con el src. CASI TE DIRIA QUE LO REPITAS!!
 - TODO: ft_strlen what to do when a NULL is passed? What happens if the string is not NULL-terminated and what happens if the size is bigger than size_t...?
 - TODO: ft_bzero quan pooso una n bastant gran, per exemple 128, peta. Suposo que perque estic accedint a posicions de memoria que no tinc permis. Hauria de restringir la funcio suposo? el bzero tambe peta en aquest cas...
 
@@ -14,7 +14,7 @@
 
 |Research|Program|Testing|Doc|
 |--------|-------|-------|---|
-|-|33|||
+|-|33|3.5||
 
 |date|hours|task|
 |----|-----|----|
@@ -25,6 +25,7 @@
 |22-12-24|2.5|Functions ft_substr and ft_strjoin|
 |23-12-24|9|Functions ft_strtrim to ft_striteri|
 |24-12-24|2|Functions ft_putchar_fd to ft_putnbr_fd|
+|25-12-24|3.5|Tests for part1 functions|
 
 ## List of functions
 ### Part 1
@@ -35,16 +36,17 @@
 |ft_isalnum|x|x|||
 |ft_isascii|x|x|||
 |ft_isprint|x|x|||
-|ft_strlen|x|x||TODO: what to do when a NULL is passed? What happens if the string is not NULL-terminated and wha    t happens if the size is bigger than size_t...?|
+|ft_strlen|x|x||TODO: what to do when a NULL is passed? What happens if the string is not NULL-terminated and what happens if the size is bigger than size_t...?|
 |ft_memset|x|x|||
-|ft_bzero|x|x|||
-|ft_memcpy|x|-|||
-|ft_memmove|x|-|||
+|ft_bzero|x|x||TODO quan pooso una n bastant gran, per exemple 128, peta. Suposo que perque estic accedint a posicions de memoria que no tinc permis. Hauria de restringir la funcio suposo? el bzero tambe peta en aquest cas...|
+|ft_memcpy|x|x||DUDA: debo comprobar que el buffer de entrada sea suficientemente grande? Que pasa si el tamano n es mas grande que el size de src?|
+|ft_memmove|x|x||TODO: ft_memmove: creo que no gestiono bien el tema de que el destino se sobreescriga con el src. Falta gestionar el caso de NULL|
 |ft_strlcpy|x|-|||
 |ft_strlcat|x|-|||
 |ft_toupper|x|x|||
 |ft_tolower|x|x|||
-|ft_strchr|x|-|||
+|ft_strchr|x|x||Creo que no se le puede pasar NULL por definicion|
+|strrchr|x|x||Yo creo que esta bien pero war-machine dice que no...|
 |ft_strncmp|x|-|||
 |ft_memchr|x|-|||
 |ft_memcmp|x|-|||

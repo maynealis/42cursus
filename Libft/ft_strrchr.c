@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:58:31 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/20 17:20:56 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2024/12/26 13:57:07 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ char	*ft_strrchr(const char *s, int c)
 	while (i >= 0)
 	{
 		if (s[i] == (unsigned char)c)
-			return (&str[i]);
+			return ((char *)&str[i]);
+		if (i == 0)
+			break ;
 		i--;
 	}
 	return (NULL);
