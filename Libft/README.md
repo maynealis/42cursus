@@ -7,7 +7,6 @@
 
 ## TODO
 - TODO: ft_memmove: creo que no gestiono bien el tema de que el destino se sobreescriga con el src. CASI TE DIRIA QUE LO REPITAS!!
-- TODO: ft_strlen what to do when a NULL is passed? What happens if the string is not NULL-terminated and what happens if the size is bigger than size_t...?
 - TODO: ft_bzero quan pooso una n bastant gran, per exemple 128, peta. Suposo que perque estic accedint a posicions de memoria que no tinc permis. Hauria de restringir la funcio suposo? el bzero tambe peta en aquest cas...
 
 ## Progress
@@ -32,12 +31,12 @@
 ### Part 1
 |Function|Done|Test|Doc|Notes|
 |--------|----|----|---|-----|
-|ft_isalpha|x|x|||
-|ft_isdigit|x|x|||
-|ft_isalnum|x|x|||
-|ft_isascii|x|x|||
-|ft_isprint|x|x|||
-|ft_strlen|x|x||TODO: what to do when a NULL is passed? What happens if the string is not NULL-terminated and what happens if the size is bigger than size_t...?|
+|ft_isalpha|x|x|x|No he conseguido cambiar el 'C' locale para probar con otros characters. Uso el ft_isupper i ft_islower que defino en otros archivos. No tengo claro si lo puedo hacer asi...|
+|ft_isdigit|x|x|x||
+|ft_isalnum|x|x|x||
+|ft_isascii|x|x|x||
+|ft_isprint|x|x|x||
+|ft_strlen|x|x|x|What to do when a NULL is passed? What happens if the string is not NULL-terminated and what happens if the size is bigger than size_t...? Mi respuesta a estas preguntas es que no debo considerarlo, ya que la funcion strlen no lo hace.|
 |ft_memset|x|x|||
 |ft_bzero|x|x||TODO quan pooso una n bastant gran, per exemple 128, peta. Suposo que perque estic accedint a posicions de memoria que no tinc permis. Hauria de restringir la funcio suposo? el bzero tambe peta en aquest cas...|
 |ft_memcpy|x|x||DUDA: debo comprobar que el buffer de entrada sea suficientemente grande? Que pasa si el tamano n es mas grande que el size de src?|
