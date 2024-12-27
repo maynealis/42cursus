@@ -51,10 +51,10 @@
 |ft_strncmp|x|x||Yo creo que esta bien...|
 |ft_memchr|x|x|||
 |ft_memcmp|x|x|||
-|ft_strnstr|x|-|||
-|ft_atoi|x|-|||
-|ft_calloc|x|-|||
-|ft_strndup|x|-|||
+|ft_strnstr|x|x||Quiero probarla con mi mac|
+|ft_atoi|x|x|||
+|ft_calloc|x|x|||
+|ft_strdup|x|x||Tengo que comprobar que no le pase NULL? Creo que la original no lo hace...|
 
 ### Part 2
 |Function|Done|Test|Doc|
@@ -66,10 +66,10 @@
 |ft_itoa|x|x||
 |ft_strmapi|x|x||
 |ft_striteri|x|x||
-|ft_putchar_fd|x|-||
-|ft_putstr_fd|x|-||
-|ft_putendl_fd|x|-||
-|ft_putnbr_fd|x|-||
+|ft_putchar_fd|x|-|OK en salida standar. Pendiente probar en fichero|
+|ft_putstr_fd|x|-|OK en salida standar. Pendiente probar en fichero|
+|ft_putendl_fd|x|-|OK en salida standar. Pendiente probar en fichero|
+|ft_putnbr_fd|x|-|OK en salida standar. Pendiente probar en fichero|
 
 ### Bonus
 |Function|Done|Test|Doc|

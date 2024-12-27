@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 12:16:58 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/26 15:47:28 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2024/12/27 12:31:10 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string.h> //strcmp
 # include <ctype.h> //isalpha isdigit isascii isprint toupper tolower
 # include <stddef.h> //size_t
+# include <stdlib.h> //atoi
 
 void	do_test_ascii_functions(void);
 void	do_test_ft_strlen(void);
@@ -29,6 +30,10 @@ void	do_test_ft_strrchr(void);
 void	do_test_ft_strncmp(void);
 void	do_test_ft_memchr(void);
 void	do_test_ft_memcmp(void);
+void	do_test_ft_strnstr(void);
+void	do_test_ft_atoi(void);
+void	do_test_ft_calloc(void);
+void	do_test_ft_strdup(void);
 void	do_test_ft_substr(void);
 void	do_test_ft_strjoin(void);
 void	do_test_ft_strtrim(void);
