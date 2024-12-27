@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 20:25:07 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/25 21:28:51 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2024/12/27 15:14:09 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	do_test_ft_memset(void)
 
 	err = 0;
 	err += test_ft_memset(buffer1, '7', 7, buffer2);
+	err += test_ft_memset(buffer1, 5848464, 7, buffer2);
 	err += test_ft_memset(buffer3, '7', 10, buffer4);
 	err += test_ft_memset(buffer5, '\0', 3, buffer6);
 	err += test_ft_memset(buffer7, '-', 10, buffer8);

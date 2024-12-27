@@ -7,13 +7,12 @@
 
 ## TODO
 - TODO: ft_memmove: creo que no gestiono bien el tema de que el destino se sobreescriga con el src. CASI TE DIRIA QUE LO REPITAS!!
-- TODO: ft_bzero quan pooso una n bastant gran, per exemple 128, peta. Suposo que perque estic accedint a posicions de memoria que no tinc permis. Hauria de restringir la funcio suposo? el bzero tambe peta en aquest cas...
 
 ## Progress
 
 |Research|Program|Testing|Doc|
 |--------|-------|-------|---|
-|-|34.5|7.5||
+|-|34.5|9.5|2|
 
 |date|hours|task|
 |----|-----|----|
@@ -26,6 +25,7 @@
 |24-12-24|2|Functions ft_putchar_fd to ft_putnbr_fd|
 |25-12-24|3.5|Tests for part1 functions|
 |26-12-24|5.5|Tests for part1 functions + Bonus functions done|
+|27-12-24|4|Tests and docs|
 
 ## List of functions
 ### Part 1
@@ -36,39 +36,39 @@
 |ft_isalnum|x|x|x||
 |ft_isascii|x|x|x||
 |ft_isprint|x|x|x||
-|ft_strlen|x|x|x|What to do when a NULL is passed? What happens if the string is not NULL-terminated and what happens if the size is bigger than size_t...? Mi respuesta a estas preguntas es que no debo considerarlo, ya que la funcion strlen no lo hace.|
-|ft_memset|x|x|||
-|ft_bzero|x|x||TODO quan pooso una n bastant gran, per exemple 128, peta. Suposo que perque estic accedint a posicions de memoria que no tinc permis. Hauria de restringir la funcio suposo? el bzero tambe peta en aquest cas...|
-|ft_memcpy|x|x||DUDA: debo comprobar que el buffer de entrada sea suficientemente grande? Que pasa si el tamano n es mas grande que el size de src?|
-|ft_memmove|x|x||TODO: ft_memmove: creo que no gestiono bien el tema de que el destino se sobreescriga con el src. Falta gestionar el caso de NULL|
+|ft_strlen |x|x|x||
+|ft_memset |x|x|x||
+|ft_bzero  |x|x|x|Quedaria millor si utilitzo la funcio memset? Estic escribint el mateix...|
+|ft_memcpy |x|x|x|Tengo alguna duda en los casos de NULL|
+|ft_memmove|x|x||TODO: creo que no gestiono bien el tema de que el destino se sobreescriga con el src. Falta gestionar el caso de NULL|
 |ft_strlcpy|x|-|||
 |ft_strlcat|x|-|||
-|ft_toupper|x|x|||
-|ft_tolower|x|x|||
-|ft_strchr|x|x||Creo que no se le puede pasar NULL por definicion|
-|strrchr|x|x||Yo creo que esta bien pero war-machine dice que no...|
+|ft_toupper|x|x|x||
+|ft_tolower|x|x|x||
+|ft_strchr |x|x||Creo que no se le puede pasar NULL por definicion|
+|strrchr   |x|x||Yo creo que esta bien pero war-machine dice que no...|
 |ft_strncmp|x|x||Yo creo que esta bien...|
-|ft_memchr|x|x|||
-|ft_memcmp|x|x|||
+|ft_memchr |x|x|||
+|ft_memcmp |x|x|||
 |ft_strnstr|x|x||Quiero probarla con mi mac|
-|ft_atoi|x|x|||
-|ft_calloc|x|x|||
-|ft_strdup|x|x||Tengo que comprobar que no le pase NULL? Creo que la original no lo hace...|
+|ft_atoi   |x|x|||
+|ft_calloc |x|x|||
+|ft_strdup |x|x||Tengo que comprobar que no le pase NULL? Creo que la original no lo hace...|
 
 ### Part 2
-|Function|Done|Test|Doc|
-|--------|----|----|---|
-|ft_substr|x|x||
-|ft_strjoin|x|x||
-|ft_strtrim|x|x||
-|ft_split|x|x||
-|ft_itoa|x|x||
-|ft_strmapi|x|x||
-|ft_striteri|x|x||
-|ft_putchar_fd|x|-|OK en salida standar. Pendiente probar en fichero|
-|ft_putstr_fd|x|-|OK en salida standar. Pendiente probar en fichero|
-|ft_putendl_fd|x|-|OK en salida standar. Pendiente probar en fichero|
-|ft_putnbr_fd|x|-|OK en salida standar. Pendiente probar en fichero|
+|Function|Done|Test|Doc|Notes|
+|--------|----|----|---|-----|
+|ft_substr|x|x|||
+|ft_strjoin|x|x|||
+|ft_strtrim|x|x|||
+|ft_split|x|x|||
+|ft_itoa|x|x|||
+|ft_strmapi|x|x|||
+|ft_striteri|x|x|||
+|ft_putchar_fd|x|-||OK en salida standar. Pendiente probar en fichero|
+|ft_putstr_fd|x|-||OK en salida standar. Pendiente probar en fichero|
+|ft_putendl_fd|x|-||OK en salida standar. Pendiente probar en fichero|
+|ft_putnbr_fd|x|-||OK en salida standar. Pendiente probar en fichero|
 
 ### Bonus
 |Function|Done|Test|Doc|
