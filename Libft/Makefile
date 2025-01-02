@@ -96,14 +96,14 @@ bonus_clean:
 	rm -rf $(OBJS_BONUS)
 
 # --------- Rules for tests ---------
-test: test.o $(NAME)
-	$(CC) $(CFLAGS) -o test test.o -L. $(NAME)
+# test: test.o $(NAME)
+# 	$(CC) $(CFLAGS) -o test test.o -L. $(NAME)
 
-test.o: test.c
-	$(CC) $(CFLAGS) -c $< -o $@
+# test.o: test.c
+# 	$(CC) $(CFLAGS) -c $< -o $@
 
-tclean: fclean
-	rm -rf test.o test
+# tclean: fclean
+# 	rm -rf test.o test
 # -----------------------------------
 
 norm: 

@@ -12,7 +12,7 @@
 
 |Research|Program|Testing|Doc|
 |--------|-------|-------|---|
-|-|34.5|9.5|2|
+|1.5     |34.5   |9.5    |2.5|
 
 |date|hours|task|
 |----|-----|----|
@@ -25,7 +25,8 @@
 |24-12-24|2|Functions ft_putchar_fd to ft_putnbr_fd|
 |25-12-24|3.5|Tests for part1 functions|
 |26-12-24|5.5|Tests for part1 functions + Bonus functions done|
-|27-12-24|4|Tests and docs|
+|27-12-24|5.5|Tests and docs|
+|31-12-24|1.5|Research|
 
 ## List of functions
 ### Part 1
@@ -40,7 +41,7 @@
 |ft_memset |x|x|x||
 |ft_bzero  |x|x|x|Quedaria millor si utilitzo la funcio memset? Estic escribint el mateix...|
 |ft_memcpy |x|x|x|Tengo alguna duda en los casos de NULL|
-|ft_memmove|x|x||TODO: creo que no gestiono bien el tema de que el destino se sobreescriga con el src. Falta gestionar el caso de NULL|
+|ft_memmove|x|x|/|Yo creo que lo tengo bien hecho, sin embargo parece que el original funciona diferente en los casos de solapamiento... TODO: en la docu poner bien ejemplos de overlap.|
 |ft_strlcpy|x|-|||
 |ft_strlcat|x|-|||
 |ft_toupper|x|x|x||
