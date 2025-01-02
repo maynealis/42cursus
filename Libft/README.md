@@ -13,7 +13,7 @@
 
 |Research|Program|Testing|Doc|
 |--------|-------|-------|---|
-|1.5     |34.5   |13     |2  |
+|1.5     |34.5   |14     |2  |
 
 |date|hours|task|
 |----|-----|----|
@@ -28,7 +28,7 @@
 |26-12-24|4 + 1.5|Tests for part1 functions + Bonus functions done|
 |27-12-24|3.5 + 2|Tests and docs|
 |31-12-24|1.5|Research|
-|02-01-25|2.5 + 0.5|Testing memmove + more docs|
+|02-01-25|2.5 + 1.5|Testing memmove + more docs|
 
 ## List of functions
 ### Part 1
