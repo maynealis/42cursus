@@ -50,7 +50,7 @@
 |ft_tolower|x|x|x||
 |ft_strchr |x|x|x||
 |ft_strrchr|x|x|x||
-|ft_strncmp|x|x||Yo creo que esta bien...|
+|ft_strncmp|x|x|x||
 |ft_memchr |x|x|x||
 |ft_memcmp |x|x|x||
 |ft_strnstr|x|x||Quiero probarla con mi mac|

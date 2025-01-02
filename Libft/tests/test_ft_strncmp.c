@@ -32,6 +32,8 @@ void	do_test_ft_strncmp(void)
 	char	s4[] = "";
 	char	s5[] = "";
 	char	s6[] = "Hello";
+	char	s7[] = "lorem ipsum dolor sit amet";
+	char	s8[] = "ipsumm";
 
 	err = 0;
 	err += test_ft_strncmp(s1, s2, 13);
@@ -41,6 +43,7 @@ void	do_test_ft_strncmp(void)
 	err += test_ft_strncmp(s4, s5, 13);
 	err += test_ft_strncmp(s4, s5, 1);
 	err += test_ft_strncmp(s1, s6, 10);
+	err += test_ft_strncmp(s7, s8, 30);
 	if (!err)
 		printf("ft_strncmp: Passed all tests!\n");
 }
