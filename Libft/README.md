@@ -7,6 +7,7 @@
 
 ## TODO
 - TODO: ft_memmove: creo que no gestiono bien el tema de que el destino se sobreescriga con el src. CASI TE DIRIA QUE LO REPITAS!!
+- ft_memcpy: [crash]: your memcpy does not behave well with NULL as both params with size.
 
 ## Progress
 
@@ -41,7 +42,7 @@
 |ft_memset |x|x|x||
 |ft_bzero  |x|x|x|Quedaria millor si utilitzo la funcio memset? Estic escribint el mateix...|
 |ft_memcpy |x|x|x|Tengo alguna duda en los casos de NULL|
-|ft_memmove|x|x|/|Yo creo que lo tengo bien hecho, sin embargo parece que el original funciona diferente en los casos de solapamiento... TODO: en la docu poner bien ejemplos de overlap.|
+|ft_memmove|x|x|/|Yo creo que lo tengo bien hecho, sin embargo parece que el original funciona diferente en los casos de solapamiento... TODO: en la docu poner bien ejemplos de overlap. Segun francinette parece que si algo es NULL no lo estoy manejando correctamente.|
 |ft_strlcpy|x|-|||
 |ft_strlcat|x|-|||
 |ft_toupper|x|x|x||
@@ -83,6 +84,9 @@
 |ft_lstclear|x|||
 |ft_lstiter|x|||
 |ft_lstmap|x|||
+
+## Fonts
+- [memmove](https://marmota.medium.com/c-language-making-memmove-def8792bb8d5)
 
 
 
