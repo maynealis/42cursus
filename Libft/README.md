@@ -13,7 +13,7 @@
 
 |Research|Program|Testing|Doc|
 |--------|-------|-------|---|
-|1.5     |34.5   |9.5    |2.5|
+|1.5     |34.5   |13     |2  |
 
 |date|hours|task|
 |----|-----|----|
@@ -25,9 +25,10 @@
 |23-12-24|9|Functions ft_strtrim to ft_striteri|
 |24-12-24|2|Functions ft_putchar_fd to ft_putnbr_fd|
 |25-12-24|3.5|Tests for part1 functions|
-|26-12-24|5.5|Tests for part1 functions + Bonus functions done|
-|27-12-24|5.5|Tests and docs|
+|26-12-24|4 + 1.5|Tests for part1 functions + Bonus functions done|
+|27-12-24|3.5 + 2|Tests and docs|
 |31-12-24|1.5|Research|
+|02-01-25|2.5 + 0.5|Testing memmove + more docs|
 
 ## List of functions
 ### Part 1
@@ -47,13 +48,13 @@
 |ft_strlcat|x|-|||
 |ft_toupper|x|x|x||
 |ft_tolower|x|x|x||
-|ft_strchr |x|x||Creo que no se le puede pasar NULL por definicion|
-|strrchr   |x|x||Yo creo que esta bien pero war-machine dice que no...|
+|ft_strchr |x|x|x||
+|ft_strrchr|x|x|x||
 |ft_strncmp|x|x||Yo creo que esta bien...|
-|ft_memchr |x|x|||
-|ft_memcmp |x|x|||
+|ft_memchr |x|x|x||
+|ft_memcmp |x|x|x||
 |ft_strnstr|x|x||Quiero probarla con mi mac|
-|ft_atoi   |x|x|||
+|ft_atoi   |x|x|x||
 |ft_calloc |x|x|||
 |ft_strdup |x|x||Tengo que comprobar que no le pase NULL? Creo que la original no lo hace...|
 
