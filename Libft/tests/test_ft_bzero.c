@@ -40,10 +40,10 @@ void	do_test_ft_bzero(void)
 	int		arr2[] = {1, 2, 3};
 
 	err = 0;
-	err += test_ft_bzero(buffer1, 12, buffer2);
+	err += test_ft_bzero(buffer1, 10, buffer2);
 	err += test_ft_bzero(buffer3, 5, buffer4);
 	err += test_ft_bzero(buffer5, 5, buffer6);
-	err += test_ft_bzero(buffer7, 12, buffer8);
+	err += test_ft_bzero(buffer7, 0, buffer8);
 	err += test_ft_bzero(arr1, 3, arr2);
 	if (!err)
 		printf("ft_bzero: Passed all tests!\n");
