@@ -11,7 +11,22 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+/**
+ * @brief Concatenates the string `src` to the end of the string `dst`, 
+ *        ensuring that `dst` is null-terminated, and does not exceed the
+ *        total size specified by `size`.
+ * 
+ * @param dst A pointer to the destination string.
+ * @param src A pointer to the source string.
+ * @param size The total size of the destination buffer, including space for 
+ * 			   the null terminator.
+ * 
+ * @return size_t The total length of the string that would be created if there 
+ * 		   were enough space in `dst`. This is the length of the original `dst` 
+ * 		   plus the length of `src`. If `size` is less than or equal to the 
+ * 		   length of `dst`, the lenght of `dst` is considered to be `size`.
+ * @note If one of the strings is NULL, the behavious is undefined.
+ */
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
@@ -19,15 +34,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 	if (!dst && !src)
 		return (0);
-	if (!dst)
-		return (ft_strlen(src));
-	if (!src)
-		return (ft_strlen(dst));
 	dst_size = ft_strlen(dst);
-	if (size < dst_size)
-		return (size);
+	if (size <= dst_size)
+		return (size + ft_strlen(src));
 	i = 0;
-	while (i < size - dst_size - 1)
+	while (i < size - dst_size - 1 && src[i] != '\0')
 	{
 		dst[dst_size + i] = src[i];
 		i++;

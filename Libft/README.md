@@ -42,10 +42,10 @@
 |ft_strlen |x|x|x||
 |ft_memset |x|x|x||
 |ft_bzero  |x|x|x|Quedaria millor si utilitzo la funcio memset? Estic escribint el mateix...|
-|ft_memcpy |x|x|x|Tengo alguna duda en los casos de NULL|
-|ft_memmove|x|x|/|Yo creo que lo tengo bien hecho, sin embargo parece que el original funciona diferente en los casos de solapamiento... TODO: en la docu poner bien ejemplos de overlap. Segun francinette parece que si algo es NULL no lo estoy manejando correctamente.|
-|ft_strlcpy|x|-|||
-|ft_strlcat|x|-|||
+|ft_memcpy |x|x|x||
+|ft_memmove|x|x|x|TODO: en la docu poner bien ejemplos de overlap.|
+|ft_strlcpy|x|/|x|TODO: test propio|
+|ft_strlcat|x|/|x|TODO: test propio|
 |ft_toupper|x|x|x||
 |ft_tolower|x|x|x||
 |ft_strchr |x|x|x||
@@ -53,7 +53,7 @@
 |ft_strncmp|x|x|x||
 |ft_memchr |x|x|x||
 |ft_memcmp |x|x|x||
-|ft_strnstr|x|x||Quiero probarla con mi mac|
+|ft_strnstr|x|x|x||
 |ft_atoi   |x|x|x||
 |ft_calloc |x|x|||
 |ft_strdup |x|x||Tengo que comprobar que no le pase NULL? Creo que la original no lo hace...|
@@ -61,11 +61,11 @@
 ### Part 2
 |Function|Done|Test|Doc|Notes|
 |--------|----|----|---|-----|
-|ft_substr|x|x|||
+|ft_substr |x|x|||
 |ft_strjoin|x|x|||
 |ft_strtrim|x|x|||
-|ft_split|x|x|||
-|ft_itoa|x|x|||
+|ft_split  |x|x|||
+|ft_itoa   |x|x|||
 |ft_strmapi|x|x|||
 |ft_striteri|x|x|||
 |ft_putchar_fd|x|-||OK en salida standar. Pendiente probar en fichero|
