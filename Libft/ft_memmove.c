@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//Edgecase: What happens if n is bigger than size src?
 /**
  * @brief Copies n bytes from memory area src to memory area dest.
  * 
@@ -37,6 +36,8 @@
  * @note Edge cases:
  * - **n > size of src**: If `n`is bigger than the size of the allocated memory
  * 	for source, the behaviour of the function is unpredicted.
+ * - If both dest and src are NULL, no operation is done. But if only one of
+ * them is NULL, the behavious is undefined.
  */
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
@@ -44,27 +45,21 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char	*c_dest;
 	unsigned char	*c_src;
 
-	if (dest == NULL || src == NULL)
+	if (dest == NULL && src == NULL)
 		return (dest);
 	c_dest = (unsigned char *)dest;
 	c_src = (unsigned char *)src;
 	if (dest <= src)
 	{
-		i = 0;
-		while (i < n)
-		{
+		i = -1;
+		while (++i < n)
 			c_dest[i] = c_src[i];
-			i++;
-		}
 	}
 	else
 	{
 		i = n;
-		while (i > 0)
-		{
-			i--;
+		while (i-- > 0)
 			c_dest[i] = c_src[i];
-		}
 	}
 	return (dest);
 }
