@@ -1,19 +1,22 @@
 ## Next steps
 - Recerca debug with vscode
-- Documentar functions
-- Testejar functions
-- Fer els bonus
-- check for leaks
+- Check for leaks
 
 ## TODO
-- TODO: ft_memmove: creo que no gestiono bien el tema de que el destino se sobreescriga con el src. CASI TE DIRIA QUE LO REPITAS!!
-- ft_memcpy: [crash]: your memcpy does not behave well with NULL as both params with size.
+- [crash]: your memcpy does not behave well with NULL as both params with size
+- ft_strjoin      : [OK] [OK] [OK] [CRASH] [OK] 
+[crash]: you did not protect your malloc return
+- ft_split        : [OK] [OK] [OK] [FAILED] [OK] [OK] [OK] [FAILED] [OK] [OK] 
+[fail]: your split does not work with one word
+[fail]: your split does not work with basic input
+- [fail]: your strmapi did not set \0 at the end of the string
+
 
 ## Progress
 
 |Research|Program|Testing|Doc|
 |--------|-------|-------|---|
-|1.5     |34.5   |14     |2  |
+|1.5     |34.5   |17     |4  |
 
 |date|hours|task|
 |----|-----|----|
@@ -29,6 +32,7 @@
 |27-12-24|3.5 + 2|Tests and docs|
 |31-12-24|1.5|Research|
 |02-01-25|2.5 + 1.5|Testing memmove + more docs|
+|03-01-25|5|Testing + more docs|
 
 ## List of functions
 ### Part 1
@@ -55,7 +59,7 @@
 |ft_memcmp |x|x|x||
 |ft_strnstr|x|x|x||
 |ft_atoi   |x|x|x||
-|ft_calloc |x|x|||
+|ft_calloc |x|x|x||
 |ft_strdup |x|x||Tengo que comprobar que no le pase NULL? Creo que la original no lo hace...|
 
 ### Part 2

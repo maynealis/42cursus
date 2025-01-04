@@ -42,10 +42,14 @@ void	do_test_ft_split(void)
 	int		err;
 	char	*exp1[] = {"Hello", "world", NULL};
 	char	*exp2[] = {"Hello there", NULL};
+	char	*exp3[] = {"some", NULL};
+	char	*exp4[] = {"", NULL};
 
 	err = 0;
 	err += test_ft_split("  Hello    world  ", ' ', exp1);
 	err += test_ft_split("Hello there", '\0', exp2);
+	err += test_ft_split("some", ' ', exp3);
+	err += test_ft_split("", ' ', exp4);
 	if (!err)
 		printf("ft_split: Passed all tests!\n");
 }
