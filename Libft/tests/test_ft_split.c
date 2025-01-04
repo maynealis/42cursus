@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:53:24 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/04 13:53:40 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/04 17:45:50 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	do_test_ft_split(void)
 	err += test_ft_split("Hello there", '\0', exp2);
 	err += test_ft_split("some", ' ', exp3);
 	err += test_ft_split("", ' ', exp4);
+	err += test_ft_split("               ", ' ', exp4);
 	if (!err)
 		printf("ft_split: Passed all tests!\n");
 }

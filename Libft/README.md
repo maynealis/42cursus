@@ -3,20 +3,14 @@
 - Check for leaks
 
 ## TODO
-- [crash]: your memcpy does not behave well with NULL as both params with size
-- ft_strjoin      : [OK] [OK] [OK] [CRASH] [OK] 
-[crash]: you did not protect your malloc return
-- ft_split        : [OK] [OK] [OK] [FAILED] [OK] [OK] [OK] [FAILED] [OK] [OK] 
-[fail]: your split does not work with one word
-[fail]: your split does not work with basic input
-- [fail]: your strmapi did not set \0 at the end of the string
+
 
 
 ## Progress
 
 |Research|Program|Testing|Doc|
 |--------|-------|-------|---|
-|1.5     |34.5   |17     |4  |
+|1.5     |34.5   |19.5   |6  |
 
 |date|hours|task|
 |----|-----|----|
@@ -33,6 +27,7 @@
 |31-12-24|1.5|Research|
 |02-01-25|2.5 + 1.5|Testing memmove + more docs|
 |03-01-25|5|Testing + more docs|
+|04-01-25|2.5 + 2|Fix ft_split and ft_lstmap + doc|
 
 ## List of functions
 ### Part 1
@@ -60,35 +55,35 @@
 |ft_strnstr|x|x|x||
 |ft_atoi   |x|x|x||
 |ft_calloc |x|x|x||
-|ft_strdup |x|x||Tengo que comprobar que no le pase NULL? Creo que la original no lo hace...|
+|ft_strdup |x|x|x||
 
 ### Part 2
 |Function|Done|Test|Doc|Notes|
 |--------|----|----|---|-----|
-|ft_substr |x|x|||
-|ft_strjoin|x|x|||
-|ft_strtrim|x|x|||
-|ft_split  |x|x|||
-|ft_itoa   |x|x|||
-|ft_strmapi|x|x|||
-|ft_striteri|x|x|||
-|ft_putchar_fd|x|-||OK en salida standar. Pendiente probar en fichero|
-|ft_putstr_fd|x|-||OK en salida standar. Pendiente probar en fichero|
-|ft_putendl_fd|x|-||OK en salida standar. Pendiente probar en fichero|
-|ft_putnbr_fd|x|-||OK en salida standar. Pendiente probar en fichero|
+|ft_substr  |x|x|x||
+|ft_strjoin |x|x|x||
+|ft_strtrim |x|x|x||
+|ft_split   |x|x|x||
+|ft_itoa    |x|x|/|Per que he de fer cast al define FT_INT_MIN??|
+|ft_strmapi |x|x|x||
+|ft_striteri|x|x|x||
+|ft_putchar_fd|x|-|x|OK en salida standar. Pendiente probar en fichero|
+|ft_putstr_fd |x|-|x|OK en salida standar. Pendiente probar en fichero|
+|ft_putendl_fd|x|-|x|OK en salida standar. Pendiente probar en fichero|
+|ft_putnbr_fd |x|-|x|OK en salida standar. Pendiente probar en fichero|
 
 ### Bonus
 |Function|Done|Test|Doc|
 |--------|----|----|---|
-|ft_lstnew|x|||
+|ft_lstnew      |x|||
 |ft_lstadd_front|x|||
-|ft_lstsize|x|||
-|ft_lstlast|x|||
-|ft_lstadd_back|x|||
-|ft_lstdelone|x|||
-|ft_lstclear|x|||
-|ft_lstiter|x|||
-|ft_lstmap|x|||
+|ft_lstsize     |x|||
+|ft_lstlast     |x|||
+|ft_lstadd_back |x|||
+|ft_lstdelone   |x|||
+|ft_lstclear    |x|||
+|ft_lstiter     |x|||
+|ft_lstmap      |x|||
 
 ## Fonts
 - [memmove](https://marmota.medium.com/c-language-making-memmove-def8792bb8d5)

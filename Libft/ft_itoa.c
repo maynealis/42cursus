@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:39:26 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/23 17:41:59 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/04 18:08:57 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,17 @@ static int	ft_pow10(int exp)
 	return (result);
 }
 
+/**
+* @brief Allocates and returns a string representing the integer received as an
+* argument.
+*
+* @param n The integer to convert.
+*
+* @return The string representing the integer, or NULL if the allocation fails.
+*
+* @warning The memory allocated should be freed by the user once it is no longer
+* needed. To free the memory, use the `free()` function. 
+*/
 char	*ft_itoa(int n)
 {
 	char	*result;
@@ -47,7 +58,7 @@ char	*ft_itoa(int n)
 
 	len = ft_intlen(n);
 	is_neg = 0;
-	if (n == -2147483648)
+	if (n == (int)FT_INT_MIN)
 		return (ft_strdup("-2147483648"));
 	if (n < 0)
 		is_neg = 1;

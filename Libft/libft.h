@@ -6,20 +6,19 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 16:36:55 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/26 17:32:54 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/04 17:46:55 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stddef.h>
+# include <stdlib.h>
+# include <errno.h>
+# include <unistd.h>
 # define FT_INT_MIN 0x80000000
 # define FT_INT_MAX 0x7fffffff
-# include <stddef.h> // size_t
-# include <stdlib.h> // malloc
-//# include <limits.h> //SIZE_MAX
-# include <errno.h> 
-# include <unistd.h> //write 
 
 int		ft_isupper(int c);
 int		ft_islower(int c);
