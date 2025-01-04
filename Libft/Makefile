@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/18 16:18:25 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/01/04 15:05:01 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/01/04 15:49:42 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,15 +57,15 @@ SRCS = ft_isspace.c \
 OBJS = $(SRCS:.c=.o)
 
 # --------------- BONUS ---------------
-SRCS_BONUS = ft_lstnew.c \
-			ft_lstadd_front.c \
-			ft_lstsize.c \
-			ft_lstlast.c \
-			ft_lstadd_back.c \
-			ft_lstdelone.c \
-			ft_lstclear.c \
-			ft_lstiter.c \
-			ft_lstmap.c
+SRCS_BONUS = ft_lstnew_bonus.c \
+			ft_lstadd_front_bonus.c \
+			ft_lstsize_bonus.c \
+			ft_lstlast_bonus.c \
+			ft_lstadd_back_bonus.c \
+			ft_lstdelone_bonus.c \
+			ft_lstclear_bonus.c \
+			ft_lstiter_bonus.c \
+			ft_lstmap_bonus.c
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 # ------------------------------------
 
@@ -81,7 +81,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-clean:
+clean: bonus_clean
 	rm -rf $(OBJS)
 
 fclean: clean
