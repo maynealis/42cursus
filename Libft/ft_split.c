@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 12:05:30 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/04 13:50:47 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:16:17 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,15 @@ static size_t	ft_end_next_word(char const *s, char c, size_t *start)
 	while (s[*start] == c)
 		(*start)++;
 	end = *start;
+	while (s[end] != c && s[end] != '\0')
+		end++;
+	/*
 	if (s[*start] != c && (*start == 0 || s[*start - 1] == c))
 	{
 		while (s[end] != c)
 			end++;
 	}
+	*/
 	return (end);
 }
 
