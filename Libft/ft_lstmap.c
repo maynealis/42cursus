@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:59:51 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/04 15:24:40 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/04 15:28:06 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,29 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		return (NULL);
 	new_list = NULL;
 //	new_list_last = NULL;
-	new_content = f(lst->content);
-	if (new_content == NULL)
+	while (lst)
 	{
-		ft_lstclear(&new_list, del);
-		return (NULL);
-	}
-	new_node = ft_lstnew(new_content);
-	if (new_node == NULL)
-	{
-		del(new_content);
-		ft_lstclear(&new_list, del);
-		return (NULL);
-	}
-//	if (new_list == NULL)
-//		new_list = new_node;
+		new_content = f(lst->content);
+		if (new_content == NULL)
+		{
+			ft_lstclear(&new_list, del);
+			return (NULL);
+		}
+		new_node = ft_lstnew(new_content);
+		if (new_node == NULL)
+		{
+			del(new_content);
+			ft_lstclear(&new_list, del);
+			return (NULL);
+		}
+	//	if (new_list == NULL)
+	//		new_list = new_node;
 //	else
 //		new_list_last->next = new_node;
 //	new_list_last = new_node;
-	ft_lstadd_back(&new_list, new_node);
-	lst = lst->next;
+		ft_lstadd_back(&new_list, new_node);
+		lst = lst->next;
+	}
 	return (new_list);
 }
 /*
