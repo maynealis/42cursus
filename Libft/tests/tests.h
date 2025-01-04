@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 12:16:58 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/27 12:31:10 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:45:31 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void	do_test_ft_itoa(void);
 void	do_test_ft_strmapi(void);
 void	do_test_ft_striteri(void);
 void	tests_fd(void);
+void	do_test_ft_lstmap(void);
 
 #endif /* TESTS_H*/

@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 11:50:36 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/04 13:43:41 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:45:44 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int	main(void)
 	do_test_ft_strmapi();
 	do_test_ft_striteri();
 	tests_fd();
-	printf("\n0b1: %d\n", 0x80000000);
+	do_test_ft_lstmap();
 	return (0);
 }
