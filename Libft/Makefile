@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/18 16:18:25 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/01/04 14:24:45 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/01/04 15:05:01 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,7 +96,7 @@ bonus_clean:
 	rm -rf $(OBJS_BONUS)
 
 norm: 
-	norminette $(SRCS) $(INCLUDES)
+	norminette $(SRCS) $(SRCS_BONUS) $(INCLUDES)
 
 
 .PHONY: all clean fclean re
