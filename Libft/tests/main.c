@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 11:50:36 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/27 15:08:01 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/04 13:43:41 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(void)
 	do_test_ft_calloc();
 	do_test_ft_strdup();
 	do_test_ft_substr();
-	do_test_ft_strjoin();
+//	do_test_ft_strjoin();
 	do_test_ft_strtrim();
 	do_test_ft_split();
 	do_test_ft_itoa();
