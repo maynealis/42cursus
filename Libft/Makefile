@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/18 16:18:25 by cmayne-p          #+#    #+#              #
-#    Updated: 2024/12/26 17:30:24 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/01/04 14:24:45 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,21 +90,10 @@ fclean: clean
 re: fclean all
 
 bonus: $(OBJS) $(OBJS_BONUS)
-	ar rcs $(NAME) $(OBJS) $(OBJS_BONNUS)
+	ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
 
 bonus_clean:
 	rm -rf $(OBJS_BONUS)
-
-# --------- Rules for tests ---------
-# test: test.o $(NAME)
-# 	$(CC) $(CFLAGS) -o test test.o -L. $(NAME)
-
-# test.o: test.c
-# 	$(CC) $(CFLAGS) -c $< -o $@
-
-# tclean: fclean
-# 	rm -rf test.o test
-# -----------------------------------
 
 norm: 
 	norminette $(SRCS) $(INCLUDES)
