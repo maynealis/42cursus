@@ -40,7 +40,7 @@
 |ft_isprint|x|x|x||
 |ft_strlen |x|x|x||
 |ft_memset |x|x|x||
-|ft_bzero  |x|x|x|Quedaria millor si utilitzo la funcio memset? Estic escribint el mateix...|
+|ft_bzero  |x|x|x|TODO?: Quedaria millor si utilitzo la funcio memset? Estic escribint el mateix...|
 |ft_memcpy |x|x|x||
 |ft_memmove|x|x|x|TODO: en la docu poner bien ejemplos de overlap.|
 |ft_strlcpy|x|/|x|TODO: test propio|
@@ -66,7 +66,7 @@
 |ft_split   |x|x|x||
 |ft_itoa    |x|x|/|Per que he de fer cast al define FT_INT_MIN??|
 |ft_strmapi |x|x|x||
-|ft_striteri|x|x|x||
+|ft_striteri|x|x|x||vi ft_
 |ft_putchar_fd|x|-|x|OK en salida standar. Pendiente probar en fichero|
 |ft_putstr_fd |x|-|x|OK en salida standar. Pendiente probar en fichero|
 |ft_putendl_fd|x|-|x|OK en salida standar. Pendiente probar en fichero|
@@ -75,7 +75,7 @@
 ### Bonus
 |Function|Done|Test|Doc|
 |--------|----|----|---|
-|ft_lstnew      |x|||
+|ft_lstnew      |x||x|
 |ft_lstadd_front|x|||
 |ft_lstsize     |x|||
 |ft_lstlast     |x|||
