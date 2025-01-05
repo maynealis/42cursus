@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:59:51 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/05 12:35:16 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:55:27 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	while (lst)
 	{
 		new_content = f(lst->content);
-	//	if (new_content == NULL)
-	//	{
-	//		ft_lstclear(&new_list, del);
-	//		return (NULL);
-	//	}
 		new_node = ft_lstnew(new_content);
 		if (new_node == NULL)
 		{

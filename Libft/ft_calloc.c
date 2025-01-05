@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:36:42 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/27 12:11:50 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 16:16:14 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (NULL);
 	result = malloc(nmemb * size);
 	if (result == NULL)
-	{
-		errno = ENOMEM;
 		return (NULL);
-	}
 	ft_bzero(result, nmemb * size);
 	return (result);
 }

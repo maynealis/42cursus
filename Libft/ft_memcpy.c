@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 12:01:15 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/05 11:46:16 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:47:07 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@
 *	@note Limitations and edge cases:
 *	- **NULL pointer**: If `s` is NULL, the behavior is undefined. 
 *		It is the caller's responsibility to ensure `s` is a valid pointer.
-*		TODO:
-* 		if (!dest && !src && n)
-*			return (NULL);
 */
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

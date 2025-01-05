@@ -6,15 +6,14 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/18 16:18:25 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/01/04 15:49:42 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/01/05 16:31:03 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC = cc
-#TODO: antes de entregar eliminar -g que es solo para debugar!!
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 INCLUDES = libft.h
 SRCS = ft_isspace.c \
@@ -56,7 +55,6 @@ SRCS = ft_isspace.c \
 	ft_putnbr_fd.c
 OBJS = $(SRCS:.c=.o)
 
-# --------------- BONUS ---------------
 SRCS_BONUS = ft_lstnew_bonus.c \
 			ft_lstadd_front_bonus.c \
 			ft_lstsize_bonus.c \
@@ -67,18 +65,13 @@ SRCS_BONUS = ft_lstnew_bonus.c \
 			ft_lstiter_bonus.c \
 			ft_lstmap_bonus.c
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
-# ------------------------------------
 
-# Default is the first target
 all: $(NAME)
 
-# To create .o
-%.o: %.c $(INCLUDES)
+%.o: %.c $(INCLUDES) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# ar to create static library
-# NOTE rcs: replace create and sort
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(INCLUDES) Makefile
 	ar rcs $(NAME) $(OBJS)
 
 clean: bonus_clean
@@ -89,14 +82,13 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(OBJS) $(OBJS_BONUS)
-	ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+bonus: $(OBJS_BONUS) $(INCLUDES) Makefile
+	ar rcs $(NAME) $(OBJS_BONUS)
 
 bonus_clean:
 	rm -rf $(OBJS_BONUS)
 
-norm: 
+norm:
 	norminette $(SRCS) $(SRCS_BONUS) $(INCLUDES)
-
 
 .PHONY: all clean fclean re
