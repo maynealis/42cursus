@@ -6,12 +6,25 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:59:51 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/04 15:49:06 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:35:16 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+* @brief Creates a new list resulting of the successive applications of the 
+* function `f` on each node.
+*
+* @param lst The address of a pointer to a node.
+* @param f The address of the function used to iterate on the list.
+* @param del The address of the function used to delete the content of a node.
+*
+* @return The new list, or NULL if the allocation fails.
+*
+* @warning The memory allocated for the new list using `malloc` must be freed 
+* by the caller using `free`.
+*/
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_node;
@@ -22,11 +35,11 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	while (lst)
 	{
 		new_content = f(lst->content);
-		if (new_content == NULL)
-		{
-			ft_lstclear(&new_list, del);
-			return (NULL);
-		}
+	//	if (new_content == NULL)
+	//	{
+	//		ft_lstclear(&new_list, del);
+	//		return (NULL);
+	//	}
 		new_node = ft_lstnew(new_content);
 		if (new_node == NULL)
 		{

@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:54:43 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/23 11:46:37 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 11:50:35 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	if (size <= dst_size)
 		return (size + ft_strlen(src));
 	i = 0;
-	while (i < size - dst_size - 1 && src[i] != '\0')
+	while (i + dst_size < size - 1 && src[i] != '\0')
 	{
 		dst[dst_size + i] = src[i];
 		i++;

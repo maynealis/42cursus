@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:54:08 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/27 15:19:14 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 11:33:13 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 *	
 *	This functions fills the first n bytes of the memory area pointed to by s
 *	with the constant byte c.
-*	If n is 0, the function does nothing and simply returns `s`.
-*	If n is bigger than the allocated memory for `s`, the function may cause
-*	a buffer overflow resulting in an undefined behavior.
 *
 *	@param s The pointer to the memory area to be filled. 
 *	@param c The value to fill the memory with. It is passed as an `int` but

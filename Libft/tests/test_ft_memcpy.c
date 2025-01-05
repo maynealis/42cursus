@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 11:51:24 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/26 12:16:54 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 11:57:25 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	do_test_ft_memcpy(void)
 	const char	src2[] = "";
 	char		dest1[20];
 	char		dest2[20];
+	char		*null = NULL;
 	
 	err = 0;
 	err += test_ft_memcpy(dest1, src1, 5, dest2);
@@ -39,6 +40,7 @@ void	do_test_ft_memcpy(void)
 	err += test_ft_memcpy(dest1, src1, 0, dest2);
 	err += test_ft_memcpy(dest1, src2, 1, dest2);
 	err += test_ft_memcpy(dest1, src2, 0, dest2);
+	err += test_ft_memcpy(null, null, 0, null);
 	if (!err)
 		printf("ft_memcpy: Passed all tests!\n");
 }

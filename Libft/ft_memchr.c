@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 17:39:57 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/20 17:43:13 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:03:47 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
  * @param n The number of bytes from `s` to search
  * @return A pointer to the matching byte or NULL if the character does not 
  * occur in the given memory area.
+ *
+ * @note If string `s` is NULL, the behaviour is undefined.
  */
 void	*ft_memchr(const void *s, int c, size_t n)
 {

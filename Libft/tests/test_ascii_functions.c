@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 19:25:43 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/27 13:06:23 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 11:22:30 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	do_test_ascii_functions(void)
 	int	err_toupper = 0;
 	int	err_tolower = 0;
 	int i = -2;
-	while (++i < 257)
+	while (++i < 258)
 	{
 		if ((ft_isalpha(i) && !isalpha(i)) || (!ft_isalpha(i) && isalpha(i)))
 			err_isalpha += show_error("ft_isalpha", i, ft_isalpha(i), isalpha(i));

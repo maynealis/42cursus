@@ -6,14 +6,14 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:49:46 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/27 13:59:46 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 11:30:23 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
-*	@brief Calculates the length of the string s.
+*	@brief Calculates the length of the string `s`.
 *	
 *	This function returns the size of a null-terminated string excluding the
 *	terminating null byte (`\0`).
@@ -31,8 +31,6 @@
 *	- **Strings larger than `size_t`**: This function cannot handle strings 
 *		whose length exceeds the maximum value of `size_t`, as the return value
 *		is of type `size_t`.
-*
-*	These limitations are consistent with the standard `strlen` function.
 */
 size_t	ft_strlen(const char *s)
 {

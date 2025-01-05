@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 17:24:28 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/26 15:27:09 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:01:13 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
  *   function returns `0`.
  * - If a difference is found, the function returns the difference between the 
  *   first pair of different bytes.
+ *
+ * @note If either string is NULL, the behaviour is undefined.
  */
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

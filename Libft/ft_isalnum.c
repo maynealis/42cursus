@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 16:43:08 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/27 13:21:30 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 11:24:46 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 *	@brief Checks for an alphanumeric character.
 *	
 *	This function checks if the character is alphanumeric by verifying if it is 
-*	either an alphabetic character using ft_isalpha, or a digit using ft_isdigit
+*	either an alphabetic character using `ft_isalpha`, or a digit using 
+*	`ft_isdigit`.
 *
 *	@param c The character to check. Must have the value of an unsigned char 
 *			 or EOF.

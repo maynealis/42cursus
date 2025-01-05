@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:58:31 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/26 13:57:07 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 11:59:50 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
  * @param c The character to be found
  * @return A pointer to the first occurence of the character c in the string
  * or NUll if the character is not found.
+ *
+ * @note If string `s` is NULL, the behaviour is undefined.
  */
 char	*ft_strrchr(const char *s, int c)
 {

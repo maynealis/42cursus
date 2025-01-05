@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 17:47:44 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/26 15:42:33 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:04:27 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
  * - Zero if the first `n` bytes of `s1` and `s2` are equal.
  * - A positive value if the first differing byte in `s1` is greater than that 
  * in `s2`.
+ *
+ * @note If either string is NULL, the behaviour is undefined. 
  */
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

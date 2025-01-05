@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 12:03:37 by cmayne-p          #+#    #+#             */
-/*   Updated: 2024/12/26 13:15:52 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/05 11:46:43 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@
  * - **n > size of src**: If `n`is bigger than the size of the allocated memory
  * 	for source, the behaviour of the function is unpredicted.
  * - If both dest and src are NULL, no operation is done. But if only one of
- * them is NULL, the behavious is undefined.
+ * them is NULL, the behavious is undefined. If either or both operators are
+ * NULL, the behaviour is undefined. TODO.
+	//if (dest == NULL && src == NULL)
+	//	return (dest);
  */
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
@@ -45,8 +48,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char	*c_dest;
 	unsigned char	*c_src;
 
-	if (dest == NULL && src == NULL)
-		return (dest);
 	c_dest = (unsigned char *)dest;
 	c_src = (unsigned char *)src;
 	if (dest <= src)
