@@ -1,16 +1,11 @@
-## Next steps
-- Recerca debug with vscode
-- Check for leaks
-
-## TODO
-
-
 
 ## Progress
 
+Total hores: 64.5
+
 |Research|Program|Testing|Doc|
 |--------|-------|-------|---|
-|1.5     |34.5   |19.5   |6  |
+|1.5     |34.5   |21.5   |6  |
 
 |date|hours|task|
 |----|-----|----|
@@ -28,6 +23,7 @@
 |02-01-25|2.5 + 1.5|Testing memmove + more docs|
 |03-01-25|5|Testing + more docs|
 |04-01-25|2.5 + 2|Fix ft_split and ft_lstmap + doc|
+|05-01-25|2|Revisar fitxers|
 
 ## List of functions
 ### Part 1
@@ -42,7 +38,7 @@
 |ft_memset |x|x|x||
 |ft_bzero  |x|x|x|TODO?: Quedaria millor si utilitzo la funcio memset? Estic escribint el mateix...|
 |ft_memcpy |x|x|x||
-|ft_memmove|x|x|x|TODO: en la docu poner bien ejemplos de overlap.|
+|ft_memmove|x|x|x||
 |ft_strlcpy|x|/|x|TODO: test propio|
 |ft_strlcat|x|/|x|TODO: test propio|
 |ft_toupper|x|x|x||
@@ -66,7 +62,7 @@
 |ft_split   |x|x|x||
 |ft_itoa    |x|x|/|Per que he de fer cast al define FT_INT_MIN??|
 |ft_strmapi |x|x|x||
-|ft_striteri|x|x|x||vi ft_
+|ft_striteri|x|x|x||
 |ft_putchar_fd|x|-|x|OK en salida standar. Pendiente probar en fichero|
 |ft_putstr_fd |x|-|x|OK en salida standar. Pendiente probar en fichero|
 |ft_putendl_fd|x|-|x|OK en salida standar. Pendiente probar en fichero|
@@ -76,17 +72,19 @@
 |Function|Done|Test|Doc|
 |--------|----|----|---|
 |ft_lstnew      |x||x|
-|ft_lstadd_front|x|||
-|ft_lstsize     |x|||
-|ft_lstlast     |x|||
-|ft_lstadd_back |x|||
-|ft_lstdelone   |x|||
-|ft_lstclear    |x|||
-|ft_lstiter     |x|||
-|ft_lstmap      |x|||
+|ft_lstadd_front|x||x|
+|ft_lstsize     |x||x|
+|ft_lstlast     |x||x|
+|ft_lstadd_back |x||x|
+|ft_lstdelone   |x||x|
+|ft_lstclear    |x||x|
+|ft_lstiter     |x||x|
+|ft_lstmap      |x||x|
 
 ## Fonts
 - [memmove](https://marmota.medium.com/c-language-making-memmove-def8792bb8d5)
+- [static library](https://makori-mildred.medium.com/how-to-create-static-library-in-c-and-how-to-use-it-b8b3e1fde999)
+- [static library videos]
 
 
 
