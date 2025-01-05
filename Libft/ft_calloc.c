@@ -19,7 +19,7 @@
  * @param nmemb The number of elements to allocate memory for.
  * @param size The size in bytes of each element.
  * @return A pointer to the allocated memory. If there is an error, it 
- * returns a NULL pointer and set errno to ENOMEM.
+ * returns a NULL pointer.
  * 
  * @note 
  *	- If either `nmemb` or `size` is zero, the function will return a unique 

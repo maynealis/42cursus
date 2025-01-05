@@ -18,7 +18,7 @@
  * 
  * @param s The original string to be copied.
  * @return A pointer to the copied string. If insuficient memory is available, 
- * NULL is returned and errno is set to ENOMEM.
+ * NULL is returned.
  *
  * @note If `s` is NULL, the behaviour is undefined.
  *
@@ -35,10 +35,7 @@ char	*ft_strdup(const char *s)
 	size = ft_strlen(s);
 	result = (char *)malloc(size * sizeof(char) + 1);
 	if (result == NULL)
-	{
-		errno = ENOMEM;
 		return ((char *)0);
-	}
 	i = 0;
 	while (i < size + 1)
 	{
