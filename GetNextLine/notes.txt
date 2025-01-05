@@ -1,0 +1,11 @@
+El flag -D BUFFER_SIZE=xx define una macro. En el fichero .h ya tengo protegido que si ya esta definido
+no se vuelva a definir. En caso que se compile sin dicha flag, se asignar'a el BUFFER_SIZE que este
+declarado en el encabezado.
+
+--------------------------------------------
+0: stdin (entrada estándar)
+1: stdout (salida estándar)
+2: stderr (salida de error estándar)
+
+a partir de 3 suelen ser los ficheros que se van abriendo. Si un fichero se cierra, el fd se puede
+volver a asignar y c lo har'a probablemente.
