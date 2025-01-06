@@ -9,3 +9,22 @@ declarado en el encabezado.
 
 a partir de 3 suelen ser los ficheros que se van abriendo. Si un fichero se cierra, el fd se puede
 volver a asignar y c lo har'a probablemente.
+
+----------------------------------------------
+Que pasa si he llegado al final del archivo con read. Si vuelvo a llamar a read empieza desde arriba? o falla?
+
+-----------------------------------------------
+El BUFFER_SIZE tiene que ser un INT?
+
+https://github.com/f-corvaro/GET_NEXT_LINE
+https://www.geeksforgeeks.org/memory-layout-of-c-program/
+https://stackoverflow.com/questions/5134891/how-do-i-use-valgrind-to-find-memory-leaks
+
+-------------------------------------------------
+Sobre variables estaticas LEER
+El video que me vi sobre como plantear el proyecto.
+Como funciona la memoria en c?
+
+------------------------------------------------
+
+
