@@ -11,7 +11,94 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
+//TODO protegir returns de NULL i fer els free
+char	*get_line(char **s)
+{
+	size_t	end_line;
+	size_t	size;
+	char	*result;
+	char	*temp;
+
+	end_line = 0;
+	while (end_line < size && (*s)[end_line] != '\n') //this can be an auxiliar function
+		end_line++;
+	if (end_line == size)
+		return (NULL); //not found
+	else
+	{
+		result = ft_substr(*s, 0, end_line);
+		temp = ft_strdup(*s);
+		free(*s);
+		*s = ft_substr(temp, end_line + 1, size);
+		return (result);
+	}
+}
+
+char	*read_append(int fd)
+{
+	int		bytes_read;
+	char	*buffer;
+
+	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (buffer == NULL)
+		return (NULL);
+	bytes_read = read(fd, buffer, BUFFER_SIZE); //TODO check for error, or 0?
+	buffer[bytes_read] = '\0';
+	return (buffer);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*left = NULL;
+	char		*current;
+	char		*line;
+
+	printf("left: %s\n", left);
+
+	if (left != NULL)
+	{
+		line = get_line(&left);
+		if (line)
+			return (line);
+	}
+	
+	// current = ft_strjoin(left, read_append(fd));
+	// line = get_line(&current);
+	line = NULL;
+	while (line == NULL)
+	{
+		current = ft_strjoin(left, read_append(fd));
+		line = get_line(&current);
+		left = ft_strdup(current);
+	}
+	return (line);
+		
+		// line = get_line(&current);
+		// left = current;
+		// if (line)
+		// 	return (line);
+	
+	
+}
+
+#include <fcntl.h>
+int	main(void)
+{
+	int		fd = open("test1.txt", O_RDONLY);
+	
+	// char	*next_line = get_next_line(fd);
+	printf("Next line is: %s", get_next_line(fd));
+	printf("Next line is: %s", get_next_line(fd));
+	printf("Next line is: %s", get_next_line(fd));
+	printf("Next line is: %s", get_next_line(fd));
+	
+	close(fd);
+	return (0);
+}
+
+/*
 char	*search_endline(char *current)
 {
 	int	i;
@@ -24,41 +111,6 @@ char	*search_endline(char *current)
 		i++;
 	}
 	return (NULL);
-}
-
-size_t	ft_strlen(char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strjoin(char *s1, char *s2)
-{
-	char	*result;
-	size_t	i;
-	size_t	s1_size;
-	size_t	s2_size;
-
-	s1_size = 0;
-	s2_size = 0;
-	if (s1 != NULL)
-		s1_size = ft_strlen(s1);
-	if (s2 != NULL) // en teoria en mi caso esto no pasara nunca creo?
-		s2_size = ft_strlen(s2);
-	result = (char *)malloc((s1_size + s2_size + 1) * sizeof(char));
-	i = -1;
-	while (++i < s1_size)
-		result[i] = s1[i];
-	i = -1;
-	while (++i < s2_size)
-		result[s1_size + i] = s2[i];
-	result[s1_size + s2_size] = '\0';
-	free(s1); 
-	return (result);
 }
 
 char	*get_next_line(int fd)
@@ -83,3 +135,4 @@ char	*get_next_line(int fd)
 	else
 		//truncate
 }
+*/

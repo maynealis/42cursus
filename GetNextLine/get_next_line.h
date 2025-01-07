@@ -15,11 +15,16 @@
 
 # include <unistd.h>  // read
 # include <stdlib.h>  // malloc and free
+# include <stddef.h> // size_t
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 8
 # endif
 
+size_t	ft_strlen(char *s);
+char	*ft_strdup(char *s);
+char	*ft_substr(char *s, size_t ini, size_t end);
+char	*ft_strjoin(char *s1, char *s2);
 char	*get_next_line(int fd);
 
 #endif
