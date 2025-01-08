@@ -36,12 +36,10 @@ char	*get_line(char **s)
 	}
 }
 
-char	*read_append(int fd)
+char	*read_append(int fd, char *buffer)
 {
 	int		bytes_read;
-	char	*buffer;
 
-	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
 	bytes_read = read(fd, buffer, BUFFER_SIZE); //TODO check for error, or 0?
@@ -49,11 +47,19 @@ char	*read_append(int fd)
 	return (buffer);
 }
 
+char* init_buffer(int size) {
+
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*left = NULL;
+	char		*buffer;
 	char		*current;
 	char		*line;
+
+	
+	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 
 	printf("left: %s\n", left);
 
@@ -69,7 +75,7 @@ char	*get_next_line(int fd)
 	line = NULL;
 	while (line == NULL)
 	{
-		current = ft_strjoin(left, read_append(fd));
+		current = ft_strjoin(left, read_append(fd, buffer));
 		line = get_line(&current);
 		left = ft_strdup(current);
 	}
