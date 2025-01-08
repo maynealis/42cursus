@@ -21,9 +21,48 @@ In this project I will set up a functional, secure and efficient server followin
 
 [TO READ MOOOOORE](https://github.com/RamonLucio/Born2beRoot)
 
+[hostname](https://www.cyberciti.biz/faq/debian-change-hostname-permanently/)&#x20;
 
+### Script
 
-###
+* The architecture of your operating system and its kernel version: `uname -a`
+
+```
+Usage: uname [OPTION]...
+Print certain system information.  With no OPTION, same as -s.
+
+  -a, --all                print all information, in the following order,
+                             except omit -p and -i if unknown:
+  -s, --kernel-name        print the kernel name
+  -n, --nodename           print the network node hostname
+  -r, --kernel-release     print the kernel release
+  -v, --kernel-version     print the kernel version
+  -m, --machine            print the machine hardware name
+  -p, --processor          print the processor type (non-portable)
+  -i, --hardware-platform  print the hardware platform (non-portable)
+  -o, --operating-system   print the operating system
+      --help        display this help and exit
+      --version     output version information and exit
+
+```
+
+* The number of physical processors: `grep "physical id" /proc/cpuinfo | uniq | wc -l`
+
+The detailed information about the processors is in the file /proc/cpuinfo. To find out how many physical processors you have, you need to count the lines (using [wc](https://voidnull.es/wc-cuenta-el-numero-de-lineas-palabras-o-caracteres/)), but the way the physical processors are displayed is by it's id, so if the same id appears more than once, that doesn't mean that there are more processors, that is why I use the `uniq` to only count each processor once.
+
+[More info here](https://www.networkworld.com/article/930786/counting-processors-on-your-linux-box.html).
+
+* The number of virtual processors: `grep "processor" /proc/cpuinfo | uniq | wc -l`
+
+Just as the last one, here it counts the virtual processors. You might have more virtual processors than physical ones because your processors are muli-core or hyper-threaded, or both. The way to tell how may cores you have is to look for "cpu cores" in your /proc/cpuinfo file. This line will show up for each virtual processor. If the number of cores shown is less than the number of virtual processors, your system is multi-threading.
+
+* The current available RAM on your server and its utilization rate as a percentage.
+
+\[!Note]
+
+Even tho the subject says the current available RAM, the example looks like it's showing the used one?
+
+[Manual page for free](https://man7.org/linux/man-pages/man1/free.1.html)
 
 ## Logs (What I'm doing)
 
@@ -135,9 +174,13 @@ ABOUT PASSWORD To set up a strong password policy, you have to comply with the f
 * To see the current user password politics `sudo chage -l <username>`
 * To change the minimum days and maximum days use the flag `-m` or `-M`
 
+## [#undefined](./#undefined "mention")
+
 ## Information I learned
 
 ### What is a virtual server? What I'm building?
+
+
 
 
 
