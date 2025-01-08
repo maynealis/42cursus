@@ -2,30 +2,49 @@
 
 In this project I will set up a functional, secure and efficien server following some specific rules.
 
-- Install the minimum number of services, so a graphical interface is of no use for setting up a server.
-
 
 ## Progress
 |Research|Program|Test|Doc|
 |--------|-------|----|---|
 |1       |4      |    |   |
 
-|Date      |Hours|Progress|
-|----------|-----|--------|
-|06-01-2025|5    |Doing research and first steps of configuration|
+|Date    |Hours|Progress|
+|--------|-----|--------|
+|06-01-25|5    |Doing research and first steps of configuration|
+|08-01-25|0.5  |Research|
 
 - TODO: He canviat la contrasenya varies vegades seguides de l'usuari. Tenia entes que havia de passar minim dos dies... 
 
 ## Resources
 [Medium](https://m4nnb3ll.medium.com/my-experience-with-the-born2beroot-project-42-ad19d738ad4f)
 
+[TO READ MOOOOORE](https://github.com/RamonLucio/Born2beRoot)
+
+[^1]: [What is a server](https://www.techtarget.com/whatis/definition/server)
+[Debian vs Rocky](https://amadla.medium.com/debian-linux-vs-rocky-os-exploring-the-best-choice-for-your-server-dfd6b3d80c1a)
+[What is SELinux](https://www.redhat.com/en/topics/linux/what-is-selinux?source=post_page-----dfd6b3d80c1a--------------------------------)
+[What is AppArmor](https://apparmor.net/?source=post_page-----dfd6b3d80c1a--------------------------------)
+[AppArmor](https://gitlab.com/apparmor/apparmor/-/wikis/GettingStarted)
+[apt and aptitude](https://blog.packagecloud.io/know-the-difference-between-apt-and-aptitude/)
+
+
 ## Logs (What I'm doing)
+The first thing of all is to understand what I have to setup, and why?
+[About virtualization](https://www.masterdc.com/blog/what-is-virtual-machine-server-network/)
+
+... TODO: put here some more information about virtualization and some scheme
+
+Next, I have to choose wich OS to install. The requisists ask me to choose between Debian, or Rocky.
+... TODO: Explain reasons and AppArmor/SELinux apt/aptitude...
+
 Download [Debian](https://www.debian.org/distrib/index.es.html) --> Why debian??
 Prepare VM
 Install things and partitions...
 
 - To unlock dthe disk use the encryption phrase
 - To access root use `su` 
+
+- To change the machine's hostname: `hostnamectl set-hostname mymachine`
 
 ABOUT USER AND GROUPS
 - To **create a new user** `sudo adduser user_name`
@@ -42,6 +61,12 @@ ABOUT SSH
 - To check the connection `sudo service ssh status`
 - Change the port number in /etc/ssh/ssh_config and /etc/ssh/sshd_config and run `sudo service ssh restart` to apply the changes.
 - Change **PermitRootLogin no** in sshd\_config to make it more secure against external attacks [more info](https://wiki.debian.org/SSH#Configuration_Options)
+
+
+- To connect use `ssh user@localhost -p XXXX`
+
+- To disconnect user: `who` to see the connections and then `pkill -9 -t pts/0`
+[!NOTE] Se envió la señal -9 que indica matar (KILL) el proceso, la opción -t indica que se basará en un atributo de nombre de terminal y se indica después el nombre de la terminal en si pts/0
 
 ABOUT UFW
 Uncomplicated Firewall (UFW) is a program for managing a netfilter firewall designed to be easy to use. It uses a command-line interface consisting of a small number of simple commands, and uses iptables for configuration. UFW is available by default in all Ubuntu installations since 8.04 LTS.[1] UFW has been available by default in all Debian installations since 10. 
@@ -112,7 +137,14 @@ at least 7 characters that are not part of the former password.
 
 ## Information I learned
 
-### What is a server? What I'm building?
+### What is a virtual server? What I'm building?
+A virtual server is a virtual representation of a physical server. Like a physical server, a virtual server includes its own OS and applications. These are kept separate from any other virtual servers running on the physical server.
+
+The process of creating VMs involves installing a lightweight software component called a hypervisor onto a physical server. The hypervisor's job is to enable the physical server to function as a virtualization host. The virtualization host makes the physical server's hardware resources (such as central processing unit (CPU) time, memory, storage and network bandwidth) available to one or more virtual machines.[^1]
+
+### How to choose the amount of space needed in the VM?
+
+### What is LVM? 
 
 ### What is sudo?
 `sudo` is a command-line tool in Unix-based systems that allosw a user to execute commands with superuser (administrator) privileges. The name stands for "superuser do".
