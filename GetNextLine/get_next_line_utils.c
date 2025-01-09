@@ -33,6 +33,8 @@ char	*ft_strdup(char *s)
 	size_t	size;
 	size_t	i;
 
+	if (s == NULL)
+		return (NULL);
 	size = ft_strlen(s);
 	dup = (char *)malloc(size * sizeof(char) + 1);
 	if (dup == NULL)
@@ -57,15 +59,15 @@ char	*ft_substr(char *s, size_t ini, size_t end)
 	size = ft_strlen(s);
 	if (ini >= size)
 		return (NULL);
-	if (end > size)
-		end = size;
+	if (end >= size)
+		end = size - 1;
 	sub = (char *)malloc((end - ini + 1) * sizeof(char) + 1);
 	if (sub == NULL)
 		return (NULL);
-	i = ini;
-	while (i <= end)
+	i = 0;
+	while (i + ini <= end)
 	{
-		sub[i] = s[i];
+		sub[i] = s[ini + i];
 		i++;
 	}
 	sub[i] = '\0';

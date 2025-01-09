@@ -13,132 +13,76 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
-//TODO protegir returns de NULL i fer els free
-char	*get_line(char **s)
+size_t	index_endline(char *s)
 {
-	size_t	end_line;
+	size_t	i;
 	size_t	size;
-	char	*result;
-	char	*temp;
 
-	end_line = 0;
-	while (end_line < size && (*s)[end_line] != '\n') //this can be an auxiliar function
-		end_line++;
-	if (end_line == size)
-		return (NULL); //not found
-	else
+	size = ft_strlen(s);
+	i = 0;
+	while (i < size)
 	{
-		result = ft_substr(*s, 0, end_line);
-		temp = ft_strdup(*s);
-		free(*s);
-		*s = ft_substr(temp, end_line + 1, size);
-		return (result);
+		if (s[i] == '\n')
+			return (i);
+		i++;
 	}
+	return (i);
 }
 
-char	*read_append(int fd, char *buffer)
+char	*get_my_line(int fd, char *buffer, char *left)
 {
+	char	*temp;
+	char	*line;
 	int		bytes_read;
 
-	if (buffer == NULL)
-		return (NULL);
-	bytes_read = read(fd, buffer, BUFFER_SIZE); //TODO check for error, or 0?
-	buffer[bytes_read] = '\0';
-	return (buffer);
-}
-
-char* init_buffer(int size) {
-
+	temp = ft_strdup(left);
+	while ((temp && index_endline(temp) == ft_strlen(temp)) || !temp)
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read < 0)
+		{
+			free(temp);
+			return (NULL);
+		}
+		if (bytes_read == 0)
+			break ;
+		buffer[bytes_read] = '\0';
+		line = ft_strjoin(temp, buffer);
+		free(temp);
+		temp = ft_strdup(line);
+		free(line);
+	}
+	return (temp);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*left = NULL;
 	char		*buffer;
-	char		*current;
+	char		*line_read;
 	char		*line;
+	size_t		end_line;
 
-	
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-
-	printf("left: %s\n", left);
-
-	if (left != NULL)
+	if (buffer == NULL)
 	{
-		line = get_line(&left);
-		if (line)
-			return (line);
+		free(left);
+		return (NULL);
 	}
-	
-	// current = ft_strjoin(left, read_append(fd));
-	// line = get_line(&current);
-	line = NULL;
-	while (line == NULL)
+	line_read = get_my_line(fd, buffer, left);
+	if (line_read == NULL)
 	{
-		current = ft_strjoin(left, read_append(fd, buffer));
-		line = get_line(&current);
-		left = ft_strdup(current);
+		free(buffer);
+		free(left);
+		return (NULL);
 	}
+	end_line = index_endline(line_read);
+	line = ft_substr(line_read, 0, end_line);
+	free(left);
+	left = ft_substr(line_read, end_line + 1, ft_strlen(line_read));
+	free(line_read);
+	free(buffer);
 	return (line);
-		
-		// line = get_line(&current);
-		// left = current;
-		// if (line)
-		// 	return (line);
-	
-	
 }
-
-#include <fcntl.h>
-int	main(void)
-{
-	int		fd = open("test1.txt", O_RDONLY);
-	
-	// char	*next_line = get_next_line(fd);
-	printf("Next line is: %s", get_next_line(fd));
-	printf("Next line is: %s", get_next_line(fd));
-	printf("Next line is: %s", get_next_line(fd));
-	printf("Next line is: %s", get_next_line(fd));
-	
-	close(fd);
-	return (0);
-}
-
-/*
-char	*search_endline(char *current)
-{
-	int	i;
-
-	i = 0;
-	while (current[i] != '\0')
-	{
-		if (current[i] == '\n')
-			return ((char *)&current[i]);
-		i++;
-	}
-	return (NULL);
-}
-
-char	*get_next_line(int fd)
-{
-	int		bytes_read; // es size_t o un int?
-	char	*last;// = NULL;
-	char	*current;
-	char	*next; //ahora apunta pero deberia hacer un malloc?
-	char	*line;
-	static char	*remaining;
-
-	//check if remaining has a \n -> split and return & set new remaining
-
-	current = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	
-	bytes_read = read(fd, current, BUFFER_SIZE);
-	current[bytes_read] = '\0';
-
-	next = search_endline(current);
-	if (next == NULL)
-		line = ft_strjoin(line, current);
-	else
-		//truncate
-}
-*/
