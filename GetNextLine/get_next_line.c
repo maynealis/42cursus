@@ -36,7 +36,7 @@ char	*get_my_line(int fd, char *buffer, char *left)
 	int		bytes_read;
 
 	temp = ft_strdup(left);
-	while ((temp && index_endline(temp) == ft_strlen(temp)) || !temp)
+	while (temp == NULL || (temp != NULL && index_endline(temp) == ft_strlen(temp)))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0)
@@ -52,6 +52,8 @@ char	*get_my_line(int fd, char *buffer, char *left)
 		temp = ft_strdup(line);
 		free(line);
 	}
+	if (!temp)
+		return (NULL);
 	return (temp);
 }
 
@@ -74,8 +76,11 @@ char	*get_next_line(int fd)
 	line_read = get_my_line(fd, buffer, left);
 	if (line_read == NULL)
 	{
-		free(buffer);
-		free(left);
+		if (buffer)
+			free(buffer);
+		if (left)
+			free(left);
+		left = NULL;
 		return (NULL);
 	}
 	end_line = index_endline(line_read);
