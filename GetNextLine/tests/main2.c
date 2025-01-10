@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 13:03:22 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/10 14:59:00 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:04:55 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,18 @@ int main(void)
 	free(line);
 
 	line = get_next_line(fd2);
-	printf("line 1: %s", line);
-	free(line);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd2);
+	}
+
+	line = get_next_line(fd3);
+	while(line)
+	{
+		free(line);
+		line = get_next_line(fd3);
+	}
 
     close(fd1);
     close(fd2);
