@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:48:37 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/05 19:25:50 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:07:45 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,12 @@ int	main(void)
 	while (line)
 	{
 		printf("Test with invalid fd: '%s'", line);
+		if (line)
+			free(line);
 		line = get_next_line(8);
 	}
+	if (line)
+		free(line);
 	printf("\n--------------------------------\n");
 
 	// file empty
@@ -38,6 +42,8 @@ int	main(void)
 	while (line)
 	{
 		printf("Test with empty file: '%s'", line);
+		if (line)
+			free(line);
 		line = get_next_line(fd);
 	}
 	printf("\n--------------------------------\n");
@@ -49,6 +55,8 @@ int	main(void)
 	while (line)
 	{
 		printf("Test with 1char file: '%s'", line);
+		if (line)
+			free(line);
 		line = get_next_line(fd);
 	}
 	printf("\n--------------------------------\n");
@@ -60,6 +68,8 @@ int	main(void)
 	while (line)
 	{
 		printf("Test with 1 line and endline: '%s'", line);
+		if (line)
+			free(line);
 		line = get_next_line(fd);
 	}
 	printf("\n--------------------------------\n");
@@ -71,6 +81,8 @@ int	main(void)
 	while (line)
 	{
 		printf("Test with 1 line and no endline: '%s'", line);
+		if (line)
+			free(line);
 		line = get_next_line(fd);
 	}
 	printf("\n--------------------------------\n");
@@ -82,6 +94,8 @@ int	main(void)
 	while (line)
 	{
 		printf("Test with multi lines: '%s'", line);
+		if (line)
+			free(line);
 		line = get_next_line(fd);
 	}
 	printf("\n--------------------------------\n");
@@ -93,6 +107,8 @@ int	main(void)
 	while (line)
 	{
 		printf("Test with 1 long line: '%s'", line);
+		if (line)
+			free(line);
 		line = get_next_line(fd);
 	}
 	printf("\n--------------------------------\n");
@@ -104,6 +120,8 @@ int	main(void)
 	while (line)
 	{
 		printf("Test with multi long lines: '%s'", line);
+		if (line)
+			free(line);
 		line = get_next_line(fd);
 	}
 	printf("\n--------------------------------\n");
