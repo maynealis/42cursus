@@ -71,6 +71,7 @@ char	*get_next_line(int fd)
 	if (buffer == NULL)
 	{
 		free(left);
+		left = NULL;
 		return (NULL);
 	}
 	line_read = get_my_line(fd, buffer, left);
@@ -85,9 +86,23 @@ char	*get_next_line(int fd)
 	}
 	end_line = index_endline(line_read);
 	line = ft_substr(line_read, 0, end_line);
-	free(left);
+	if (line == NULL)
+	{
+		if (buffer)
+			free(buffer);
+		if (line_read)
+			free(line_read);
+		if (left)
+			free(left);
+		left = NULL;
+		return (NULL); //error on malloc
+	}
+	if (left)
+		free(left);
 	left = ft_substr(line_read, end_line + 1, ft_strlen(line_read));
-	free(line_read);
-	free(buffer);
+	if (line_read)
+		free(line_read);
+	if (buffer)
+		free(buffer);
 	return (line);
 }
