@@ -27,4 +27,5 @@ Como funciona la memoria en c?
 
 ------------------------------------------------
 
+[MAX OPEN FILES](https://stackoverflow.com/questions/17931583/maximum-number-of-files-that-can-be-opened-by-c-fopen-in-linux)
 
