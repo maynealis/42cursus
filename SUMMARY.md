@@ -3,7 +3,8 @@
 * [42cursus](README.md)
   * [Tracking my time](readme/tracking-my-time.md)
 * [Libft](Libft/README.md)
-* [Born2beRoot](Born2beRoot/README.md)
+* [Born2beRoot](born2beroot/README.md)
+  * [Previous research](born2beroot/previous-research.md)
 * [Get Next Line](getnextline/README.md)
   * [Page](getnextline/page.md)
 
