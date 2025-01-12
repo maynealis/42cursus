@@ -149,13 +149,98 @@ Just as the last one, here it counts the virtual processors. You might have more
 
 * The current available RAM on your server and its utilization rate as a percentage.
 
+`free --mega | grep Mem | awk '{printf("%i/%iMB (%.2f%%)", $4, $2, 100*$4/$2)}'`
+
+free displays the total amount of free and used physical and swap memory in the system, as well as the buffers and caches used by the kernel. The information is gathered by parsing /proc/meminfo.
+       The displayed columns are:
+
+       total  Total usable memory (MemTotal and SwapTotal in
+              /proc/meminfo). This includes the physical and swap memory
+              minus a few reserved bits and kernel binary code.
+
+       used   Used or unavailable memory (calculated as total -
+              available)
+
+       free   Unused memory (MemFree and SwapFree in /proc/meminfo)
+
+       shared Memory used (mostly) by tmpfs (Shmem in /proc/meminfo)
+
+       buffers
+              Memory used by kernel buffers (Buffers in /proc/meminfo)
+
+       cache  Memory used by the page cache and slabs (Cached and
+              SReclaimable in /proc/meminfo)
+
+       buff/cache
+              Sum of buffers and cache
+
+       available
+              Estimation of how much memory is available for starting
+              new applications, without swapping. Unlike the data
+              provided by the cache or free fields, this field takes
+              into account page cache and also that not all reclaimable
+              memory slabs will be reclaimed due to items being in use
+              (MemAvailable in /proc/meminfo, available on kernels 3.14,
+              emulated on kernels 2.6.27+, otherwise the same as free)
+
 [Manual page for free](https://man7.org/linux/man-pages/man1/free.1.html)
+[awk](https://geekland.eu/uso-del-comando-awk-en-linux-y-unix-con-ejemplos/)
 
-about memory usage:
+* The current available storage on your server and its utilization rate as a percentage.
 
-free --mega | grep Mem | awk '{printf("Memory Usage: %i/%i %.2f%%", $4, $2, 100*$4/$2)}'
+`df --total -h | grep total | awk '{printf("%s/%s (%i%%)", $4, $2, $4/$2*100)}'`
 
-df --total -h | grep total | awk {'printf("Disk usage %s/%s (%s)", $3, $2, $5)'}
+This manual page documents the GNU version of df.  df displays
+       the amount of space available on the file system containing each
+       file name argument.  If no file name is given, the space
+       available on all currently mounted file systems is shown.  Space
+       is shown in 1K blocks by default, unless the environment variable
+       POSIXLY_CORRECT is set, in which case 512-byte blocks are used.
+
+       -h, --human-readable
+              print sizes in powers of 1024 (e.g., 1023M)
+       --total
+              elide all entries insignificant to available space, and
+              produce a grand total
+
+[Manual page for df](https://man7.org/linux/man-pages/man1/df.1.html)
+
+* The current utilization rate of your processors as a percentage.
+
+vmstat breaks down CPU time into these key states:
+
+    us (user time): Time the CPU spends executing user-level applications.
+    sy (system time): Time the CPU spends executing kernel or system-level tasks.
+    id (idle time): Time the CPU spends doing nothing (idle).
+    wa (I/O wait time): Time the CPU spends waiting for I/O operations to complete.
+    st (stolen time): Time taken by the hypervisor (if running virtualized environments).
+
+TODO: understand thiiiis
+
+* The date and time of the last reboot.
+
+The command who shows who is logged on, and the flag -b (--boot) shows the last time the system boot.
+
+* Whether LVM is active or not.
+  
+`if [ $(lsblk | grep "lvm" | wc -l) -gt 0 ]; then echo "yes"; else echo "no"; fi`
+
+* The number of active connections.
+
+`ss -s | grep "TCP:" | awk '{print($4)}' | tr -d ','`
+
+* The number of users using the server.
+
+• The IPv4 address of your server and its MAC (Media Access Control) address.
+hostname -I
+
+-I, --all-ip-addresses
+              Display  all network addresses of the host. This option enumerates all configured ad‐
+              dresses on all network interfaces. The loopback interface  and  IPv6  link-local  ad‐
+              dresses are omitted.
+
+              
+• The number of commands executed with the sudo program.
 
 ### How to choose the amount of space needed in the VM?
 
