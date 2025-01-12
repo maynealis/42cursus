@@ -137,6 +137,14 @@ Print certain system information.  With no OPTION, same as -s.
       --help        display this help and exit
       --version     output version information and exit
 ```
+architecture=$(uname -a)
+kernel_name=$(uname)
+nodename=$(uname -n)
+kernel_release=$(uname -r)
+kernel_version=$(uname -v)
+machine=$(uname -m)
+os=$(uname -o)
+
 
 * The number of physical processors: grep "physical id" /proc/cpuinfo | uniq | wc -l
 
