@@ -276,6 +276,23 @@ This manual page documents the GNU version of df. df displays the amount of spac
 
 * The current utilization rate of your processors as a percentage.
 
+[top](https://man7.org/linux/man-pages/man1/top.1.html)
+-b, --batch
+          Starts top in Batch mode, which could be useful for sending
+          output from top to other programs or to a file.  In this mode,
+          top will not accept input and runs until the iterations limit
+          you've set with the ‘-n’ command-line option or until killed.
+
+           us : time running un-niced user processes
+           sy : time running kernel processes
+           ni : time running niced user processes
+           id : time spent in the kernel idle handler
+           wa : time waiting for I/O completion
+           hi : time spent servicing hardware interrupts
+           si : time spent servicing software interrupts
+           st : time stolen from this vm by the hypervisor
+
+
 vmstat breaks down CPU time into these key states:
 
 ```
