@@ -56,6 +56,8 @@ change1
 change1 value2
 ```
 
+***
+
 ```makefile
 VAR1 = value1
 VAR2 := $(VAR1) value2
@@ -72,13 +74,15 @@ value1 value2
 
 </details>
 
+
+
 {% hint style="info" %}
 To print something to the console, you can use `@echo`. The `@` suppresses the command output, so only the text following `@echo` is displayed.
 {% endhint %}
 
 ## Patterns
 
-* `%` is used to indicate any text.&#x20;
+* `%` is used to indicate any text.
 
 For example this is a rule for anything that ends with `.o`
 
@@ -88,14 +92,48 @@ For example this is a rule for anything that ends with `.o`
 
 ### Automatic Variables:
 
-* `$<` —  The first prerequisite.
+* `$<` — The first prerequisite.
 * `$^` — All prerequisites.
 * `$?` — All prerequisites that are newer than the target.
 * `$@` — The target name.
 
-## Multiple files
+## About dependencies
 
-You can include other Makefiles using `include`.
+In a `Makefile`, the `|` character in a rule's prerequisites introduces **order-only prerequisites**. These prerequisites are dependencies that must be up-to-date before the target is built, but their modification does **not** trigger a rebuild of the target.
+
+For example:
+
+```makefile
+target: | some-directory
+    touch some-directory/target
+
+some-directory:
+    mkdir -p some-directory
+    
+# some-directory will be created if it does not exist, but changes to some-directory 
+# do not trigger a rebuild of target
+```
+
+## Multiple Makefiles
+
+The options `-C` and `-f` in the `make` command have distinct purposes and are used for different aspects of controlling `make`'s behavior:
+
+| Option | Description                                  | Use Case                                      |
+| ------ | -------------------------------------------- | --------------------------------------------- |
+| `-C`   | Changes the directory before running `make`. | Building a project in a subdirectory.         |
+| `-f`   | Specifies which `Makefile` to use.           | Running a `Makefile` with a non-default name. |
+
+Example to build the libft from another Makefile:
+
+```makefile
+# Build libft
+$(LIBFT):
+    $(MAKE) -C $(LIBFT_DIR) # the flag -C changes the directory
+
+# Build printf and link with libft
+$(NAME): $(PRINTF_OBJ) $(LIBFT)
+    ar rcs $(NAME) $(PRINTF_OBJ) $(LIBFT)
+```
 
 ## .PHONY
 
@@ -129,9 +167,8 @@ bonus: $(OBJS_BONUS)
 
 List of [videos](https://youtu.be/jI2n8jofuRg?si=dAzjhEb9VHUEL-d4) to understand basics of Make (in Spanish)
 
-List of posts about Makefile that I want to read:
+List of posts about Makefile that I found interesting:
 
 * [Part 1](https://medium.com/@adi.ashour/stuff-i-learned-about-makefiles-part-1-9b85986d7c59)
 * [Part 2](https://medium.com/@adi.ashour/stuff-i-learned-about-makefiles-part-2-66d87109b19b)
 * [Part 3](https://medium.com/@adi.ashour/stuff-i-learned-about-makefiles-part-3-7eaa1e0b918b)
-
