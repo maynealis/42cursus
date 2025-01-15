@@ -20,8 +20,11 @@ all: $(NAME)
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
-$(NAME): $(OBJS) $(LIBFT) # $(LIBFTPRINTF)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L. $(LIBFT)
+$(LIBFTPRINTF):
+	$(MAKE) -C $(PRINTF_DIR)
+
+$(NAME): $(OBJS) $(LIBFT) $(LIBFTPRINTF)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L. $(LIBFT) -L. $(LIBFTPRINTF)
 
 clean:
 	rm -rf $(OBJS)

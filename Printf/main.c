@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 19:53:59 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/13 18:42:23 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/15 12:09:07 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,23 @@ int main(void)
 {
     printf("TESTING MANDATORY PRINTF\n");
     // Testing decimal
-    printf("Decimal with d: %d\n", -2147483647);
-    printf("Decimal with i: %i\n", -2147483647);
+    printf("Decimal with d: %d\n", 2147483647);
+    printf("Decimal with i: %i\n", 2147483647);
 
     // Testing u
     printf("Decimal withou sign: %u\n", 2147483647);
     printf("Decimal withou sign: %u\n", -1);
 
+	// Testing hexadecimal
+	printf("Hexadecimal: %x\n", 2147483647);
+	printf("Hexadecimal: %x\n", -1);
+
+	// Testing pointer
+
+
     printf("----------------------------\n");
 
+/*
     // Testing the '-' flag (left-justify)
     printf("Left--justified: '%-10d'\n", 42);
 	printf("Right-justified: '%10d'\n", 42);
@@ -59,7 +67,7 @@ int main(void)
     printf("Combining flags (space and 10): '% 10d'\n", 42);
     printf("Combining flags (- and 10): '%-10d'\n", 42);
     printf("Combining flags (- and precision): '%-.5d'\n", 42);
-
+*/
     return 0;
 }
 

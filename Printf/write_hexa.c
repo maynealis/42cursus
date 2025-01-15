@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   write_hexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 11:00:11 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/15 13:07:53 by cmayne-p         ###   ########.fr       */
+/*   Created: 2025/01/15 11:54:22 by cmayne-p          #+#    #+#             */
+/*   Updated: 2025/01/15 12:00:08 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h> // to use: va_start, va_arg, va_copy, va_end
-//# include <unistd.h> // to use: write
-//# include <stdlib.h> // to use malloc and free
-# include <limits.h> // to use: INT_MIN
+void	write_x(int n)
+{
+	ft_putnbr_base_fd(n, FT_BASE_HEXA, 0);
+}
 
-# define FT_BASE_HEXA "0123456789abcdef"
-
-int	ft_printf(char const *, ...);
-
-#endif
+void	write_x_mayus(int n)
+{
+	ft_putnbr_base_fd(n, "0123456789ABCDEF", 0);
+}
