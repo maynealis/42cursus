@@ -12,10 +12,12 @@
 
 NAME = libft.a
 
-CC = cc
-CFLAGS = -Wall -Werror -Wextra
+INCLUDES_DIR = ../includes
 
-INCLUDES = libft.h
+CC = cc
+CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR)
+
+INCLUDES = $(INCLUDES_DIR)/libft.h
 SRCS = ft_isspace.c \
 	ft_isupper.c \
 	ft_islower.c \
@@ -71,7 +73,7 @@ all: $(NAME)
 %.o: %.c $(INCLUDES) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS) $(INCLUDES) Makefile
+$(NAME): $(OBJS) $(INCLUDES) Makefile bonus
 	ar rcs $(NAME) $(OBJS)
 
 clean: bonus_clean
@@ -91,4 +93,4 @@ bonus_clean:
 norm:
 	norminette $(SRCS) $(SRCS_BONUS) $(INCLUDES)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re norm bonus bonus_clean

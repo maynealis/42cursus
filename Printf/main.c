@@ -12,7 +12,19 @@
 
 #include <stdio.h>
 
-int main(void) {
+int main(void) 
+{
+    printf("TESTING MANDATORY PRINTF\n");
+    // Testing decimal
+    printf("Decimal with d: %d\n", -2147483647);
+    printf("Decimal with i: %i\n", -2147483647);
+
+    // Testing u
+    printf("Decimal withou sign: %u\n", 2147483647);
+    printf("Decimal withou sign: %u\n", -1);
+
+    printf("----------------------------\n");
+
     // Testing the '-' flag (left-justify)
     printf("Left--justified: '%-10d'\n", 42);
 	printf("Right-justified: '%10d'\n", 42);

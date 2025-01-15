@@ -12,17 +12,38 @@
 
 NAME = libftprintf.a
 
+INCLUDES_DIR = includes
+LIBFT_DIR = libft
+
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g #TODO: quitar el flag para debugar
+CFLAGS = -Wall -Werror -Wextra -g -I$(INCLUDES_DIR) #TODO: quitar el flag para debugar
 
-LIBFT = libft/libft.a
+LIBFT = $(LIBFT_DIR)/libft.a
 
-INCLUDES = 
+INCLUDES = $(INCLUDES_DIR)/ft_printf.h
+
+SRCS = ft_printf.c
+
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-%.o: %.c Makefile
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(LIBFT)
-	$(CC) $(CFLAGS) -o test.out
+$(NAME): $(LIBFT) $(OBJS) Makefile
+	ar rcs $(NAME) $(OBJS)
+
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
+
+clean:
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+	$(MAKE) fclean -C $(LIBFT_DIR)
+
+re: fclean all
+
+.PHONY: all clean fclean re
