@@ -15,7 +15,7 @@ NAME = libft.a
 INCLUDES_DIR = ../includes
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR) -g
+CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR)
 
 INCLUDES = $(INCLUDES_DIR)/libft.h
 SRCS = ft_isspace.c \

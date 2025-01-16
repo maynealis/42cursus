@@ -16,11 +16,11 @@ INCLUDES_DIR = includes
 LIBFT_DIR = libft
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g -I$(INCLUDES_DIR) #TODO: quitar el flag para debugar
+CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR) #TODO: quitar el flag para debugar
 
 LIBFT = $(LIBFT_DIR)/libft.a
 
-INCLUDES = $(INCLUDES_DIR)/ft_printf.h
+INCLUDES = $(INCLUDES_DIR)/ft_printf.h $(INCLUDES_DIR)/ft_utils.h
 
 SRCS = ft_printf.c ft_uitoa_base.c write_conversions.c
 
@@ -28,11 +28,11 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-%.o: %.c
+%.o: %.c $(INCLUDES)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(LIBFT) $(OBJS) Makefile
-	ar rcs $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS) $(LIBFT)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -46,4 +46,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+norm:
+	norminette $(SRCS) $(LIBFT_DIR) $(INCLUDES)
+
+.PHONY: all clean fclean re norm
