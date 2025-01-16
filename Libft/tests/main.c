@@ -6,11 +6,12 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 11:50:36 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/12 20:28:24 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:57:35 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.h"
+#include "../libft.h"
 
 int	main(void)
 {
@@ -41,5 +42,9 @@ int	main(void)
 	tests_fd();
 	printf("----- BONUS -----\n");
 	do_test_ft_lstmap();
+
+	char **arr = ft_split("Hello  world", ' ');
+	printf("arr[0]: %s\n", arr[0]);
+	printf("arr[1]: %s\n", arr[1]);
 	return (0);
 }

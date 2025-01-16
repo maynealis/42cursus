@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/18 16:18:25 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/01/05 16:31:03 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/01/16 14:47:36 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libft.a
 INCLUDES_DIR = ../includes
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR)
+CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR) -g
 
 INCLUDES = $(INCLUDES_DIR)/libft.h
 SRCS = ft_isspace.c \

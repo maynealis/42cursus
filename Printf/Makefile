@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/12 19:09:37 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/01/13 18:26:17 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/01/16 14:22:57 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 INCLUDES = $(INCLUDES_DIR)/ft_printf.h
 
-SRCS = ft_printf.c
+SRCS = ft_printf.c ft_uitoa_base.c write_conversions.c
 
 OBJS = $(SRCS:.c=.o)
 

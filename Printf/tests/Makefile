@@ -11,7 +11,7 @@ CFLAGS = -Wall -Werror -Wextra -g -I$(INCLUDES_DIR)
 
 INCLUDES_DIR = ../includes
 
-SRCS = testing.c
+SRCS = main.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -24,7 +24,7 @@ $(LIBFTPRINTF):
 	$(MAKE) -C $(PRINTF_DIR)
 
 $(NAME): $(OBJS) $(LIBFT) $(LIBFTPRINTF)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L. $(LIBFT) -L. $(LIBFTPRINTF)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L. $(LIBFTPRINTF) -L. $(LIBFT)
 
 clean:
 	rm -rf $(OBJS)

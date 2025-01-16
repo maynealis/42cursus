@@ -5,19 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 11:54:22 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/15 12:00:08 by cmayne-p         ###   ########.fr       */
+/*   Created: 2025/01/16 13:03:17 by cmayne-p          #+#    #+#             */
+/*   Updated: 2025/01/16 13:13:59 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-void	write_x(int n)
+int	write_hexa_min(unsigned long n)
 {
-	ft_putnbr_base_fd(n, FT_BASE_HEXA, 0);
+	char	*num;
+	char	*prefix;
+	char	*str;
+	int		len;
+
+	num = ft_ultoa_base(n, "1234567890abcdef");
+	prefix = ft_strdup("0x");
+	str = ft_strjoin(prefix, num);
+	free(prefix);
+	free(num);
+	len = write_str(str);
+	free(str);
+	return (len);
 }
 
-void	write_x_mayus(int n)
+int	write_hexa_may(unsigned long n)
 {
-	ft_putnbr_base_fd(n, "0123456789ABCDEF", 0);
+	char	*num;
+	char	*prefix;
+	char	*str;
+	int		len;
+
+	num = ft_ultoa_base(n, "1234567890ABCDEF");
+	prefix = ft_strdup("0X");
+	str = ft_strjoin(prefix, num);
+	free(prefix);
+	free(num);
+	len = write_str(str);
+	free(str);
+	return (len);
 }

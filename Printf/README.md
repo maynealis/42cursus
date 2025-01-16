@@ -1,5 +1,17 @@
 ## Requisits
 
+|Conversion|Auxiliar function|
+|----------|-----------------|
+|c         |write_char       |
+|s         |write_str        |
+|p         |write_hexa_min|
+|d         |write_int
+|i         |write_int (uses write\_str)|
+|u         |write_int (uses wite\_str)|
+|x         |write_hexa_min
+|X         |write_hexa_may
+|%         |write_char       | 
+
 [x] %c Imprime un solo carácter.
 [x] %s Imprime una string (como se define por defecto en C).
 [ ] %p El puntero void * dado como argumento se imprime en formato hexadecimal.
