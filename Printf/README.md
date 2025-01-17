@@ -38,18 +38,23 @@
 
 
 
-## Implementation
 
-int chars = 0;
+## Things I learned
 
-while str[i] != '\0'
-	
-	i++
+### Argument Promotion
+In C, the va_arg macro is designed to work with the type of argument that is passed to the variadic function, and it uses the promoted types of the arguments as part of its implementation. When you use va_arg with a char type, it will not work directly due to how argument promotion works in C.
 
+In C, when you pass a char (or short) to a variadic function, it is **promoted to int** before being passed. This promotion rule is part of the C standard and is necessary because char and short types are usually too small to be reliably passed across function boundaries. The promotion to int ensures the correct handling of values and is consistent with the calling convention of most platforms.
 
+Here’s how argument promotion works for char and short types in variadic functions:
 
+    1. char and short values are promoted to int when passed to a function with ... (variadic function).
+    2. float values are promoted to double.
+    3. For types like int, long, double, etc., no promotion happens.
 
+When you call va_arg to extract a char from the argument list, the argument has been promoted to int. Therefore, when you request va_arg to give you a char, you're essentially trying to fetch a promoted int as a char, which could lead to undefined behavior or an incorrect value.
 
+To correctly retrieve a char from a variadic function, you should cast the result of va_arg to char. This is because va_arg always retrieves the type in its promoted form (which will be int), but you can explicitly cast it back to a char after retrieving it.
 
 
 

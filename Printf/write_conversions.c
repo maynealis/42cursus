@@ -6,15 +6,12 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:18:08 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/16 14:24:58 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:28:53 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_utils.h"
-
-#define FT_BASE_HEXA_MIN "0123456789abcdef"
-#define FT_BASE_HEXA_MAY "0123456789ABCDEF"
 
 int	write_char(char c)
 {
@@ -49,31 +46,25 @@ int	write_uint(unsigned int n)
 	char	*num;
 	int		len;
 
-	num = ft_uitoa_base(n, "0123456789");
+	num = ft_uitoa_base(n, FT_BASE_DECIMAL);
 	len = write_str(num);
 	free(num);
 	return (len);
 }
 
-int	write_hexa(unsigned long n, char x)
+int	write_hexa(unsigned long n, char x, char *prefix)
 {
 	char	*num;
-	char	*prefix;
 	char	*str;
 	int		len;
 
+	if (n == 0)
+		return (write_char('0'));
 	if (x == 'x')
-	{
 		num = ft_ultoa_base(n, FT_BASE_HEXA_MIN);
-		prefix = ft_strdup("0x");
-	}
 	else
-	{
 		num = ft_ultoa_base(n, FT_BASE_HEXA_MAY);
-		prefix = ft_strdup("0X");
-	}
 	str = ft_strjoin(prefix, num);
-	free(prefix);
 	free(num);
 	len = write_str(str);
 	free(str);

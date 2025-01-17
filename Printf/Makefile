@@ -22,7 +22,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 INCLUDES = $(INCLUDES_DIR)/ft_printf.h $(INCLUDES_DIR)/ft_utils.h
 
-SRCS = ft_printf.c ft_uitoa_base.c write_conversions.c
+SRCS = ft_printf.c write_conversions.c utils.c
 
 OBJS = $(SRCS:.c=.o)
 
