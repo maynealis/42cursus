@@ -6,11 +6,11 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:26:17 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/17 11:17:18 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:27:59 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 #include <stdio.h>
 
 int	main(void)

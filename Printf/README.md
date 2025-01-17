@@ -4,23 +4,14 @@
 |----------|-----------------|
 |c         |write_char       |
 |s         |write_str        |
-|p         |write_hexa_min|
-|d         |write_int
+|p         |write\_hexa or write_str|
+|d         |write_int (uses write\_str)|
 |i         |write_int (uses write\_str)|
-|u         |write_int (uses wite\_str)|
-|x         |write_hexa_min
-|X         |write_hexa_may
+|u         |write_uint (uses wite\_str)|
+|x         |write_hexa       |
+|X         |write_hexa       |
 |%         |write_char       | 
 
-[x] %c Imprime un solo carácter.
-[x] %s Imprime una string (como se define por defecto en C).
-[ ] %p El puntero void * dado como argumento se imprime en formato hexadecimal.
-[x] %d Imprime un número decimal (base 10). TODO: different in limit negative...
-[x] %i Imprime un entero en base 10.
-[ ] %u Imprime un número decimal (base 10) sin signo.
-[ ] %x Imprime un número hexadecimal (base 16) en minúsculas.
-[ ] %X Imprime un número hexadecimal (base 16) en mayúsculas.
-[/] %% para imprimir el símbolo del porcentaje.
 
 ### Bonus requisits
 
@@ -34,7 +25,9 @@
 |+  ||A sign (+ or -) should always be placed before a number produced by  a  signed  conversion.   By default, a sign is used only for negative numbers.  A + overrides a space if both are used.|
       
       
-      
+-ddddddc
+.ddddddc
+0ddddddc
 
 
 

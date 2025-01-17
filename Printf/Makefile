@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/12 19:09:37 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/01/16 14:22:57 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/01/17 14:05:43 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ INCLUDES_DIR = includes
 LIBFT_DIR = libft
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR) #TODO: quitar el flag para debugar
+CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR) -g #TODO: quitar el flag para debugar
 
 LIBFT = $(LIBFT_DIR)/libft.a
 
@@ -45,6 +45,19 @@ fclean: clean
 	$(MAKE) fclean -C $(LIBFT_DIR)
 
 re: fclean all
+
+# --------------- BONUS --------------------
+SRCS_BONUS = ft_printf_bonus.c write_conversions.c utils.c
+
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
+bonus: $(OBJS_BONUS)
+	ar rcs $(NAME) $(OBJS_BONUS) $(LIBFT)
+
+bonus_clean:
+	rm -rf $(OBJS_BONUS)
+# --------------------------------------------
+
 
 norm:
 	norminette $(SRCS) $(LIBFT_DIR) $(INCLUDES)
