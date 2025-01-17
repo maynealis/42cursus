@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:18:08 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/17 12:28:53 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:07:13 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ int	write_hexa(unsigned long n, char x, char *prefix)
 	char	*str;
 	int		len;
 
-	if (n == 0)
-		return (write_char('0'));
 	if (x == 'x')
 		num = ft_ultoa_base(n, FT_BASE_HEXA_MIN);
 	else

@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:42:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/17 13:00:31 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:38:09 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	write_subst(char type, va_list args)
 		return (write_uint(va_arg(args, unsigned int)));
 	else if (type == 'x' || type == 'X')
 		return (write_hexa(va_arg(args, unsigned long), type, NULL));
-	return (0);
+	return (-1); //error?
 }
 
 int	ft_printf(const char *str, ...)
