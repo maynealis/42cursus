@@ -16,7 +16,7 @@ INCLUDES_DIR = includes
 LIBFT_DIR = libft
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR) -g #TODO: quitar el flag para debugar
+CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR) #TODO: quitar el flag para debugar
 
 LIBFT = $(LIBFT_DIR)/libft.a
 
@@ -32,7 +32,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(LIBFT) $(OBJS) Makefile
-	ar rcs $(NAME) $(OBJS) $(LIBFT)
+	ar rcs $(NAME) $(OBJS)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -40,7 +40,7 @@ $(LIBFT):
 clean:
 	rm -rf $(OBJS)
 
-fclean: clean
+fclean: clean bonus_clean
 	rm -f $(NAME)
 	$(MAKE) fclean -C $(LIBFT_DIR)
 
@@ -52,7 +52,7 @@ SRCS_BONUS = ft_printf_bonus.c write_conversions_bonus.c utils.c
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 bonus: $(OBJS_BONUS) $(LIBFT)
-	ar rcs $(NAME) $(OBJS_BONUS) $(LIBFT)
+	ar rcs $(NAME) $(OBJS_BONUS)
 
 bonus_clean:
 	rm -rf $(OBJS_BONUS)
@@ -62,4 +62,4 @@ bonus_clean:
 norm:
 	norminette $(SRCS) $(LIBFT_DIR) $(INCLUDES)
 
-.PHONY: all clean fclean re norm
+.PHONY: all clean fclean re norm bonus bonus_clean

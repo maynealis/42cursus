@@ -7,7 +7,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 LIBFTPRINTF = $(PRINTF_DIR)/libftprintf.a
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g -I$(INCLUDES_DIR)
+CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR)
 
 INCLUDES_DIR = ../includes
 
@@ -24,7 +24,7 @@ $(LIBFTPRINTF):
 	$(MAKE) -C $(PRINTF_DIR)
 
 $(NAME): $(OBJS) $(LIBFT) $(LIBFTPRINTF)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L. $(LIBFTPRINTF) -L. $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L. $(LIBFT) -L. $(LIBFTPRINTF) 
 
 clean:
 	rm -rf $(OBJS)
