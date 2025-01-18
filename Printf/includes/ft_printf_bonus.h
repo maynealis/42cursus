@@ -31,4 +31,17 @@ typedef struct s_flags
 
 int	ft_printf(char const *str, ...);
 
+int		write_char(char c, t_flags flags);
+int		write_str(char *str, t_flags flags);
+int		write_int(int n, t_flags flags);
+int		write_uint(unsigned int n, t_flags flags);
+int		write_hexa(unsigned long n, char x, char *prefix, t_flags flags);
+
+# define FT_BASE_HEXA_MIN "0123456789abcdef"
+# define FT_BASE_HEXA_MAY "0123456789ABCDEF"
+# define FT_BASE_DECIMAL "0123456789"
+
+char	*ft_uitoa_base(unsigned int n, char *base);
+char	*ft_ultoa_base(unsigned long n, char *base);
+
 #endif

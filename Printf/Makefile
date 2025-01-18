@@ -47,11 +47,11 @@ fclean: clean
 re: fclean all
 
 # --------------- BONUS --------------------
-SRCS_BONUS = ft_printf_bonus.c write_conversions.c utils.c
+SRCS_BONUS = ft_printf_bonus.c write_conversions_bonus.c utils.c
 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
-bonus: $(OBJS_BONUS)
+bonus: $(OBJS_BONUS) $(LIBFT)
 	ar rcs $(NAME) $(OBJS_BONUS) $(LIBFT)
 
 bonus_clean:

@@ -160,5 +160,23 @@ int	main(void)
 	printf("\nresult: %d - %d\n", my_result, or_result);
 	printf("---------------------------------------------------------------\n");
 	printf("###############################################################\n");
+
+	// BONUS
+	printf("############################ BONUS ############################\n");
+	printf("###############################################################\n");
+	my_result = ft_printf("character with -: '%-c'\n", 'b');
+	or_result = printf("character with -: '%-c'\n", 'b');
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("character with width 4: '%4c'\n", 'b');
+	or_result = printf("character with width 4: '%4c'\n", 'b');
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("character with width 18 and -: '%-18c'\n", 'b');
+	or_result = printf("character with width 18 and -: '%-18c'\n", 'b');
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+
+
 	return (0);
 }

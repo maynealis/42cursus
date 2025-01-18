@@ -11,33 +11,33 @@
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
-#include "ft_utils.h"
+//#include "ft_utils.h"
 #include "libft.h"
 
 
-int	write_subst(char type, va_list args)
+int	write_subst(char type, va_list args, t_flags flags)
 {
 	void	*arg;
 
 	if (type == 'c')
-		return (write_char(va_arg(args, int)));
+		return (write_char(va_arg(args, int), flags));
 	else if (type == '%')
-		return (write_char('%'));
+		return (write_char('%', flags));
 	else if (type == 's')
-		return (write_str(va_arg(args, char *)));
+		return (write_str(va_arg(args, char *), flags));
 	else if (type == 'p')
 	{
 		arg = va_arg(args, void *);
 		if (arg == NULL)
-			return (write_str("(nil)"));
-		return (write_hexa((unsigned long)arg, 'x', "0x"));
+			return (write_str("(nil)", flags));
+		return (write_hexa((unsigned long)arg, 'x', "0x", flags));
 	}
 	else if (type == 'd' || type == 'i')
-		return (write_int(va_arg(args, int)));
+		return (write_int(va_arg(args, int), flags));
 	else if (type == 'u')
-		return (write_uint(va_arg(args, unsigned int)));
+		return (write_uint(va_arg(args, unsigned int), flags));
 	else if (type == 'x' || type == 'X')
-		return (write_hexa(va_arg(args, unsigned long), type, NULL));
+		return (write_hexa(va_arg(args, unsigned long), type, NULL, flags));
 	return (0);
 }
 
@@ -65,11 +65,64 @@ char	*find_conversion(char *str)
 	return (conversion);
 }
 
+t_flags	init_flags(void)
+{
+	t_flags flags;
+
+	flags.minus = 0;
+	flags.zero = 0;
+	flags.dot = 0;
+	flags.hash = 0;
+	flags.space = 0;
+	flags.plus = 0;
+	flags.width = -1;
+	return (flags);
+}
+
+void	reset_flags(t_flags *flags)
+{
+	flags->minus = 0;
+	flags->zero = 0;
+	flags->dot = 0;
+	flags->hash = 0;
+	flags->space = 0;
+	flags->plus = 0;
+	flags->width = -1;
+}
+
+void	set_flags(char *str_flags, char type, t_flags *flags)
+{
+	int	i;
+
+	if (ft_strchr(str_flags, '#') && (type == 'x' || type == 'X'))
+		flags->hash = 1;
+	if (ft_strchr(str_flags, ' ' && (type == 'd' || type == 'i')))
+		flags->space = 1;
+	if (ft_strchr(str_flags, '+' && (type == 'd' || type == 'i')))
+	{
+		flags->plus = 1;
+		flags->space = 0; // + overrides a space
+	}
+	if (ft_strchr(str_flags, '-'))
+		flags->minus = 1;
+	if (ft_strchr(str_flags, '.'))
+		flags->dot = 1;
+	i = 0;
+	while (str_flags[i] != '\0' && !ft_isdigit(str_flags[i]))
+		i++;
+	if (str_flags[i] != '\0' && str_flags[i] == '0' && flags->minus == 0 && flags->dot == 0)
+		flags->zero = 1;
+	else if (str_flags[i] != '\0')
+		flags->width = ft_atoi(str_flags + i); //can it be bigger that int?
+}
+
+#include <stdio.h>
 int	ft_printf(const char *str, ...)
 {
 	int		result;
 	va_list	args;
 	char	*str_copy;
+	t_flags	flags = init_flags();
 
 	str_copy = (char *)str;
 	va_start(args, str);
@@ -79,14 +132,18 @@ int	ft_printf(const char *str, ...)
 		if (*str_copy == '%')
 		{
 			char	*conv = find_conversion(str_copy + 1);
-			result += write_subst(*conv, args); //TODO
+			char	*str_flags = ft_substr(str_copy, 0, conv-str_copy + 1);
+			set_flags(str_flags, *conv, &flags);
+			free(str_flags);
+			result += write_subst(*conv, args, flags); //TODO
 			//int	len = conv - str_copy;
 			conv++;
 			str_copy = conv;
+			reset_flags(&flags);
 		}
 		else
 		{
-			result += write_char(*str_copy);
+			result += write_char(*str_copy, flags);
 			str_copy++;
 		}
 	}
