@@ -15,6 +15,19 @@
 
 # include <stdarg.h> // to use: va_start, va_arg, va_copy, va_end
 # include <stddef.h> // to use: size_t
+//# include <stdbool.h> // to use bool?
+
+// TODO: con mascaras de bits?
+typedef struct s_flags
+{
+	char	minus;
+	char	zero;
+	char	dot;
+	char	hash;
+	char	space;
+	char	plus;
+	int		width; //?	
+}	t_flags;
 
 int	ft_printf(char const *str, ...);
 
