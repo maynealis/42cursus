@@ -12,6 +12,7 @@
 
 #include "ft_printf_bonus.h"
 #include <stdio.h>
+#include <limits.h>
 
 int	main(void)
 {	
@@ -93,6 +94,11 @@ int	main(void)
 	my_result = ft_printf("pointer2d: %p\n", arr2d);
 	or_result = printf("pointer2d: %p\n", arr2d);
 	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	int	*arr1 = 0;
+	my_result = ft_printf("pointer a 0: %p	pointer a 0: %p\n", arr1, arr1);
+	or_result = printf("pointer a 0: %p	pointer a 0: %p\n", arr1, arr1);
+	printf("\nresult: %d - %d\n", my_result, or_result);
 	printf("###############################################################\n");
 
 	// Hexa
@@ -110,6 +116,7 @@ int	main(void)
 	or_result = printf("min: %x	max: %x\n", 1, -1);
 	printf("\nresult: %d - %d\n", my_result, or_result);
 	printf("###############################################################\n");
+
 
 	// Integers
 	printf("########################### DECIMAL ###########################\n");
@@ -159,10 +166,17 @@ int	main(void)
 	or_result = printf("this is a number %d and also %i and %u\n", c1, c1, c1);
 	printf("\nresult: %d - %d\n", my_result, or_result);
 	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("\001\002\007\v\010\f\r\n");
+	or_result = printf("\001\002\007\v\010\f\r\n");
+	printf("\nresult: %d - %d\n", my_result, or_result);
 	printf("###############################################################\n");
 
 	// BONUS
+	printf("\n");
 	printf("############################ BONUS ############################\n");
+	printf("###############################################################\n");
+	printf("\n");
+	printf("####################### FLAGS WITH CHAR #######################\n");
 	printf("###############################################################\n");
 	my_result = ft_printf("character with -: '%-c'\n", 'b');
 	or_result = printf("character with -: '%-c'\n", 'b');
@@ -175,8 +189,54 @@ int	main(void)
 	my_result = ft_printf("character with width 18 and -: '%-18c'\n", 'b');
 	or_result = printf("character with width 18 and -: '%-18c'\n", 'b');
 	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("###############################################################\n");
+
+
+	printf("######################## FLAGS WITH STR #######################\n");
+	printf("###############################################################\n");
+	my_result = ft_printf("str with width lower than length: '%4s'\n", "hello");
+	or_result = printf("str with width lower than length: '%4s'\n", "hello");
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("str with width bigger than length: '%18s'\n", "hello");
+	or_result = printf("str with width bigger than length: '%18s'\n", "hello");
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("str with width bigger than length and -: '%-18s'\n", "hello");
+	or_result = printf("str with width bigger than length and -: '%-18s'\n", "hello");
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("###############################################################\n");
+
+	printf("######################## FLAGS WITH # #########################\n");
+	printf("###############################################################\n");
+	my_result = ft_printf("%#x	%#X	'%-#12x'\n", 0, 24561, 0xffffffff);
+	or_result = printf("%#x	%#X	'%-#12x'\n", 0, 24561, 0xffffffff);
+	printf("\nresult: %d - %d\n", my_result, or_result);
 	printf("---------------------------------------------------------------\n");
 
+	printf("################### FLAGS WITH ' ' and '+' ####################\n");
+	printf("###############################################################\n");
+	my_result = ft_printf("space: '% i'	'% d'	'% i'	'% d'\n", 0, 7, 234, -123);
+	or_result = printf("space: '% i'	'% d'	'% i'	'% d'\n", 0, 7, 234, -123);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("plus: '%+i'	'%+d'	'%+10i'	'%+d'\n", 0, 7, 234, -123);
+	or_result = printf("plus: '%+i'	'%+d'	'%+10i'	'%+d'\n", 0, 7, 234, -123);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("random: '% 10i'	'%010i'\n", -130, 0xffffffff);
+	my_result = printf("random: '% 10i'	'%010i'\n", -130, 0xffffffff);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("'%0d'	'%0d'	'%02d'	'%04d'\n", 1, 30, 30, 30);
+	or_result = printf("'%0d'	'%0d'	'%02d'	'%04d'\n", 1, 30, 30, 30);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("'%010u'	'%#010x'\n", 301, 0x4f);
+	or_result = printf("'%010u'	'%#010x'\n", 301, 0x4f);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
 
+		
 	return (0);
 }

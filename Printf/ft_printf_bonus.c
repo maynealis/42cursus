@@ -30,14 +30,18 @@ int	write_subst(char type, va_list args, t_flags flags)
 		arg = va_arg(args, void *);
 		if (arg == NULL)
 			return (write_str("(nil)", flags));
-		return (write_hexa((unsigned long)arg, 'x', "0x", flags));
+		else
+		{
+			flags.hash = 1;
+			return (write_hexa((unsigned long)arg, 'p', flags));
+		}
 	}
 	else if (type == 'd' || type == 'i')
 		return (write_int(va_arg(args, int), flags));
 	else if (type == 'u')
 		return (write_uint(va_arg(args, unsigned int), flags));
 	else if (type == 'x' || type == 'X')
-		return (write_hexa(va_arg(args, unsigned long), type, NULL, flags));
+		return (write_hexa(va_arg(args, unsigned long), type, flags));
 	return (0);
 }
 
@@ -96,9 +100,9 @@ void	set_flags(char *str_flags, char type, t_flags *flags)
 
 	if (ft_strchr(str_flags, '#') && (type == 'x' || type == 'X'))
 		flags->hash = 1;
-	if (ft_strchr(str_flags, ' ' && (type == 'd' || type == 'i')))
+	if (ft_strchr(str_flags, ' ') && (type == 'd' || type == 'i'))
 		flags->space = 1;
-	if (ft_strchr(str_flags, '+' && (type == 'd' || type == 'i')))
+	if (ft_strchr(str_flags, '+') && (type == 'd' || type == 'i'))
 	{
 		flags->plus = 1;
 		flags->space = 0; // + overrides a space
@@ -111,8 +115,11 @@ void	set_flags(char *str_flags, char type, t_flags *flags)
 	while (str_flags[i] != '\0' && !ft_isdigit(str_flags[i]))
 		i++;
 	if (str_flags[i] != '\0' && str_flags[i] == '0' && flags->minus == 0 && flags->dot == 0)
+	{
 		flags->zero = 1;
-	else if (str_flags[i] != '\0')
+		i++;
+	}
+	if (str_flags[i] != '\0')
 		flags->width = ft_atoi(str_flags + i); //can it be bigger that int?
 }
 

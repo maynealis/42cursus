@@ -35,7 +35,7 @@ int		write_char(char c, t_flags flags);
 int		write_str(char *str, t_flags flags);
 int		write_int(int n, t_flags flags);
 int		write_uint(unsigned int n, t_flags flags);
-int		write_hexa(unsigned long n, char x, char *prefix, t_flags flags);
+int		write_hexa(unsigned long n, char x, t_flags flags);
 
 # define FT_BASE_HEXA_MIN "0123456789abcdef"
 # define FT_BASE_HEXA_MAY "0123456789ABCDEF"

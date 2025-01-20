@@ -20,19 +20,35 @@ CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR) #TODO: quitar el flag para debu
 
 LIBFT = $(LIBFT_DIR)/libft.a
 
-INCLUDES = $(INCLUDES_DIR)/ft_printf.h $(INCLUDES_DIR)/ft_utils.h
+INCLUDES = $(INCLUDES_DIR)/ft_printf.h $(INCLUDES_DIR)/ft_utils.h $(INCLUDES_DIR)/libft.h $(INCLUDES_DIR)/ft_printf_bonus.h
 
 SRCS = ft_printf.c write_conversions.c utils.c
 
 OBJS = $(SRCS:.c=.o)
 
+OBJS_LIBFT = $(wildcard $(LIBFT_DIR)/*.o)
+
+# OBJS_LIBFT = $(LIBFT_DIR)/ft_itoa.o \
+# 			$(LIBFT_DIR)/ft_putchar_fd.o \
+# 			$(LIBFT_DIR)/ft_putstr_fd.o \
+# 			$(LIBFT_DIR)/ft_strjoin.o \
+# 			$(LIBFT_DIR)/ft_strlen.o \
+# 			$(LIBFT_DIR)/ft_bzero.o \
+# 			$(LIBFT_DIR)/ft_strdup.o \
+# 			$(LIBFT_DIR)/ft_strlcat.o \
+# 			$(LIBFT_DIR)/ft_memset.o \
+# 			$(LIBFT_DIR)/ft_isdigit.o
+
 all: $(NAME)
 
-%.o: %.c $(INCLUDES)
+$(OBJS_LIBFT):
+	make -C $(LIBFT_DIR)
+
+%.o: %.c $(INCLUDES) $(LIBFT)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(LIBFT) $(OBJS) Makefile
-	ar rcs $(NAME) $(OBJS)
+$(NAME): $(LIBFT) $(OBJS) Makefile $(OBJS_LIBFT)
+	ar rcs $(NAME) $(OBJS) $(OBJS_LIBFT)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -51,8 +67,8 @@ SRCS_BONUS = ft_printf_bonus.c write_conversions_bonus.c utils.c
 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
-bonus: $(OBJS_BONUS) $(LIBFT)
-	ar rcs $(NAME) $(OBJS_BONUS)
+bonus: $(OBJS_BONUS) $(LIBFT) $(OBJS_LIBFT)
+	ar rcs $(NAME) $(OBJS_BONUS) $(OBJS_LIBFT)
 
 bonus_clean:
 	rm -rf $(OBJS_BONUS)

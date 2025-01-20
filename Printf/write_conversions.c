@@ -12,22 +12,29 @@
 
 #include "libft.h"
 #include "ft_utils.h"
+#include <unistd.h>
 
 int	write_char(char c)
 {
-	ft_putchar_fd(c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
 
 int	write_str(char *str)
 {
+	char	*null_str;
+	int		result;
+
 	if (str == NULL)
 	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
+		null_str = ft_strdup("(null)");
+		if (null_str == NULL)
+			return (-1); //error on malloc
+		result = write(1, null_str, ft_strlen(null_str));
+		free(null_str);
+		return (result);
 	}
-	ft_putstr_fd(str, 1);
-	return (ft_strlen(str));
+	result = write(1, str, ft_strlen(str));
+	return (result);
 }
 
 int	write_int(int n)
