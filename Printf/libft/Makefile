@@ -73,7 +73,7 @@ all: $(NAME)
 %.o: %.c $(INCLUDES) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS) $(INCLUDES) Makefile bonus
+$(NAME): $(OBJS) $(INCLUDES) Makefile
 	ar rcs $(NAME) $(OBJS)
 
 clean: bonus_clean

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.h                                         :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,19 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_UTILS_H
-# define FT_UTILS_H
+#ifndef UTILS_H
+# define UTILS_H
 
-# define FT_BASE_HEXA_MIN "0123456789abcdef"
-# define FT_BASE_HEXA_MAY "0123456789ABCDEF"
-# define FT_BASE_DECIMAL "0123456789"
+# include "libft.h"
 
 char	*ft_uitoa_base(unsigned int n, char *base);
 char	*ft_ultoa_base(unsigned long n, char *base);
-int		write_char(char c);
-int		write_str(char *str);
-int		write_int(int n);
-int		write_uint(unsigned int n);
-int		write_hexa(unsigned long n, char x, char *prefix);
 
 #endif

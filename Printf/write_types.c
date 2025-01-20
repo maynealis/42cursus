@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // for ft_strlen ft_itoa ft_strdup ft_strjoin
-#include "ft_utils.h"
-#include <unistd.h>
+#include "write_types.h"
 
 int	write_char(char c)
 {
@@ -28,7 +26,7 @@ int	write_str(char *str)
 	{
 		null_str = ft_strdup("(null)");
 		if (null_str == NULL)
-			return (-1); //error on malloc
+			return (-1);
 		result = write(1, null_str, ft_strlen(null_str));
 		free(null_str);
 		return (result);
@@ -74,7 +72,7 @@ int	write_hexa(unsigned long n, char x, char *prefix)
 	else
 		num = ft_ultoa_base(n, FT_BASE_HEXA_MAY);
 	if (num == NULL)
-		retrun (-1);
+		return (-1);
 	str = ft_strjoin(prefix, num);
 	if (str == NULL)
 		return (-1);

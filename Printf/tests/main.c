@@ -10,9 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
+#include "../includes/ft_printf_bonus.h"
 #include <stdio.h>
 #include <limits.h>
+
+#ifndef BONUS
+# define BONUS 0
+#endif
 
 int	main(void)
 {	
@@ -117,7 +121,6 @@ int	main(void)
 	printf("\nresult: %d - %d\n", my_result, or_result);
 	printf("###############################################################\n");
 
-
 	// Integers
 	printf("########################### DECIMAL ###########################\n");
 	printf("###############################################################\n");
@@ -173,6 +176,7 @@ int	main(void)
 
 	// BONUS
 	printf("\n");
+	printf("###############################################################\n");
 	printf("############################ BONUS ############################\n");
 	printf("###############################################################\n");
 	printf("\n");
@@ -236,7 +240,6 @@ int	main(void)
 	or_result = printf("'%010u'	'%#010x'\n", 301, 0x4f);
 	printf("\nresult: %d - %d\n", my_result, or_result);
 	printf("---------------------------------------------------------------\n");
-
 		
 	return (0);
 }

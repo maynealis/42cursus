@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "ft_utils.h"
 
 int	write_subst(char type, va_list args)
 {

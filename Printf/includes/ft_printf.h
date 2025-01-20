@@ -15,6 +15,7 @@
 
 # include <stdarg.h> // to use: va_start, va_arg, va_copy, va_end
 # include <stddef.h> // to use: size_t
+# include "write_types.h"
 
 int	ft_printf(char const *str, ...);
 

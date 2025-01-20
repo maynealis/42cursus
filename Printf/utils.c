@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "utils.h"
 
-int	ft_numlen(unsigned long n, char *base)
+static int	ft_numlen(unsigned long n, char *base)
 {
 	size_t	len_base;
 	int		len;

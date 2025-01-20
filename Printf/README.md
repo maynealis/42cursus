@@ -21,7 +21,8 @@ s : - width
 |flag|with|manual|
 |----|----|------|
 |-  |all?|The  converted  value  is  to  be left adjusted on the field boundary.  (The default is right justification.)  The converted value is padded on the right with  blanks,  rather than on the left with blanks or zeros.|
-|0  ||The value should be zero padded.  For d, i, o, u, x, X, a, A, e, E, f, F, g, and G conversions, the converted value is padded on the left with zeros rather than blanks. If the  0  and - flags both appear, the 0 flag is ignored.  If a precision is given with a numeric conversion (d, i, o, u, x, and X), the 0 flag is ignored.   For  other  conversions, the behavior is undefined.|
+|0  ||The value should be zero padded.  For d, i, o, u, x, X, a, A, e, E, f, F, g, and G conversions, the converted value is padded on the left with zeros
+ rather than blanks. If the  0  and - flags both appear, the 0 flag is ignored.  If a precision is given with a numeric conversion (d, i, o, u, x, and X), the 0 flag is ignored.   For  other  conversions, the behavior is undefined.|
 |.  |d i u x X|An optional precision, in the form of a period ('.')  followed by an optional decimal digit string.  Instead of a decimal digit string  one  may  write
        "*"  or  "*m$"  (for  some decimal integer m) to specify that the precision is given in the next argument, or in the m-th argument, respectively, which
        must be of type int.  If the precision is given as just '.', the precision is taken to be zero.  A negative precision is taken as if the precision were

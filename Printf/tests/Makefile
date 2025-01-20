@@ -24,7 +24,10 @@ $(LIBFTPRINTF):
 	$(MAKE) -C $(PRINTF_DIR)
 
 $(NAME): $(OBJS) $(LIBFT) $(LIBFTPRINTF)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L. $(LIBFT) -L. $(LIBFTPRINTF) 
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L. $(LIBFT) -L. $(LIBFTPRINTF)
+
+bonus: $(OBJS) $(LIBFT) $(LIBFTPRINTF)
+	$(CC) $(CFLAGS) -D BONUS=1 -o $(NAME) $(OBJS) -L. $(LIBFTPRINTF)
 
 clean:
 	rm -rf $(OBJS)
@@ -36,4 +39,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
