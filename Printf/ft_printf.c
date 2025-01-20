@@ -35,12 +35,13 @@ int	write_subst(char type, va_list args)
 		return (write_uint(va_arg(args, unsigned int)));
 	else if (type == 'x' || type == 'X')
 		return (write_hexa(va_arg(args, unsigned long), type, NULL));
-	return (-1); //error?
+	return (-1);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	int		result;
+	int		temp;
 	va_list	args;
 	size_t	i;
 
@@ -52,10 +53,13 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			result += write_subst(str[i], args);
+			temp = write_subst(str[i], args);
 		}
 		else
-			result += write_char(str[i]);
+			temp = write_char(str[i]);
+		if (temp == -1)
+			return (-1);
+		result += temp;
 		i++;
 	}
 	va_end(args);
