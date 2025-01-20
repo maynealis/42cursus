@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft.h" // for ft_strlen ft_itoa ft_strdup ft_strjoin
 #include "ft_utils.h"
 #include <unistd.h>
 
@@ -43,6 +43,8 @@ int	write_int(int n)
 	int		len;
 
 	int_str = ft_itoa(n);
+	if (int_str == NULL)
+		return (-1);
 	len = write_str(int_str);
 	free(int_str);
 	return (len);
@@ -54,6 +56,8 @@ int	write_uint(unsigned int n)
 	int		len;
 
 	num = ft_uitoa_base(n, FT_BASE_DECIMAL);
+	if (num == NULL)
+		return (-1);
 	len = write_str(num);
 	free(num);
 	return (len);
@@ -69,9 +73,13 @@ int	write_hexa(unsigned long n, char x, char *prefix)
 		num = ft_ultoa_base(n, FT_BASE_HEXA_MIN);
 	else
 		num = ft_ultoa_base(n, FT_BASE_HEXA_MAY);
+	if (num == NULL)
+		retrun (-1);
 	str = ft_strjoin(prefix, num);
-	free(num);
+	if (str == NULL)
+		return (-1);
 	len = write_str(str);
+	free(num);
 	free(str);
 	return (len);
 }
