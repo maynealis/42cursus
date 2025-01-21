@@ -16,14 +16,26 @@ You have to configure your operating system with the UFW (or firewalld for Rocky
 
 ## Logs (What I'm doing)
 
+{% hint style="warning" %}
+What is .vdi? What is the signature and how to compare with diff
+{% endhint %}
+
+
+
 ### Setting up the Virtual Machine
+
+{% hint style="warning" %}
+What is a virtual machine and how it works? The purpose of vm?
+{% endhint %}
+
+
 
 The software I'm using is [VirtualBox](https://www.virtualbox.org/manual/) because it was mandatory for the project.
 
 The OS that I choose is [Debian](https://www.debian.org/distrib/) since it was recommended if you were new to system administration.
 
 {% hint style="info" %}
-Whe choose Debian over Rocky?
+Why choose Debian over Rocky?
 {% endhint %}
 
 > I choose Debian primarily because Rocky is a new release (2021) and there are more community resources on Debian. Additionally Rocky appears to focus more on enterprise environments, whereas Debian offers a more general-purpose approach. Since this is my first time setting up a server, I preferred something simpler, stable and well-supported, which made Debian the better choice for me.
@@ -32,9 +44,9 @@ Whe choose Debian over Rocky?
 
 <summary>About Debian</summary>
 
-* **Stability and Reliability:** Debian is renowned for its rigorous testing processes, ensuring a highly stable and reliable operating system. This makes it a preferred choice for servers and critical applications where uptime is crucial.&#x20;
+* **Stability and Reliability:** Debian is renowned for its rigorous testing processes, ensuring a highly stable and reliable operating system. This makes it a preferred choice for servers and critical applications where uptime is crucial.
 
-- **Extensive Software Repositories:** With access to over 51,000 packages, Debian offers a vast selection of software, providing flexibility and a wide range of applications for various use cases.&#x20;
+- **Extensive Software Repositories:** With access to over 51,000 packages, Debian offers a vast selection of software, providing flexibility and a wide range of applications for various use cases.
 
 * **Community-Driven Development:** Debian's development is driven by a large, active community, ensuring transparency, regular updates, and comprehensive support. This collaborative approach contributes to its robustness and adaptability.
 
@@ -55,33 +67,32 @@ Read more about [Rocky](https://phoenixnap.es/kb/what-is-rocky-linux?utm_)
 
 </details>
 
-1. Download the last stable version of Debian.
-
 {% stepper %}
 {% step %}
-### Download the last stable version of Debian&#x20;
+#### Download the last stable version of Debian
 
 [Check the last stable version of Debian](https://www.debian.org/releases/)
 {% endstep %}
 
 {% step %}
-### Create a new VM using Oracle VM Virtual Box
+#### Create a new VM using Oracle VM Virtual Box
 
-TODO: put a picture of my choosing setup at the end. RAM : 1024MB and 1 processor. 10GB on the disk (allocated dynamicaly) and choose the ISO downloaded on the disk.
+<figure><img src="../.gitbook/assets/Screenshot from 2025-01-21 16-14-13.png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Run and install Debian with no graphic interface
-
-TODO: about partition...
+#### Run and install Debian with no graphic interface
 {% endstep %}
 {% endstepper %}
 
 {% hint style="warning" %}
-Why the amount of space chosen?
+difference between aptitude and apt.\
+what APPArmor is?
 {% endhint %}
 
-3. Install sudo.
+
+
+#### About SUDO
 
 * From the root with `apt install sudo`. \[!Question] What is sudo
 * Reboot
@@ -106,15 +117,7 @@ UFW
 
 \[!note] Donde puedo ver los logs del sudo?
 
-***
-
-### Setting up the Virtual Machine
-
-The software I'm using is [VirtualBox](https://www.virtualbox.org/manual/) because it was mandatory for the project.
-
-The OS that I choose is [Debian](https://www.debian.org/distrib/) since it was recommended if you were new to system administration.
-
-* To unlock dthe disk use the encryption phrase
+* To unlock the disk use the encryption phrase
 * To access root use `su`
 * To change the machine's hostname: `hostnamectl set-hostname mymachine`
 
@@ -172,7 +175,7 @@ ABOUT PASSWORD To set up a strong password policy, you have to comply with the f
 
 ### Script
 
-<table><thead><tr><th width="196">Display information about</th><th width="198">My solution</th><th>Explanation</th></tr></thead><tbody><tr><td>The architecture of your operating system and its kernel version.</td><td><code>uname -a</code></td><td><pre><code>Usage: uname [OPTION]...
+<table><thead><tr><th width="250">Display information about</th><th width="179">My solution</th><th>Explanation</th></tr></thead><tbody><tr><td>The architecture of your operating system and its kernel version.</td><td><code>uname -a</code></td><td><pre><code>Usage: uname [OPTION]...
 Print certain system information.  With no OPTION, same as -s.
 
   -a, --all                print all information, in the following order,
@@ -187,7 +190,40 @@ Print certain system information.  With no OPTION, same as -s.
   -o, --operating-system   print the operating system
       --help        display this help and exit
       --version     output version information and exit
-</code></pre></td></tr><tr><td>The number of physical processors.</td><td><code>grep "physical id" /proc/cpuinfo | uniq | wc -l</code></td><td>The detailed information about the processors is in the file /proc/cpuinfo. To find out how many physical processors you have, you need to count the lines (using <a href="https://voidnull.es/wc-cuenta-el-numero-de-lineas-palabras-o-caracteres/">wc</a>), but the way the physical processors are displayed is by it's id, so if the same id appears more than once, that doesn't mean that there are more processors, that is why I use the uniq to only count each processor once.</td></tr><tr><td>The number of virtual processors.</td><td></td><td>Just as the last one, here it counts the virtual processors. You might have more virtual processors than physical ones because your processors are muli-core or hyper-threaded, or both. The way to tell how may cores you have is to look for "cpu cores" in your /proc/cpuinfo file. This line will show up for each virtual processor. If the number of cores shown is less than the number of virtual processors, your system is multi-threading.</td></tr><tr><td>The current available RAM on your server and its utilization rate as a percentage.</td><td></td><td></td></tr><tr><td>The current available storage on your server and its utilization rate as a percentage.</td><td></td><td></td></tr><tr><td>The current utilization rate of your processors as a percentage.</td><td></td><td></td></tr><tr><td>The date and time of the last reboot.</td><td></td><td></td></tr><tr><td>Whether LVM is active or not.</td><td></td><td></td></tr><tr><td>The number of active connections.</td><td></td><td></td></tr><tr><td>The number of users using the server.</td><td></td><td></td></tr><tr><td>The IPv4 address of your server and its MAC (Media Access Control) address. </td><td></td><td></td></tr><tr><td>The number of commands executed with the sudo program.</td><td></td><td></td></tr></tbody></table>
+</code></pre></td></tr><tr><td>The number of physical processors.</td><td><code>grep "physical id" /proc/cpuinfo | uniq | wc -l</code></td><td>The detailed information about the processors is in the file /proc/cpuinfo. To find out how many physical processors you have, you need to count the lines (using <a href="https://voidnull.es/wc-cuenta-el-numero-de-lineas-palabras-o-caracteres/">wc</a>), but the way the physical processors are displayed is by it's id, so if the same id appears more than once, that doesn't mean that there are more processors, that is why I use the uniq to only count each processor once.</td></tr><tr><td>The number of virtual processors.</td><td><code>grep "processor" /proc/cpuinfo | uniq | wc -l</code></td><td>Just as the last one, here it counts the virtual processors. You might have more virtual processors than physical ones because your processors are muli-core or hyper-threaded, or both. The way to tell how may cores you have is to look for "cpu cores" in your /proc/cpuinfo file. This line will show up for each virtual processor. If the number of cores shown is less than the number of virtual processors, your system is multi-threading.</td></tr><tr><td>The current available RAM on your server and its utilization rate as a percentage.</td><td><code>free --mega | grep Mem | awk '{printf("%i/%iMB (%.2f%%)", $4, $2, 100*$4/$2)}'</code></td><td><p></p><p><a href="https://man7.org/linux/man-pages/man1/free.1.html">free</a> displays the total amount of free and used physical and swap memory in the system, as well as the buffers and caches used by the kernel. The information is gathered by parsing /proc/meminfo. The displayed columns are:</p><pre><code>   total  Total usable memory (MemTotal and SwapTotal in
+          /proc/meminfo). This includes the physical and swap memory
+          minus a few reserved bits and kernel binary code.
+
+   used   Used or unavailable memory (calculated as total -
+          available)
+
+   free   Unused memory (MemFree and SwapFree in /proc/meminfo)
+
+   shared Memory used (mostly) by tmpfs (Shmem in /proc/meminfo)
+
+   buffers
+          Memory used by kernel buffers (Buffers in /proc/meminfo)
+
+   cache  Memory used by the page cache and slabs (Cached and
+          SReclaimable in /proc/meminfo)
+
+   buff/cache
+          Sum of buffers and cache
+
+   available
+          Estimation of how much memory is available for starting
+          new applications, without swapping. Unlike the data
+          provided by the cache or free fields, this field takes
+          into account page cache and also that not all reclaimable
+          memory slabs will be reclaimed due to items being in use
+          (MemAvailable in /proc/meminfo, available on kernels 3.14,
+          emulated on kernels 2.6.27+, otherwise the same as free)
+</code></pre></td></tr><tr><td>The current available storage on your server and its utilization rate as a percentage.</td><td><code>df --total -h | grep total | awk '{printf("%s/%s (%i%%)", $4, $2, $4/$2*100)}'</code></td><td><p>df displays the amount of space available on the file system containing each file name argument. If no file name is given, the space available on all currently mounted file systems is shown. Space is shown in 1K blocks by default, unless the environment variable POSIXLY_CORRECT is set, in which case 512-byte blocks are used.</p><pre><code>   -h, --human-readable
+          print sizes in powers of 1024 (e.g., 1023M)
+   --total
+          elide all entries insignificant to available space, and
+          produce a grand total
+</code></pre><p><a href="https://man7.org/linux/man-pages/man1/df.1.html">Manual page for df</a></p></td></tr><tr><td>The current utilization rate of your processors as a percentage.</td><td></td><td></td></tr><tr><td>The date and time of the last reboot.</td><td></td><td></td></tr><tr><td>Whether LVM is active or not.</td><td></td><td></td></tr><tr><td>The number of active connections.</td><td></td><td></td></tr><tr><td>The number of users using the server.</td><td></td><td></td></tr><tr><td>The IPv4 address of your server and its MAC (Media Access Control) address. </td><td></td><td></td></tr><tr><td>The number of commands executed with the sudo program.</td><td></td><td></td></tr></tbody></table>
 
 * The architecture of your operating system and its kernel version: uname -a
 
@@ -276,22 +312,18 @@ This manual page documents the GNU version of df. df displays the amount of spac
 
 * The current utilization rate of your processors as a percentage.
 
-[top](https://man7.org/linux/man-pages/man1/top.1.html)
--b, --batch
-          Starts top in Batch mode, which could be useful for sending
-          output from top to other programs or to a file.  In this mode,
-          top will not accept input and runs until the iterations limit
-          you've set with the ‘-n’ command-line option or until killed.
+[top](https://man7.org/linux/man-pages/man1/top.1.html) -b, --batch Starts top in Batch mode, which could be useful for sending output from top to other programs or to a file. In this mode, top will not accept input and runs until the iterations limit you've set with the ‘-n’ command-line option or until killed.
 
-           us : time running un-niced user processes
-           sy : time running kernel processes
-           ni : time running niced user processes
-           id : time spent in the kernel idle handler
-           wa : time waiting for I/O completion
-           hi : time spent servicing hardware interrupts
-           si : time spent servicing software interrupts
-           st : time stolen from this vm by the hypervisor
-
+```
+       us : time running un-niced user processes
+       sy : time running kernel processes
+       ni : time running niced user processes
+       id : time spent in the kernel idle handler
+       wa : time waiting for I/O completion
+       hi : time spent servicing hardware interrupts
+       si : time spent servicing software interrupts
+       st : time stolen from this vm by the hypervisor
+```
 
 vmstat breaks down CPU time into these key states:
 
@@ -369,7 +401,7 @@ ABOUT OS [Why Debian](https://www.debian.org/doc/manuals/debian-handbook/sect.wh
 
 Some pre-research:
 
-* [What is a server](https://www.techtarget.com/whatis/definition/server)&#x20;
+* [What is a server](https://www.techtarget.com/whatis/definition/server)
 * [About virtualization](https://www.masterdc.com/blog/what-is-virtual-machine-server-network/)
 
 Tutorials:
@@ -378,5 +410,4 @@ Tutorials:
 * [Tutorial with more explanations](https://github.com/RamonLucio/Born2beRoot) (in English)
 * [Medium](https://m4nnb3ll.medium.com/my-experience-with-the-born2beroot-project-42-ad19d738ad4f)
 
-[hostname](https://www.cyberciti.biz/faq/debian-change-hostname-permanently/)&#x20;
-
+[hostname](https://www.cyberciti.biz/faq/debian-change-hostname-permanently/)
