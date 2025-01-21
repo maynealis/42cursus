@@ -27,6 +27,7 @@ typedef struct s_flags
 	char	space;
 	char	plus;
 	int		width; //?	
+	int		precision;
 }	t_flags;
 
 int	ft_printf(char const *str, ...);

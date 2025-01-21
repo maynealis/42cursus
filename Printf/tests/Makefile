@@ -7,7 +7,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 LIBFTPRINTF = $(PRINTF_DIR)/libftprintf.a
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR)
+CFLAGS = -Wall -Werror -Wextra -g -I$(INCLUDES_DIR)
 
 INCLUDES_DIR = ../includes
 

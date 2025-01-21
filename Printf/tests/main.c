@@ -13,6 +13,7 @@
 #include "../includes/ft_printf_bonus.h"
 #include <stdio.h>
 #include <limits.h>
+#include <libft.h>
 
 #ifndef BONUS
 # define BONUS 0
@@ -174,6 +175,7 @@ int	main(void)
 	printf("\nresult: %d - %d\n", my_result, or_result);
 	printf("###############################################################\n");
 
+	
 	// BONUS
 	printf("\n");
 	printf("###############################################################\n");
@@ -182,8 +184,8 @@ int	main(void)
 	printf("\n");
 	printf("####################### FLAGS WITH CHAR #######################\n");
 	printf("###############################################################\n");
-	my_result = ft_printf("character with -: '%-c'\n", 'b');
-	or_result = printf("character with -: '%-c'\n", 'b');
+	my_result = ft_printf("'%-c'\n", 'b');
+	or_result = printf("'%-c'\n", 'b');
 	printf("\nresult: %d - %d\n", my_result, or_result);
 	printf("---------------------------------------------------------------\n");
 	my_result = ft_printf("character with width 4: '%4c'\n", 'b');
@@ -229,7 +231,7 @@ int	main(void)
 	printf("\nresult: %d - %d\n", my_result, or_result);
 	printf("---------------------------------------------------------------\n");
 	my_result = ft_printf("random: '% 10i'	'%010i'\n", -130, 0xffffffff);
-	my_result = printf("random: '% 10i'	'%010i'\n", -130, 0xffffffff);
+	or_result = printf("random: '% 10i'	'%010i'\n", -130, 0xffffffff);
 	printf("\nresult: %d - %d\n", my_result, or_result);
 	printf("---------------------------------------------------------------\n");
 	my_result = ft_printf("'%0d'	'%0d'	'%02d'	'%04d'\n", 1, 30, 30, 30);
@@ -240,6 +242,47 @@ int	main(void)
 	or_result = printf("'%010u'	'%#010x'\n", 301, 0x4f);
 	printf("\nresult: %d - %d\n", my_result, or_result);
 	printf("---------------------------------------------------------------\n");
-		
+	my_result = ft_printf("'%p'	'%#010x'\n", str1, 0x4f);
+	or_result = printf("'%p'	'%#010x'\n", str1, 0x4f);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+
+
+
+	// Testing zone printf
+	printf("###############################################################\n");
+	printf("################### COMBINATIONS IN PRINTF ####################\n");
+	printf("###############################################################\n");
+	ft_isalpha('c'); //TODO BREAKPOINT
+	ft_printf("'%#012.4x'\n", 0x4f);
+	my_result = ft_printf("zero works with d,i,u,x,%%:	'%04d' '%04i' '%04u' '%#012.4x' '%04%'\n", 42, 0, -42, 0x4f);
+	or_result = printf("zero works with d,i,u,x,%%:	'%04d' '%04i' '%04u' '%#012.4x' '%04%'\n", 42, 0, -42, 0x4f);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("- works with all:	'%-3c' '%-10s' '%-14p' '%-4d' '%-4i' '%-4u' '%-4x' '%-4%'\n", 'c', str1, str1, 42, 0, -42, 0x4f);
+	or_result = printf("- works with all:	'%-3c' '%-10s' '%-14p' '%-4d' '%-4i' '%-4u' '%-4x' '%-4%'\n", 'c', str1, str1, 42, 0, -42, 0x4f);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("precision works with:	'%.13s' '%+.3d' '%.3i' '%.4u' '%#.4x' '%.4%'\n", str1, 42, -42, -42, 0x4f);
+	or_result = printf("precision works with:	'%.13s' '%+.3d' '%.3i' '%.4u' '%#.4x' '%.4%'\n", str1, 42, -42, -42, 0x4f);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("# works with all:	'%#4x' '%#4%'\n", 0x4f);
+	or_result = printf("# works with all:	'%#4x' '%#4%'\n", 0x4f);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("' ' works with all:	'% 1d' '% 4i' '% 4%'\n", 42, 0);
+	or_result = printf("' ' works with all:	'% 1d' '% 4i' '% 4%'\n", 42, 0);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("+ works with all:	'%+3d' '%+3i' '%+4%'\n", 42, -42);
+	or_result = printf("+ works with all:	'%+3d' '%+3i' '%+4%'\n", 42, -42);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	printf("'%-8.s'\n", "hello");
+	char	*str_null = NULL;
+	printf("'%8s'\n", str_null);
+	printf("%0+8.4d\n", 23);
+	
 	return (0);
 }

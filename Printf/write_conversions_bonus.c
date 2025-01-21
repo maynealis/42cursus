@@ -13,7 +13,6 @@
 #include "libft.h"
 #include "ft_printf_bonus.h"
 
-#include <stdio.h>
 int	write_char(char c, t_flags flags)
 {
 	int	i;

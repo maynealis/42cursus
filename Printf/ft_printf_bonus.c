@@ -42,7 +42,7 @@ int	write_subst(char type, va_list args, t_flags flags)
 		return (write_uint(va_arg(args, unsigned int), flags));
 	else if (type == 'x' || type == 'X')
 		return (write_hexa(va_arg(args, unsigned long), type, flags));
-	return (0);
+	return (-1);
 }
 
 char	*find_conversion(char *str)
@@ -80,6 +80,7 @@ t_flags	init_flags(void)
 	flags.space = 0;
 	flags.plus = 0;
 	flags.width = -1;
+	flags.precision = -1;
 	return (flags);
 }
 
@@ -92,6 +93,7 @@ void	reset_flags(t_flags *flags)
 	flags->space = 0;
 	flags->plus = 0;
 	flags->width = -1;
+	flags->precision = -1;
 }
 
 void	set_flags(char *str_flags, char type, t_flags *flags)
@@ -100,30 +102,38 @@ void	set_flags(char *str_flags, char type, t_flags *flags)
 
 	if (ft_strchr(str_flags, '#') && (type == 'x' || type == 'X'))
 		flags->hash = 1;
-	if (ft_strchr(str_flags, ' ') && (type == 'd' || type == 'i'))
-		flags->space = 1;
 	if (ft_strchr(str_flags, '+') && (type == 'd' || type == 'i'))
-	{
 		flags->plus = 1;
-		flags->space = 0; // + overrides a space
-	}
+	if (ft_strchr(str_flags, ' ') && (type == 'd' || type == 'i') && flags->plus == 0)
+		flags->space = 1;
 	if (ft_strchr(str_flags, '-'))
 		flags->minus = 1;
 	if (ft_strchr(str_flags, '.'))
-		flags->dot = 1;
-	i = 0;
-	while (str_flags[i] != '\0' && !ft_isdigit(str_flags[i]))
-		i++;
-	if (str_flags[i] != '\0' && str_flags[i] == '0' && flags->minus == 0 && flags->dot == 0)
 	{
-		flags->zero = 1;
+		flags->dot = 1;
+		flags->precision = ft_atoi(ft_strchr(str_flags, '.') + 1);
+	}
+	i = 0;
+	while (str_flags[i] != '\0' && str_flags[i] != '.')
+	{
+		if (str_flags[i] == '0' && (i == 0 || !ft_isdigit(str_flags[i - 1])))
+			flags->zero = 1;
+		else if (ft_isdigit(str_flags[i]))
+		{
+			flags->width = ft_atoi(str_flags + i); //can it be bigger that int?
+			break ;
+		}
 		i++;
 	}
-	if (str_flags[i] != '\0')
-		flags->width = ft_atoi(str_flags + i); //can it be bigger that int?
+	// if (str_flags[i] != '\0' && str_flags[i] == '0' && flags->minus == 0 && flags->dot == 0)
+	// {
+	// 	flags->zero = 1;
+	// 	i++;
+	// }
+	// if (str_flags[i] != '\0')
+	// 	flags->width = ft_atoi(str_flags + i); //can it be bigger that int?
 }
 
-#include <stdio.h>
 int	ft_printf(const char *str, ...)
 {
 	int		result;
@@ -142,15 +152,15 @@ int	ft_printf(const char *str, ...)
 			char	*str_flags = ft_substr(str_copy, 0, conv-str_copy + 1);
 			set_flags(str_flags, *conv, &flags);
 			free(str_flags);
-			result += write_subst(*conv, args, flags); //TODO
-			//int	len = conv - str_copy;
+			int	temp =  write_subst(*conv, args, flags);
+			result += temp;
 			conv++;
 			str_copy = conv;
 			reset_flags(&flags);
 		}
 		else
 		{
-			result += write_char(*str_copy, flags);
+			result += write(1, str_copy, 1);
 			str_copy++;
 		}
 	}

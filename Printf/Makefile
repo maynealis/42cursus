@@ -16,7 +16,7 @@ INCLUDES_DIR = includes
 LIBFT_DIR = libft
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR)
+CFLAGS = -Wall -Werror -Wextra -g -I$(INCLUDES_DIR)
 
 LIBFT = $(LIBFT_DIR)/libft.a
 
@@ -51,7 +51,7 @@ fclean: clean bonus_clean
 re: fclean all
 
 # --------------- BONUS --------------------
-SRCS_BONUS = ft_printf_bonus.c write_conversions_bonus.c utils.c
+SRCS_BONUS = ft_printf_bonus.c write_types_bonus.c utils.c parse_flags.c
 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
