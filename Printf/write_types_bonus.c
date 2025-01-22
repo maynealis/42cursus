@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:18:08 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/22 16:28:37 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/22 19:50:31 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ int	write_char(char c, t_flags flags)
 	int		result;
 	char	*str_to_write;
 
+	result = 0;
+	if (c == 0)
+		result = 1;
 	str_to_write = parse_padded_char(c, flags);
-	result = write(1, str_to_write, ft_strlen(str_to_write));
+	result += write(1, str_to_write, ft_strlen(str_to_write));
 	free(str_to_write);
 	return (result);
 }

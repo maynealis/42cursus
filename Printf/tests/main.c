@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:26:17 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/22 16:04:10 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/22 19:51:26 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ int	main(void)
 	my_result = ft_printf("%c", '\n');
 	or_result = printf("%c", '\n');
 	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf("%c", 0);
+	or_result = printf("%c", 0);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
 	printf("###############################################################\n");
 
 	// With multiple character substitution
@@ -253,7 +258,6 @@ int	main(void)
 	printf("###############################################################\n");
 	printf("################### COMBINATIONS IN PRINTF ####################\n");
 	printf("###############################################################\n");
-	ft_isalpha('c'); //TODO BREAKPOINT
 	ft_printf("'%#012.4x'\n", 0x4f);
 	my_result = ft_printf("zero works with d,i,u,x,%%:	'%04d' '%04i' '%04u' '%#012.4x' '%04%'\n", 42, 0, -42, 0x4f);
 	or_result = printf("zero works with d,i,u,x,%%:	'%04d' '%04i' '%04u' '%#012.4x' '%04%'\n", 42, 0, -42, 0x4f);
@@ -285,6 +289,22 @@ int	main(void)
 	printf("%0+8.4d\n", 23);
 
 	ft_printf("%#x\n%#X\n", -1, -1);
+
+	printf("---------------------------------------------------------------\n");
+	ft_isalpha('c'); //TODO BREAKPOINT
+	my_result = ft_printf("%c", 0);
+	or_result = printf("%c", 0);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	my_result = ft_printf("%-6c", 0);
+	or_result = printf("%-6c", 0);
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	
+	printf("---------------------------------------------------------------\n");
+	my_result = ft_printf(" '%c' '%-6c' '%c' ", '0', 0, '1');
+	printf("\n");
+	or_result = printf(" '%c' '%-6c' '%c' ", '0', 0, '1');
+	printf("\nresult: %d - %d\n", my_result, or_result);
+	printf("---------------------------------------------------------------\n");
 	
 	return (0);
 }
