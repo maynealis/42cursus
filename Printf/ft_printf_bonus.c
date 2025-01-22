@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:00:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/17 15:55:03 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:45:31 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	write_subst(char type, va_list args, t_flags flags)
 		else
 		{
 			flags.hash = 1;
-			return (write_hexa((unsigned long)arg, 'p', flags));
+			return (write_hexa((unsigned long)arg, type, flags));
 		}
 	}
 	else if (type == 'd' || type == 'i')
@@ -41,7 +41,7 @@ int	write_subst(char type, va_list args, t_flags flags)
 	else if (type == 'u')
 		return (write_uint(va_arg(args, unsigned int), flags));
 	else if (type == 'x' || type == 'X')
-		return (write_hexa(va_arg(args, unsigned long), type, flags));
+		return (write_hexa(va_arg(args, unsigned int), type, flags));
 	return (-1);
 }
 

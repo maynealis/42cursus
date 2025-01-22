@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write_conversions.c                                :+:      :+:    :+:   */
+/*   write_types.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:18:08 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/17 16:07:13 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:57:41 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,11 @@ int	write_hexa(unsigned long n, char x, char *prefix)
 	int		len;
 
 	if (x == 'x')
-		num = ft_ultoa_base(n, FT_BASE_HEXA_MIN);
+		num = ft_uitoa_base(n, FT_BASE_HEXA_MIN);
+	else if (x == 'X')
+		num = ft_uitoa_base(n, FT_BASE_HEXA_MAY);
 	else
-		num = ft_ultoa_base(n, FT_BASE_HEXA_MAY);
+		num = ft_ultoa_base(n, FT_BASE_HEXA_MIN);
 	if (num == NULL)
 		return (-1);
 	str = ft_strjoin(prefix, num);
