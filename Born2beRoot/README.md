@@ -81,13 +81,6 @@ Read more about [Rocky](https://phoenixnap.es/kb/what-is-rocky-linux?utm_)
 {% endstep %}
 {% endstepper %}
 
-{% hint style="warning" %}
-difference between aptitude and apt.\
-what APPArmor is?
-{% endhint %}
-
-
-
 ### About SUDO
 
 {% hint style="warning" %}
@@ -107,6 +100,18 @@ What is sudo? About the policy password?
 
 [Create and delete users](https://serverspace.io/es/support/help/managing-users-on-ubuntu-and-debian/)
 
+ABOUT PASSWORD&#x20;
+
+* In the file /etc/login.defs:
+  * PASS\_MAX\_DAYS 30
+  * PASS\_MIN\_DAYS 2
+  * PASS\_WARN\_AGE 7&#x20;
+* Install a library to change some configurations for the password `apt install libpam-pwquality`
+* In the file /etc/pam.d/common-password:
+  * In the line password requisite add: minlen=10 (minim number of characters) ucredit=-1 (min 1 uppercase letter) dcredit=-1 (min 1 digit) lcredit=-1 (min 1 lowercase letter) maxrepeat=3 (max 3 same characters) reject\_username (not username) difok=7 (at least 7 characters different from old password) enforce\_for\_root (also to apply for root)
+* <mark style="background-color:yellow;">To see the current user password politics</mark> <mark style="background-color:yellow;"></mark><mark style="background-color:yellow;">`sudo chage -l <username>`</mark>
+* To change the minimum days and maximum days use the flag `-m` or `-M`
+
 ### About SSH
 
 Install openssh-server
@@ -118,6 +123,7 @@ Install openssh-server
 * To apply changes: `sudo service ssh restart`
 * To connect use `ssh user@localhost -p XXXX`
 * To disconnect user: `who` to see the connections and then `pkill -9 -t pts/0`&#x20;
+* <mark style="background-color:yellow;">To check:</mark> <mark style="background-color:yellow;"></mark><mark style="background-color:yellow;">`sudo service ssh status`</mark>
 
 {% hint style="info" %}
 The signal `-9` (KILL) was sent to terminate the process. The `-t` option indicates that the action is based on a terminal attribute, and the name of the terminal, in this case, `pts/0`, is specified afterward.\
@@ -132,14 +138,13 @@ Uncomplicated Firewall (UFW) is a program for managing a netfilter firewall desi
 * To enable it `sudo ufw enable`
 * To see the status `sudo ufw status`
 * To enable anyone to connect to using the port 4242 `sudo ufw allow 4242`
+* <mark style="background-color:yellow;">To chek:</mark> <mark style="background-color:yellow;"></mark><mark style="background-color:yellow;">`sudo service ufw status`</mark><mark style="background-color:yellow;">and</mark> <mark style="background-color:yellow;"></mark><mark style="background-color:yellow;">`sudo ufw status`</mark>
 
 
 
 * To change the machine's hostname: `hostnamectl set-hostname mymachine`
 
-
-
-ABOUT STRONG CONFIGURATIOSN FOR SUDO • Authentication using sudo has to be limited to 3 attempts in the event of an incor- rect password. • A custom message of your choice has to be displayed if an error due to a wrong password occurs when using sudo. • Each action using sudo has to be archived, both inputs and outputs. The log file has to be saved in the /var/log/sudo/ folder. • The TTY mode has to be enabled for security reasons. • For security reasons too, the paths that can be used by sudo must be restricted. Example: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+### About SUDO
 
 * Create a directory in /var/log/sudo because everything command have to be saved there.
 * Create a file in /etc/sudoers.d called sudo\_config and edited like
@@ -151,19 +156,7 @@ ABOUT STRONG CONFIGURATIOSN FOR SUDO • Authentication using sudo has to be lim
   * Defaults requiretty
   * Defaults secure\_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 
-ABOUT PASSWORD To set up a strong password policy, you have to comply with the following require- ments: • Your password has to expire every 30 days. • The minimum number of days allowed before the modification of a password will be set to 2. • The user has to receive a warning message 7 days before their password expires.
 
-* In the file /etc/login.defs:
-  * PASS\_MAX\_DAYS 30
-  * PASS\_MIN\_DAYS 2
-  * PASS\_WARN\_AGE 7 • Authentication using sudo has to be limited to 3 attempts in the event of an incor- rect password.
-* In the file /etc/login.defs:
-  * LOGIN\_RETRIES 3 • Your password must be at least 10 characters long. It must contain an uppercase letter, a lowercase letter, and a number. Also, it must not contain more than 3 consecutive identical characters. • The password must not include the name of the user. • The following rule does not apply to the root password: The password must have at least 7 characters that are not part of the former password. • Of course, your root password has to comply with this policy.
-* Install a library to change some configurations for the password `apt install libpam-pwquality`
-* In the file /etc/pam.d/common-password:
-  * In the line password requisite add: minlen=10 (minim number of characters) ucredit=-1 (min 1 uppercase letter) dcredit=-1 (min 1 digit) lcredit=-1 (min 1 lowercase letter) maxrepeat=3 (max 3 same characters) reject\_username (not username) difok=7 (at least 7 characters different from old password) enforce\_for\_root (also to apply for root)
-* <mark style="background-color:yellow;">To see the current user password politics</mark> <mark style="background-color:yellow;"></mark><mark style="background-color:yellow;">`sudo chage -l <username>`</mark>
-* To change the minimum days and maximum days use the flag `-m` or `-M`
 
 ### Script
 
@@ -225,7 +218,9 @@ Print certain system information.  With no OPTION, same as -s.
        st : time stolen from this vm by the hypervisor
 </code></pre></td></tr><tr><td>The date and time of the last reboot.</td><td><code>who -b</code></td><td>The command who shows who is logged on, and the flag -b (--boot) shows the last time the system boot.</td></tr><tr><td>Whether LVM is active or not.</td><td><code>if [ $(lsblk | grep "lvm" | wc -l) -gt 0 ]; then echo "yes"; else echo "no"; fi</code></td><td></td></tr><tr><td>The number of active connections.</td><td><code>ss -s | grep "TCP:" | awk '{print($4)}' | tr -d ','</code></td><td></td></tr><tr><td>The number of users using the server.</td><td><code>users | wc -w</code></td><td></td></tr><tr><td>The IPv4 address of your server and its MAC (Media Access Control) address. </td><td><code>hostname -I</code><br><code>ip link | grep "ether" | awk '{print($2)}'</code></td><td></td></tr><tr><td>The number of commands executed with the sudo program.</td><td><code>journalctl | grep sudo | wc -l</code></td><td></td></tr></tbody></table>
 
+To change the script time: `sudo crontab -u root -e`
 
+To stop cron: `sudo systemctl stop cron`or use disable/enable to make it not start on reboot.
 
 ### What is LVM?
 
@@ -240,6 +235,65 @@ Advantages of sudo over root:
 * **Specific permissions**: sudo allows granting access to only certain commands instead of full system access.
 
 Mastering sudo is a fundamental step in this project, where security and proper server management are critical.
+
+## What I learned
+
+### What is a virtual machine?
+
+A **virtual machine (VM)** is a software-based emulation of a physical computer. It operates as an independent environment, capable of running its own operating system and applications just like a real computer. A VM is created and managed by a **hypervisor**, which handles the sharing of physical hardware resources between the host machine and the VM(s).
+
+The hypervisor is the key software that enables virtualization. It abstracts the underlying hardware of the host system, allowing multiple VMs to share these resources.
+
+The hypervisor allocates resources such as CPU, memory, storage, and network interfaces from the host to the VM. These resources can be adjusted dynamically in many cases.
+
+#### Uses
+
+* Run multiple servers on a single physical machine, reducing hardware costs and space usage in data centers.
+* Test applications across different operating systems.
+* To try software in an isolated environment, or to try viruses.
+* Access different OS environments.
+
+### Difference between apt and aptitude
+
+<details>
+
+<summary>What is apt?</summary>
+
+**Apt** or **Advanced Packaging Tool** is a free and open source software which gracefully handles software installation and removal. Initially it was designed for Debian’s `.deb` packages.
+
+**Apt** is whole command line with no GUI. Whenever invoked from command line along with specifying the name of package to be installed, it finds that package in configured list of sources specified in **‘/etc/apt/sources.list’** along with the list of dependencies for that package and sorts them and automatically installs them along with the current package thus letting user not to worry of installing dependencies.
+
+[Read more](https://www.tecmint.com/difference-between-apt-and-aptitude/)
+
+</details>
+
+<details>
+
+<summary>What is aptitude?</summary>
+
+**Aptitude** is front-end to advanced packaging tool which adds a user interface to the functionality, thus allowing a user to interactively search for a package and install or remove it. Initially created for Debian, Aptitude extends its functionality to RPM based distributions as well.
+
+In all, **Aptitude** is a higher-level package managers that abstracts low level details, and can operate in both text-based interactive UI mode and even in command line non-interactive mode.
+
+</details>
+
+| apt                                                                                                                                       | aptitude                                                                                                                                                |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Operates through command-line commands without an interactive menu system                                                                 | Offers a text-based interactive user interface (TUI) powered by `ncurses`, allowing users to navigate and manage packages in a menu-driven environment. |
+|                                                                                                                                           | Interactive conflict resolution                                                                                                                         |
+| Handles dependencies effectively for standard operations but lacks the advanced conflict resolution suggestions that `aptitude` provides. | Robust dependency resolution capabilities. It can suggest multiple solutions when conflicts arise                                                       |
+
+### What is AppArmor
+
+AppArmor ("Application Armor") is a Linux kernel security module that allows the system administrator to restrict programs' capabilities with per-program profiles. Profiles can allow capabilities like network access, raw socket access, and the permission to read, write, or execute files on matching paths. AppArmor supplements the traditional Unix [discretionary access control](https://en.wikipedia.org/wiki/Discretionary_access_control) (DAC) model by providing [mandatory access control](https://en.wikipedia.org/wiki/Mandatory_access_control) (MAC).
+
+In computer security, mandatory access control (MAC) refers to a type of access control by which a secured environment (e.g., an operating system or a database) constrains the ability of a _subject_ or _initiator_ to access or modify on an _object_ or _target_. In the case of operating systems, the subject is a process or thread, while objects are files, directories, [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol)/[UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol) ports, shared memory segments, or IO devices. Subjects and objects each have a set of security attributes. Whenever a subject attempts to access an object, the operating system kernel examines these security attributes, examines the authorization rules (aka _policy_) in place, and decides whether to grant access.
+
+In mandatory access control, the security policy is centrally controlled by a policy administrator and is guaranteed (in principle) to be enforced for all users. Users cannot override the policy and, for example, grant access to files that would otherwise be restricted. By contrast, [discretionary access control](https://en.wikipedia.org/wiki/Discretionary_access_control) (DAC), which also governs the ability of subjects to access objects, allows users the ability to make policy decisions or assign security attributes.
+
+[Read more.](https://en.wikipedia.org/wiki/AppArmor)
+
+
 
 
 
