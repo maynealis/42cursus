@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:00:11 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/17 13:56:42 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:02:06 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_flags
 	int		precision;
 }	t_flags;
 
-int	ft_printf(char const *str, ...);
+int		ft_printf(char const *str, ...);
 
 int		write_char(char c, t_flags flags);
 int		write_str(char *str, t_flags flags);

@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:26:17 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/17 14:27:59 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:04:10 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,6 +283,8 @@ int	main(void)
 	char	*str_null = NULL;
 	printf("'%8s'\n", str_null);
 	printf("%0+8.4d\n", 23);
+
+	ft_printf("%#x\n%#X\n", -1, -1);
 	
 	return (0);
 }

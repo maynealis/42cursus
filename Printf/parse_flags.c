@@ -50,15 +50,15 @@ char	*parse_sign(char *num, char is_neg, t_flags flags) //num without sign
 	return (str);
 }
 
-char	*parse_hash(char *num, unsigned long n, t_flags flags)
+char	*parse_hash(char *num, unsigned long n, char type, t_flags flags)
 {
 	char	*prefix;
 	char	*str;
 
 	prefix = NULL;
-	if (flags.hash && n != 0)
+	if (flags.hash && n != 0 && (type == 'x' || type == 'p'))
 		prefix = ft_strdup("0x");
-	else if (flags.hash && n != 0)
+	else if (flags.hash && n != 0 && type == 'X')
 		prefix = ft_strdup("0X");
 	str = ft_strjoin(prefix, num);
 	free(prefix);

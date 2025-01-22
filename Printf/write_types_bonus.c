@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write_conversions_bonus.c                          :+:      :+:    :+:   */
+/*   write_types_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:18:08 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/17 16:07:13 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:28:37 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,14 @@ int	write_uint(unsigned int n, t_flags flags)
 	return (result);
 }
 
-char	*parse_hexa(char *num, unsigned long n, t_flags flags)
+char	*parse_hexa(char *num, unsigned long n, char type, t_flags flags)
 {
 	char	*parse1;
 	char	*parse2;
 
 	if (flags.zero && flags.dot)
 	{
-		parse1 = parse_hash(num, n, flags);
+		parse1 = parse_hash(num, n, type, flags);
 		// if (flags.hash)
 		// 	parse2 = parse_zero(parse1, 2, flags);
 		// else
@@ -124,11 +124,11 @@ char	*parse_hexa(char *num, unsigned long n, t_flags flags)
 			parse1 = parse_zero(num, 2, flags);
 		else
 			parse1 = parse_zero(num, 0, flags);
-		parse2 = parse_hash(parse1, n, flags);
+		parse2 = parse_hash(parse1, n, type, flags);
 	}
 	else
 	{
-		parse1 = parse_hash(num, n, flags);
+		parse1 = parse_hash(num, n, type, flags);
 		parse2 = parse_width(parse1, flags);
 	}
 	free(parse1);
@@ -145,12 +145,14 @@ int	write_hexa(unsigned long n, char type, t_flags flags)
 	// char	*num_padded;
 	// char	*num_zero;
 
-	if (type == 'x' || type == 'p')
+	if (type == 'x')
+		num = ft_uitoa_base(n, FT_BASE_HEXA_MIN);
+	else if (type == 'p')
 		num = ft_ultoa_base(n, FT_BASE_HEXA_MIN);
 	else
-		num = ft_ultoa_base(n, FT_BASE_HEXA_MAY);
+		num = ft_uitoa_base(n, FT_BASE_HEXA_MAY);
 	num_precision = parse_precision_num(num, flags);
-	num_parsed = parse_hexa(num_precision, n, flags);
+	num_parsed = parse_hexa(num_precision, n, type, flags);
 
 
 	// if (flags.hash)

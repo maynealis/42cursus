@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:42:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/17 15:38:09 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:59:10 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ int	write_subst(char type, va_list args)
 		arg = va_arg(args, void *);
 		if (arg == NULL)
 			return (write_str("(nil)"));
-		return (write_hexa((unsigned long)arg, 'x', "0x"));
+		return (write_hexa((unsigned long)arg, type, "0x"));
 	}
 	else if (type == 'd' || type == 'i')
 		return (write_int(va_arg(args, int)));
 	else if (type == 'u')
 		return (write_uint(va_arg(args, unsigned int)));
 	else if (type == 'x' || type == 'X')
-		return (write_hexa(va_arg(args, unsigned long), type, NULL));
+		return (write_hexa(va_arg(args, unsigned int), type, NULL));
 	return (-1);
 }
 
