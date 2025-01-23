@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:18:08 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/22 19:50:31 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:15:17 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	write_char(char c, t_flags flags)
 	if (c == 0)
 		result = 1;
 	str_to_write = parse_padded_char(c, flags);
+	if (str_to_write == NULL)
+		return (-1);
 	result += write(1, str_to_write, ft_strlen(str_to_write));
 	free(str_to_write);
 	return (result);
@@ -49,23 +51,6 @@ int	write_str(char *str, t_flags flags)
 	free(str_to_write);
 	free(str_to_parse);
 	return (result);
-}
-
-char	*parse_int(char *num, char is_neg, t_flags flags)
-{
-	char	*num_precision;
-	char	*num_sign;
-	char	*num_zero;
-	char	*num_padded;
-
-	num_precision = parse_precision_num(num + is_neg, flags);
-	num_zero = parse_zero(num_precision, is_neg, flags);
-	num_sign = parse_sign(num_zero, is_neg, flags);
-	num_padded = parse_width(num_sign, flags);
-	free(num_precision);
-	free(num_sign);
-	free(num_zero);
-	return (num_padded);
 }
 
 int	write_int(int n, t_flags flags)
@@ -108,73 +93,27 @@ int	write_uint(unsigned int n, t_flags flags)
 	return (result);
 }
 
-char	*parse_hexa(char *num, unsigned long n, char type, t_flags flags)
-{
-	char	*parse1;
-	char	*parse2;
-
-	if (flags.zero && flags.dot)
-	{
-		parse1 = parse_hash(num, n, type, flags);
-		// if (flags.hash)
-		// 	parse2 = parse_zero(parse1, 2, flags);
-		// else
-		parse2 = parse_zero(parse1, 0, flags);
-	}
-	else if (flags.zero && !flags.dot)
-	{
-		if (flags.hash)
-			parse1 = parse_zero(num, 2, flags);
-		else
-			parse1 = parse_zero(num, 0, flags);
-		parse2 = parse_hash(parse1, n, type, flags);
-	}
-	else
-	{
-		parse1 = parse_hash(num, n, type, flags);
-		parse2 = parse_width(parse1, flags);
-	}
-	free(parse1);
-	return (parse2);
-}
-
 int	write_hexa(unsigned long n, char type, t_flags flags)
 {
 	int		result;
 	char	*num;
 	char	*num_precision;
 	char	*num_parsed;
-	// char	*num_hash;
-	// char	*num_padded;
-	// char	*num_zero;
 
 	if (type == 'x')
 		num = ft_uitoa_base(n, FT_BASE_HEXA_MIN);
 	else if (type == 'p')
+//	{
 		num = ft_ultoa_base(n, FT_BASE_HEXA_MIN);
+//		flags.hash = 1;
+//	}
 	else
 		num = ft_uitoa_base(n, FT_BASE_HEXA_MAY);
 	num_precision = parse_precision_num(num, flags);
 	num_parsed = parse_hexa(num_precision, n, type, flags);
-
-
-	// if (flags.hash)
-	// 	num_zero = parse_zero_hexa(num_precision, 2, n, flags);
-	// else
-	// 	num_zero = parse_zero_hexa(num_precision, 0, n, flags);
-	// num_hash = parse_hash(num_zero, n, flags);
-	// if (flags.zero)
-	// 	num_padded = parse_zero(num_hash, 0, flags);
-	// else
-	// if (!flags.zero)
-	// 	num_padded = parse_width(num_hash, flags);
-	// else
-	// 	num_padded = ft_strdup(num_hash);
 	result = write(1, num_parsed, ft_strlen(num_parsed));
 	free(num);
 	free(num_precision);
-	// free(num_hash);
 	free(num_parsed);
-	// free(num_zero);
 	return (result);
 }
