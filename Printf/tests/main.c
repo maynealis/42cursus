@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:26:17 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/22 19:51:26 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:35:04 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,7 +258,6 @@ int	main(void)
 	printf("###############################################################\n");
 	printf("################### COMBINATIONS IN PRINTF ####################\n");
 	printf("###############################################################\n");
-	ft_printf("'%#012.4x'\n", 0x4f);
 	my_result = ft_printf("zero works with d,i,u,x,%%:	'%04d' '%04i' '%04u' '%#012.4x' '%04%'\n", 42, 0, -42, 0x4f);
 	or_result = printf("zero works with d,i,u,x,%%:	'%04d' '%04i' '%04u' '%#012.4x' '%04%'\n", 42, 0, -42, 0x4f);
 	printf("\nresult: %d - %d\n", my_result, or_result);

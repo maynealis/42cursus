@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/12 19:09:37 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/01/22 13:03:41 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/01/24 11:14:26 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ INCLUDES_DIR = includes
 LIBFT_DIR = libft
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g -I$(INCLUDES_DIR)
+CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES_DIR)
 
 LIBFT = $(LIBFT_DIR)/libft.a
 
@@ -25,7 +25,7 @@ INCLUDES = $(INCLUDES_DIR)/ft_printf.h \
 			$(INCLUDES_DIR)/utils.h \
 			$(INCLUDES_DIR)/libft.h \
 			$(INCLUDES_DIR)/ft_printf_bonus.h \
-			$(INCLUDES_DIR)/flags_manager.h \
+			$(INCLUDES_DIR)/flags_manager_bonus.h \
 			$(INCLUDES_DIR)/write_types_bonus.h \
 			$(INCLUDES_DIR)/parse_flags_bonus.h \
 			$(INCLUDES_DIR)/parse_types_bonus.h \
@@ -57,7 +57,9 @@ fclean: clean bonus_clean
 re: fclean all
 
 # --------------- BONUS --------------------
-SRCS_BONUS = utils.c ft_printf_bonus.c write_types_bonus.c flags_manager.c parse_types_bonus.c parse_precision_bonus.c parse_flags_bonus.c
+SRCS_BONUS = utils.c ft_printf_bonus.c write_types_bonus.c \
+			flags_manager_bonus.c parse_types_bonus.c parse_precision_bonus.c \
+			parse_flags_bonus.c
 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 

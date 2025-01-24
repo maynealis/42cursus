@@ -6,11 +6,11 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:25:27 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/23 16:21:27 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:45:51 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse_precison_bonus.h"
+#include "parse_precision_bonus.h"
 
 char	*parse_precision_num(char *num, t_flags flags)
 {

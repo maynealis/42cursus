@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 16:22:10 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/23 16:27:11 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:45:32 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PARSE_TYPES_BONUS_H
 
 # include "libft.h"
-# include "flags_manager.h"
-# include "parse_precison_bonus.h"
+# include "flags_manager_bonus.h"
+# include "parse_precision_bonus.h"
 # include "parse_flags_bonus.h"
 
 char	*parse_char(char c, t_flags flags);

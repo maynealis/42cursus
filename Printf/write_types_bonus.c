@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:18:08 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/23 15:15:17 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:36:26 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int	write_char(char c, t_flags flags)
 	result = 0;
 	if (c == 0)
 		result = 1;
+	else if (c == '%')
+	{
+		result = write(1, &c, 1);
+		return (result);
+	}
 	str_to_write = parse_char(c, flags);
 	if (str_to_write == NULL)
 		return (-1);
@@ -34,7 +39,7 @@ int	write_str(char *str, t_flags flags)
 	char	*str_to_parse;
 	char	*str_precision;
 	char	*str_to_write;
-	
+
 	if (str == NULL)
 		str_to_parse = ft_strdup("(null)");
 	else
@@ -100,10 +105,7 @@ int	write_hexa(unsigned long n, char type, t_flags flags)
 	if (type == 'x')
 		num = ft_uitoa_base(n, FT_BASE_HEXA_MIN);
 	else if (type == 'p')
-//	{
 		num = ft_ultoa_base(n, FT_BASE_HEXA_MIN);
-//		flags.hash = 1;
-//	}
 	else
 		num = ft_uitoa_base(n, FT_BASE_HEXA_MAY);
 	num_precision = parse_precision_num(num, flags);

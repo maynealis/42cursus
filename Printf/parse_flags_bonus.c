@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_flags.c                                      :+:      :+:    :+:   */
+/*   parse_flags_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:22:46 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/23 16:43:11 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:42:43 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse_flags_bonus.h"
 
-char	*parse_sign(char *num, char is_neg, t_flags flags) //num without sign
+char	*parse_sign(char *num, char is_neg, t_flags flags)
 {
 	char	*str;
 
@@ -86,39 +86,3 @@ char	*parse_width(char *str, t_flags flags)
 	free(padded);
 	return (str_result);
 }
-
-/*
-char	*parse_padded_char(char c, t_flags flags)
-{
-	char	*padded;
-	char	*str_result;
-	char	*c_ptr;
-
-	c_ptr = (char *)ft_calloc(2, sizeof(char));
-	c_ptr[0] = c;
-	padded = NULL;
-	if (flags.width > 1)
-		padded = ft_calloc(flags.width, 1);
-//	padded = NULL;
-	if (flags.width > 1 && (flags.minus || (!flags.minus && !flags.zero)))
-	{
-//		padded = ft_calloc(flags.width, 1);
-//		if (padded)
-		padded = ft_memset(padded, ' ', flags.width - 1);
-	}
-	else if (flags.zero && flags.width > 1)
-	{
-//		padded = ft_calloc(flags.width, 1);
-//		if (padded)
-		padded = ft_memset(padded, '0', flags.width - 1);
-	}
-	if ((flags.zero && c != '%') || flags.minus)
-		str_result = ft_strjoin(c_ptr, padded);
-	else
-		str_result = ft_strjoin(padded, c_ptr);
-	free(padded);
-	free(c_ptr);
-	return (str_result);
-}
-*/
-

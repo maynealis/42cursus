@@ -6,14 +6,11 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:00:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/23 12:12:05 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:17:56 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
-//#include "ft_utils.h"
-#include "libft.h"
-
 
 int	write_subst(char type, va_list args, t_flags flags)
 {
@@ -30,11 +27,8 @@ int	write_subst(char type, va_list args, t_flags flags)
 		arg = va_arg(args, void *);
 		if (arg == NULL)
 			return (write_str("(nil)", flags));
-	//	else
-	//	{
 		flags.hash = 1;
 		return (write_hexa((unsigned long)arg, type, flags));
-	//	}
 	}
 	else if (type == 'd' || type == 'i')
 		return (write_int(va_arg(args, int), flags));
@@ -47,7 +41,6 @@ int	write_subst(char type, va_list args, t_flags flags)
 
 char	*find_conversion(char *str)
 {
-	//char	conversions[] = "cspdiuxX%"; //TODO: put it in a macro?
 	char	*conversion;
 	char	*temp;
 	int		i;
@@ -77,7 +70,7 @@ int	parse_and_write_subst(char **str, va_list args, t_flags flags)
 
 	conv = find_conversion(*str + 1);
 	str_flags = ft_substr(*str, 0, conv - *str + 1);
-	set_flags(str_flags, *conv, &flags); // return flags here? TODO
+	set_flags(str_flags, *conv, &flags);
 	result = write_subst(*conv, args, flags);
 	free(str_flags);
 	*str = conv + 1;
