@@ -14,6 +14,7 @@
 # define PARSE_PRECISION_BONUS_H
 
 # include "libft.h"
+# include "flags_manager.h"
 
 char	*parse_precision_num(char *num, t_flags flags);
 char	*parse_precision_str(char *str, t_flags flags);

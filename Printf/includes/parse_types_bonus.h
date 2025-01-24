@@ -14,7 +14,8 @@
 # define PARSE_TYPES_BONUS_H
 
 # include "libft.h"
-# include "parse_precision_bonus.h"
+# include "flags_manager.h"
+# include "parse_precison_bonus.h"
 # include "parse_flags_bonus.h"
 
 char	*parse_char(char c, t_flags flags);

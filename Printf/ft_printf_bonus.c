@@ -47,7 +47,7 @@ int	write_subst(char type, va_list args, t_flags flags)
 
 char	*find_conversion(char *str)
 {
-	char	conversions[] = "cspdiuxX%"; //TODO: put it in a macro?
+	//char	conversions[] = "cspdiuxX%"; //TODO: put it in a macro?
 	char	*conversion;
 	char	*temp;
 	int		i;
@@ -56,7 +56,7 @@ char	*find_conversion(char *str)
 	i = 0;
 	while (i < 9)
 	{
-		temp = ft_strchr(str, conversions[i]);
+		temp = ft_strchr(str, CONVERSIONS[i]);
 		if (temp == NULL)
 			i++;
 		else

@@ -14,6 +14,7 @@
 # define PARSE_FLAGS_BONUS_H
 
 # include "libft.h"
+# include "ft_printf_bonus.h"
 
 char	*parse_sign(char *num, char is_neg, t_flags flags);
 char	*parse_hash(char *num, unsigned long n, char type, t_flags flags);

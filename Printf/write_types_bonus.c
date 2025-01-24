@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "ft_printf_bonus.h"
-
-#include "parse_flags.c" // TODO
+#include "write_types_bonus.h"
 
 int	write_char(char c, t_flags flags)
 {
@@ -23,7 +20,7 @@ int	write_char(char c, t_flags flags)
 	result = 0;
 	if (c == 0)
 		result = 1;
-	str_to_write = parse_padded_char(c, flags);
+	str_to_write = parse_char(c, flags);
 	if (str_to_write == NULL)
 		return (-1);
 	result += write(1, str_to_write, ft_strlen(str_to_write));

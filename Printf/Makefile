@@ -24,7 +24,13 @@ INCLUDES = $(INCLUDES_DIR)/ft_printf.h \
 			$(INCLUDES_DIR)/write_types.h \
 			$(INCLUDES_DIR)/utils.h \
 			$(INCLUDES_DIR)/libft.h \
-			$(INCLUDES_DIR)/ft_printf_bonus.h #TODO
+			$(INCLUDES_DIR)/ft_printf_bonus.h \
+			$(INCLUDES_DIR)/flags_manager.h \
+			$(INCLUDES_DIR)/write_types_bonus.h \
+			$(INCLUDES_DIR)/parse_flags_bonus.h \
+			$(INCLUDES_DIR)/parse_types_bonus.h \
+			$(INCLUDES_DIR)/parse_precision_bonus.h
+
 
 SRCS = ft_printf.c write_types.c utils.c
 OBJS = $(SRCS:.c=.o)
@@ -51,7 +57,7 @@ fclean: clean bonus_clean
 re: fclean all
 
 # --------------- BONUS --------------------
-SRCS_BONUS = ft_printf_bonus.c write_types_bonus.c utils.c parse_flags.c
+SRCS_BONUS = utils.c ft_printf_bonus.c write_types_bonus.c flags_manager.c parse_types_bonus.c parse_precision_bonus.c parse_flags_bonus.c
 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 

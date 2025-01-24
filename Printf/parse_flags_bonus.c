@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "ft_printf_bonus.h"
-
+#include "parse_flags_bonus.h"
 
 char	*parse_sign(char *num, char is_neg, t_flags flags) //num without sign
 {
