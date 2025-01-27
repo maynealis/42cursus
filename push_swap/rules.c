@@ -18,10 +18,13 @@ void	swap(t_list *a)
 {
 	void	*temp;
 
+	if (a->next == NULL)
+		return ;
 	temp = a->content;
 	a->content = a->next->content;
 	a->next->content = temp;
 }
+
 
 int	main(void)
 {
@@ -39,8 +42,8 @@ int	main(void)
 	a3.content = &n3;
 	a3.next = NULL;
 
-	ft_printf("%i %i %i\n", a1->content, a2->content, a3->content);
+	ft_printf("%i %i %i\n", *(int *)a1.content, *(int *)a2.content, *(int *)a3.content);
 	swap(&a1);
-	ft_printf("%i %i %i\n", a1->content, a2->content, a3->content);
+	ft_printf("%i %i %i\n", *(int *)a1.content, *(int *)a2.content, *(int *)a3.content);
 	return (0);
 }

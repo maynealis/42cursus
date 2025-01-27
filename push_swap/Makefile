@@ -33,7 +33,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(LIBFT) $(PRINTF) $(OBJS) Makefile
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS)  $(LIBFT) $(PRINTF) -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) bonus -C $(LIBFT_DIR)
