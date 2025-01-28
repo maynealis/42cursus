@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 18:26:37 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/01/27 21:05:58 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/01/28 14:08:40 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ $(LIBFT):
 	$(MAKE) bonus -C $(LIBFT_DIR)
 	
 $(PRINTF):
-	$(MAKE) -C $(PRINTF_DIR)
+	$(MAKE) bonus -C $(PRINTF_DIR)
 
 clean:
 	rm -rf $(OBJS)

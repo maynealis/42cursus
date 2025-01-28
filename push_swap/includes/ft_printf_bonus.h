@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 11:00:11 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/24 10:18:43 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:10:33 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 //# include "flags_manager_bonus.h" // for the struct
 //# include "write_types_bonus.h"
+
+# include "libft.h"
 
 # define CONVERSIONS "cspdiuxX%"
 
