@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 21:00:08 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/28 15:40:34 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:34:33 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ t_list	*init_stack(int argc, char **argv)
 	}
 	return (stack_a);
 }
-
+/*
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -140,4 +140,4 @@ int	main(int argc, char **argv)
 	print_stacks(stack_a, stack_b);
 	return (0);
 }
-
+*/
