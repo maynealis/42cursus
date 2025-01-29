@@ -6,7 +6,7 @@
 #    By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 18:26:37 by cmayne-p          #+#    #+#              #
-#    Updated: 2025/01/28 16:34:11 by cmayne-p         ###   ########.fr        #
+#    Updated: 2025/01/29 16:03:01 by cmayne-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ PRINTF = $(PRINTF_DIR)/libftprintf.a
 
 INCLUDES = $(INCLUDES_DIR)/libft.h $(INCLUDES_DIR)/ft_printf.h $(INCLUDES_DIR)/ft_printf_bonus.h
 
-SRCS = rules.c main.c
+SRCS = main.c stack_manager.c parse_arguments.c rules.c algorithm.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

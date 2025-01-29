@@ -6,66 +6,100 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:42:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/28 17:13:39 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:45:50 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf_bonus.h"
+#include "push_swap.h"
 
-char	is_valid_integer(char *arg)
+char	add_number(t_stack **a, int n)
 {
-	size_t	len;
-	size_t	i;
+	t_stack	*new;
 
-	if (!ft_isdigit(arg[0]) && arg[0] != '-' && arg[0] != '+')
+	new = ft_stacknew(n);
+	if (new == NULL)
+		//free all stack
 		return (0);
-	i = 1;
-	len = ft_strlen(arg);
-	while (i < len)
-	{
-		if (!ft_isdigit(arg[i]))
-			return (0);
-		i++;
-	}
-	if (ft_isdigit(arg[0]) && len >= 10)
-	{
-		if (len > 10 || ft_strncmp(arg, "2147483647", len) > 0)
-			return (0);
-	}
-	else if (arg[0] == '-' && len >= 11)
-	{
-		if (len > 11 || ft_strncmp(arg, "-2147483648", len) > 0)
-			return (0);	
-	}
+	ft_stackadd_back(a, new);
 	return (1);
 }
 
-char	is_valid_argument(char *arg)
+void	print_stacks(t_stack *a, t_stack *b)
 {
-	char	is_valid;
-
-	is_valid = is_valid_integer(arg);
-	return (is_valid);
+	while (a != NULL || b != NULL)
+	{
+		if (a)
+		{
+			ft_printf("% 11i", a->number);
+			a = a->next;
+		}
+		else
+			ft_printf("           "); //TODO
+		ft_printf("\t");
+		if (b)
+		{
+			ft_printf("% 11i", b->number);
+			b = b->next;
+		}
+		ft_printf("\n");
+	}
 }
-/*
-char	check_arguments(int argc, char **argv)
-{
-	int	i;
 
+char	print_error_message_and_clean(t_stack **stack_a, t_stack **stack_b)
+{
+	ft_putendl_fd("Error", 2);
+	free_stack(stack_a);
+	free_stack(stack_b);
+	return (1);
+}
+
+int	main(int argc, char **argv)
+{
+	int		i;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	stack_a = NULL;
+	stack_b = NULL;
+	if (argc < 2)
+		return (0);
 	i = 1;
 	while (i < argc)
 	{
-		if (ft_atoi(argv[i]) == 0) // TODO: also check for real 0
+		if (!is_valid_argument(argv[i], stack_a))
+			return (print_error_message_and_clean(&stack_a, &stack_b));
+		if (!add_number(&stack_a, ft_atoi(argv[i]))) //ha fallado el anadir el numero al stack
+			return (print_error_message_and_clean(&stack_a, &stack_b));
 		i++;
 	}
-}
-*/
-int	main(int argc, char **argv)
-{
-	if (argc < 2)
-		return (0);
-	ft_printf("%i\n", is_valid_argument(argv[1]));
+	print_stacks(stack_a, stack_b);
+	ft_printf("%i", is_sorted(stack_a));
+
+	swap(&stack_a);
+	ft_printf("SWAP\n");
+	print_stacks(stack_a, stack_b);
+
+	push(&stack_a, &stack_b);
+	ft_printf("PUSH\n");
+	print_stacks(stack_a, stack_b);
 	
+	rotate(&stack_a);
+	ft_printf("ROTATE A\n");
+	print_stacks(stack_a, stack_b);
+
+	rotate(&stack_b);
+	ft_printf("ROTATE B\n");
+	print_stacks(stack_a, stack_b);
+	
+	reverse_rotate(&stack_a);
+	ft_printf("REVERSE ROTATE A\n");
+	print_stacks(stack_a, stack_b);
+
+
+
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }
