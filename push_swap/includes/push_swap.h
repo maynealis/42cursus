@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:04:48 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/29 15:48:31 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:33:07 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	reverse_rotate(t_stack **stack);
 
 
 char	is_sorted(t_stack *stack);
+char	is_reverse_sorted(t_stack *stack);
 
 #endif

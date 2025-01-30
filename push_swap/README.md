@@ -22,3 +22,7 @@
 	
 ## References
 [First idea](https://m4nnb3ll.medium.com/my-journey-to-find-a-good-sorting-algorithm-for-the-push-swap-42-project-4a18bc38b474)
+
+[Turk Algorithm](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)
+
+[Radix Sort](https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e)
