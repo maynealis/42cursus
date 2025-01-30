@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:04:48 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/30 10:33:07 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:55:55 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_stack	*ft_stacknew(int number);
 t_stack	*ft_stacklast(t_stack *stack);
 void	ft_stackadd_back(t_stack **stack, t_stack *new);
 void	ft_stackadd_front(t_stack **stack, t_stack *new);
+int		ft_stacksize(t_stack *stack);
 void	free_stack(t_stack **stack);
 
 // Functions to parse the arguments
@@ -41,5 +42,8 @@ void	reverse_rotate(t_stack **stack);
 
 char	is_sorted(t_stack *stack);
 char	is_reverse_sorted(t_stack *stack);
+void	sort_stack_three(t_stack **stack);
+
+int		get_number_of_moves(t_stack *stack, int n);
 
 #endif

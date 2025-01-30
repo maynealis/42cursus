@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:42:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/29 15:45:50 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:58:44 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char	add_number(t_stack **a, int n)
 
 void	print_stacks(t_stack *a, t_stack *b)
 {
+	ft_printf("---- a ----\t---- b ----\n");
 	while (a != NULL || b != NULL)
 	{
 		if (a)
@@ -45,6 +46,7 @@ void	print_stacks(t_stack *a, t_stack *b)
 		}
 		ft_printf("\n");
 	}
+	ft_printf("--------------------------\n");
 }
 
 char	print_error_message_and_clean(t_stack **stack_a, t_stack **stack_b)
@@ -75,8 +77,21 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	print_stacks(stack_a, stack_b);
-	ft_printf("%i", is_sorted(stack_a));
+	
+	ft_printf("pb\n");
+	ft_printf("pb\n");
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	
+	
 
+	ft_printf("number of moves %i\n",get_number_of_moves(stack_b, stack_a->number));
+
+//	sort_stack_three(&stack_a);
+	print_stacks(stack_a, stack_b);
+	/*
+	// TESTING RULES
 	swap(&stack_a);
 	ft_printf("SWAP\n");
 	print_stacks(stack_a, stack_b);
@@ -96,7 +111,7 @@ int	main(int argc, char **argv)
 	reverse_rotate(&stack_a);
 	ft_printf("REVERSE ROTATE A\n");
 	print_stacks(stack_a, stack_b);
-
+	*/
 
 
 	free_stack(&stack_a);

@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:16:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/29 15:01:44 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:00:44 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,19 @@ void	ft_stackadd_front(t_stack **stack, t_stack *new)
 		return ;
 	new->next = *stack;
 	*stack = new;
+}
+
+int	ft_stacksize(t_stack *stack)
+{
+	int	size;
+
+	size = 0;
+	while (stack != NULL)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
 }
 
 void	free_stack(t_stack **stack)
