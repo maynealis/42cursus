@@ -26,27 +26,28 @@ char	add_number(t_stack **a, int n)
 	return (1);
 }
 
+#include <stdio.h> //TODO: change to my printf
 void	print_stacks(t_stack *a, t_stack *b)
 {
-	ft_printf("---- a ----\t---- b ----\n");
+	printf("---- a ----\t---- b ----\n");
 	while (a != NULL || b != NULL)
 	{
 		if (a)
 		{
-			ft_printf("% 11i", a->number);
+			printf("% 11i", a->number);
 			a = a->next;
 		}
 		else
-			ft_printf("           "); //TODO
-		ft_printf("\t");
+			printf("           "); //TODO
+		printf("\t");
 		if (b)
 		{
-			ft_printf("% 11i", b->number);
+			printf("% 11i", b->number);
 			b = b->next;
 		}
-		ft_printf("\n");
+		printf("\n");
 	}
-	ft_printf("--------------------------\n");
+	printf("--------------------------\n");
 }
 
 char	print_error_message_and_clean(t_stack **stack_a, t_stack **stack_b)
@@ -76,20 +77,60 @@ int	main(int argc, char **argv)
 			return (print_error_message_and_clean(&stack_a, &stack_b));
 		i++;
 	}
-	print_stacks(stack_a, stack_b);
-	
+	//print_stacks(stack_a, stack_b);
+
+	if (ft_stacksize(stack_a) <= 3)
+	{
+		sort_stack_three(&stack_a);
+		print_stacks(stack_a, stack_b);
+
+		return (0);
+	}
+	else if (ft_stacksize(stack_a) <= 6)
+	{
+		ft_printf("pb\n");
+		ft_printf("pb\n");
+		ft_printf("pb\n");
+		push(&stack_a, &stack_b);
+		push(&stack_a, &stack_b);
+		push(&stack_a, &stack_b);
+		sort_stack_three(&stack_a);
+		sort_stack_three(&stack_b);
+		while (ft_stacksize(stack_b) > 0)
+			insert_number(&stack_b, &stack_a);
+		set_stack_ordered(&stack_a);
+		print_stacks(stack_a, stack_b);
+		
+		return (0);
+	}
+
 	ft_printf("pb\n");
 	ft_printf("pb\n");
+	ft_printf("pb\n");
 	push(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
-	
+	sort_stack_three(&stack_b);
+
+	//print_stacks(stack_a, stack_b);
 	
 
-	ft_printf("number of moves %i\n",get_number_of_moves(stack_b, stack_a->number));
+	//ft_printf("number of moves %i\n",get_number_moves(stack_b, stack_a->number));
+	while (ft_stacksize(stack_a) > 3)
+	{
+		insert_number(&stack_a, &stack_b);
+		//print_stacks(stack_a, stack_b);
+	}
+	sort_stack_three(&stack_a);
+	//print_stacks(stack_a, stack_b);
+	while (ft_stacksize(stack_b) > 0)
+	{
+		insert_number(&stack_b, &stack_a);
+	//	print_stacks(stack_a, stack_b);
+	}
+	set_stack_ordered(&stack_a);
+	//print_stacks(stack_a, stack_b);
 
-//	sort_stack_three(&stack_a);
-	print_stacks(stack_a, stack_b);
 	/*
 	// TESTING RULES
 	swap(&stack_a);

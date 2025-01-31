@@ -39,11 +39,17 @@ void	push(t_stack **src, t_stack **dst);
 void	rotate(t_stack **stack);
 void	reverse_rotate(t_stack **stack);
 
-
+// Algorithm
 char	is_sorted(t_stack *stack);
 char	is_reverse_sorted(t_stack *stack);
 void	sort_stack_three(t_stack **stack);
+//int		get_number_of_moves(t_stack *stack, int n);
+int		get_number_moves(t_stack *stack, int n);
+int		which_pos_move(t_stack *a, t_stack *b);
+int		get_number(t_stack *stack, int pos);
+void	insert_number(t_stack **a, t_stack **b);
+void	set_stack_ordered(t_stack **stack);
 
-int		get_number_of_moves(t_stack *stack, int n);
+
 
 #endif
