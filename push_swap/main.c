@@ -79,6 +79,50 @@ int	main(int argc, char **argv)
 	}
 	//print_stacks(stack_a, stack_b);
 
+
+	// d = 0;
+	// while (d < 5)
+	// {
+	// 	radix2(&stack_b, &stack_a, d, 31);
+	// 	d++;
+	// }
+	// print_stacks(stack_a, stack_b);
+
+
+
+	int	d = 0;
+	while (d < 7)
+	{
+		//ft_printf("---------------------------------started bit %d\n", d);
+		radix(&stack_a, &stack_b, d);
+		
+
+		// if (is_sorted(stack_a))
+		// 	ft_printf("a is sorted in d %i -----------------------------------\n", d);
+		// if (is_sorted(stack_b))
+		// 	ft_printf("b is sorted in d %i -----------------------------------\n", d);
+
+		d++;
+	}
+	
+	//print_stacks(stack_a, stack_b);
+	// d = 0;
+	// while (d < 6)
+	// {
+	// 	radix2(&stack_b, &stack_a, d);
+	// 	d++;
+	// }
+	//print_stacks(stack_a, stack_b);
+	// while (stack_b)
+	// {
+	// 	ft_printf("pa\n");
+	// 	ft_printf("ra\n");
+	// 	push(&stack_b, &stack_a);
+	// 	rotate(&stack_a);
+	// }
+	//print_stacks(stack_a, stack_b);
+	/*
+	// ALGORITHM TURK?
 	if (ft_stacksize(stack_a) <= 3)
 	{
 		sort_stack_three(&stack_a);
@@ -113,9 +157,7 @@ int	main(int argc, char **argv)
 	sort_stack_three(&stack_b);
 
 	//print_stacks(stack_a, stack_b);
-	
 
-	//ft_printf("number of moves %i\n",get_number_moves(stack_b, stack_a->number));
 	while (ft_stacksize(stack_a) > 3)
 	{
 		insert_number(&stack_a, &stack_b);
@@ -130,28 +172,6 @@ int	main(int argc, char **argv)
 	}
 	set_stack_ordered(&stack_a);
 	//print_stacks(stack_a, stack_b);
-
-	/*
-	// TESTING RULES
-	swap(&stack_a);
-	ft_printf("SWAP\n");
-	print_stacks(stack_a, stack_b);
-
-	push(&stack_a, &stack_b);
-	ft_printf("PUSH\n");
-	print_stacks(stack_a, stack_b);
-	
-	rotate(&stack_a);
-	ft_printf("ROTATE A\n");
-	print_stacks(stack_a, stack_b);
-
-	rotate(&stack_b);
-	ft_printf("ROTATE B\n");
-	print_stacks(stack_a, stack_b);
-	
-	reverse_rotate(&stack_a);
-	ft_printf("REVERSE ROTATE A\n");
-	print_stacks(stack_a, stack_b);
 	*/
 
 

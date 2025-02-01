@@ -50,6 +50,16 @@ int		get_number(t_stack *stack, int pos);
 void	insert_number(t_stack **a, t_stack **b);
 void	set_stack_ordered(t_stack **stack);
 
+// Radix
+void	radix(t_stack **a, t_stack **b, int d);
+void	radix_bucket(t_stack **a, t_stack **b);
+void	radix2(t_stack **a, t_stack **b, int d);
+void	radix_bucket2(t_stack **a, t_stack **b);
+void	radix_bucket_between(t_stack **a, t_stack **b, int pivot);
+
+
+char	is_sorted_rows(t_stack *stack, int rows_to_check);
+
 
 
 #endif

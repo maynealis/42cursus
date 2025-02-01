@@ -17,7 +17,21 @@ char	is_sorted(t_stack *stack)
 {
 	//if (!stack) // there is nothing
 	//	return (-1);
-	while (stack->next)
+	while (stack && stack->next)
+	{
+		if (stack->next->number < stack->number)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
+char	is_sorted_rows(t_stack *stack, int rows_to_check)
+{
+	int	i;
+
+	i = -1;
+	while (stack && stack->next && ++i < rows_to_check)
 	{
 		if (stack->next->number < stack->number)
 			return (0);
