@@ -78,20 +78,54 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	//print_stacks(stack_a, stack_b);
+	/*
+	// WORST???
+	// pass first bucket
+	radix_bucket_between(&stack_a, &stack_b, 63);
 
-
-	// d = 0;
-	// while (d < 5)
-	// {
-	// 	radix2(&stack_b, &stack_a, d, 31);
-	// 	d++;
-	// }
-	// print_stacks(stack_a, stack_b);
-
-
-
+	// order 64-100 in b
 	int	d = 0;
-	while (d < 7)
+	while (d < 6)
+	{
+		radix2(&stack_b, &stack_a, d, 63);
+		d++;
+	}
+
+	// pass second bucket
+	radix_bucket_between(&stack_a, &stack_b, 31);
+
+	// order 00-31 in a
+	d = 0;
+	while (d < 5)
+	{
+		radix_down(&stack_a, &stack_b, d, 32);
+		d++;
+	}
+
+	// order the middle
+	d = 0;
+	while (d < 5)
+	{
+		radix_limit(&stack_b, &stack_a, d, 64, 31);
+		d++;
+	}
+
+	// return to a
+	while (stack_b)
+	{
+		ft_printf("pa\n");
+		push(&stack_b, &stack_a);
+		ft_printf("ra\n");
+		rotate(&stack_a);
+	}
+	*/
+
+	//print_stacks(stack_a, stack_b);
+	
+
+	// WORKING RADIX SORT
+	int	d = 0;
+	while (d < 6)
 	{
 		//ft_printf("---------------------------------started bit %d\n", d);
 		radix(&stack_a, &stack_b, d);
@@ -104,23 +138,31 @@ int	main(int argc, char **argv)
 
 		d++;
 	}
+	//print_stacks(stack_a, stack_b);
+	/*
+	// VARIATION THAT DOESNT REALLY IMPROVE WWITH D < 6
+	//int last = ft_stacklast(stack_a)->number;
+	while (!is_sorted(stack_a))
+	{
+		if (stack_a->number > ft_stacklast(stack_a)->number)
+		{
+			ft_printf("ra\n");
+			rotate(&stack_a);
+		}
+		else
+		{
+			ft_printf("pb\n");
+			push(&stack_a, &stack_b);
+		}
+	}
+	while (stack_b)
+	{
+		ft_printf("pa\n");
+		push(&stack_b, &stack_a);
+	}
+	*/
+	//print_stacks(stack_a, stack_b);
 	
-	//print_stacks(stack_a, stack_b);
-	// d = 0;
-	// while (d < 6)
-	// {
-	// 	radix2(&stack_b, &stack_a, d);
-	// 	d++;
-	// }
-	//print_stacks(stack_a, stack_b);
-	// while (stack_b)
-	// {
-	// 	ft_printf("pa\n");
-	// 	ft_printf("ra\n");
-	// 	push(&stack_b, &stack_a);
-	// 	rotate(&stack_a);
-	// }
-	//print_stacks(stack_a, stack_b);
 	/*
 	// ALGORITHM TURK?
 	if (ft_stacksize(stack_a) <= 3)

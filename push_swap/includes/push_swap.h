@@ -52,8 +52,13 @@ void	set_stack_ordered(t_stack **stack);
 
 // Radix
 void	radix(t_stack **a, t_stack **b, int d);
+void	radix_optimize(t_stack **a, t_stack **b, int d);
+void	radix_gpt(t_stack **a, t_stack **b, int max_bits);
+
 void	radix_bucket(t_stack **a, t_stack **b);
-void	radix2(t_stack **a, t_stack **b, int d);
+void	radix2(t_stack **a, t_stack **b, int d, int pivot);
+void	radix_down(t_stack **src, t_stack **dst, int d, int pivot);
+void	radix_limit(t_stack **src, t_stack **dst, int d, int max, int min);
 void	radix_bucket2(t_stack **a, t_stack **b);
 void	radix_bucket_between(t_stack **a, t_stack **b, int pivot);
 
