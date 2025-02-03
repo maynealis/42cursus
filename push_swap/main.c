@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:42:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/30 15:58:44 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/03 19:15:11 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,26 +128,20 @@ int	main(int argc, char **argv)
 	// radix(&stack_a, &stack_b, 5);
 	// radix(&stack_a, &stack_b, 4);
 
+	
+	// WORKING RADIX SORT
 	int	d = 0;
-	while (d < 5)
+	while (d < 4)
 	{
 		radix(&stack_a, &stack_b, d);
 		d++;
 	}
-
-	// WORKING RADIX SORT
-	// int	d = 0;
-	// while (d < 7)
-	// {
-	// 	radix(&stack_a, &stack_b, d);
-	// 	d++;
-	// }
-	// while (stack_b) //for the radix_opt
-	// {
-	// 	ft_printf("pa\n");
+	//while (stack_b) //for the radix_opt
+	//{
+	//	ft_printf("pa\n");
 	// 	push(&stack_b, &stack_a);
-	// }
-	//print_stacks(stack_a, stack_b);
+	//}
+//	print_stacks(stack_a, stack_b);
 	/*
 	// VARIATION THAT DOESNT REALLY IMPROVE WWITH D < 6
 	//int last = ft_stacklast(stack_a)->number;

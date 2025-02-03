@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:41:09 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/30 15:58:38 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:35:17 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,3 +286,5 @@ void	sort_stack_three(t_stack **stack)
 		reverse_rotate(stack);
 	}
 }
+
+
