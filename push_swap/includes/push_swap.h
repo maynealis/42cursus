@@ -33,6 +33,11 @@ void	free_stack(t_stack **stack);
 // Functions to parse the arguments
 char	is_valid_argument(char *arg, t_stack *a);
 
+// To print for me
+void	print_stacks(t_stack *a, t_stack *b);
+void	print_binary(int num, int width);
+
+
 // Rules
 void	swap(t_stack **stack);
 void	push(t_stack **src, t_stack **dst);
@@ -52,6 +57,12 @@ void	set_stack_ordered(t_stack **stack);
 
 // Radix
 void	radix(t_stack **a, t_stack **b, int d);
+void	radix_opt(t_stack **a, t_stack **b, int d);
+
+void	radix_base4(t_stack **a, t_stack **b, int d);
+void radix_base4_gpt(t_stack **a, t_stack **b, int d);
+
+
 void	radix_optimize(t_stack **a, t_stack **b, int d);
 void	radix_gpt(t_stack **a, t_stack **b, int max_bits);
 

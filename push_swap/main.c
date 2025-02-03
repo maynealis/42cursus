@@ -14,6 +14,7 @@
 #include "ft_printf_bonus.h"
 #include "push_swap.h"
 
+
 char	add_number(t_stack **a, int n)
 {
 	t_stack	*new;
@@ -34,6 +35,7 @@ void	print_stacks(t_stack *a, t_stack *b)
 	{
 		if (a)
 		{
+			//print_binary(a->number, 7);
 			printf("% 11i", a->number);
 			a = a->next;
 		}
@@ -42,6 +44,7 @@ void	print_stacks(t_stack *a, t_stack *b)
 		printf("\t");
 		if (b)
 		{
+			//print_binary(a->number, 7);
 			printf("% 11i", b->number);
 			b = b->next;
 		}
@@ -121,23 +124,29 @@ int	main(int argc, char **argv)
 	*/
 
 	//print_stacks(stack_a, stack_b);
-	
+	// radix(&stack_a, &stack_b, 6);
+	// radix(&stack_a, &stack_b, 5);
+	// radix(&stack_a, &stack_b, 4);
 
-	// WORKING RADIX SORT
 	int	d = 0;
-	while (d < 6)
+	while (d < 5)
 	{
-		//ft_printf("---------------------------------started bit %d\n", d);
 		radix(&stack_a, &stack_b, d);
-		
-
-		// if (is_sorted(stack_a))
-		// 	ft_printf("a is sorted in d %i -----------------------------------\n", d);
-		// if (is_sorted(stack_b))
-		// 	ft_printf("b is sorted in d %i -----------------------------------\n", d);
-
 		d++;
 	}
+
+	// WORKING RADIX SORT
+	// int	d = 0;
+	// while (d < 7)
+	// {
+	// 	radix(&stack_a, &stack_b, d);
+	// 	d++;
+	// }
+	// while (stack_b) //for the radix_opt
+	// {
+	// 	ft_printf("pa\n");
+	// 	push(&stack_b, &stack_a);
+	// }
 	//print_stacks(stack_a, stack_b);
 	/*
 	// VARIATION THAT DOESNT REALLY IMPROVE WWITH D < 6
