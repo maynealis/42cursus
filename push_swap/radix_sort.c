@@ -104,49 +104,64 @@ char	check_bit(t_stack *stack, int bit, int d)
 	return (found); //0
 }
 
-
-
-void	radix_bucket_between(t_stack **a, t_stack **b, int pivot)
+int	ft_numlen(unsigned long n, char *base)
 {
-	int	size_a;
-	int	i;
+	size_t	len_base;
+	int		len;
 
-	size_a = ft_stacksize(*a);
-	i = 0;
-	while (i < size_a) //TODO: and also check if I have to continue..
+	if (n == 0)
+		return (1);
+	len_base = ft_strlen(base);
+	len = 0;
+	while (n != 0)
 	{
-		if ((*a)->number > pivot)
-		{
-			ft_printf("pb\n");
-			push(a, b);
-		}
-		else
-		{
-			ft_printf("ra\n");
-			rotate(a);
-		}
-		i++;
+		n /= len_base;
+		len++;
 	}
-	
-	// int d = 0;
-	// while (d < desp)
-	// {
-	// 	radix2(b, a, d, desp);
-	// 	d++;
-	// }
+	return (len);
 }
 
-void	radix_base4(t_stack **a, t_stack **b, int d)
+char	*ft_itoa_base(int n, char *base)
 {
+	char	*result;
+	size_t	len_base;
+	int		len_n;
+
+	len_base = ft_strlen(base);
+	len_n = ft_numlen(n, base);
+	result = (char *)malloc((len_n + 1) * sizeof(char));
+	if (result == NULL)
+		return (NULL);
+	result[len_n] = '\0';
+	if (n == 0)
+		result[0] = base[0];
+	while (n > 0)
+	{
+		result[--len_n] = base[n % len_base];
+		n /= len_base;
+	}
+	return (result);
+}
+
+void	radix_base3(t_stack **a, t_stack **b, int d)
+{
+	char	*n;
 	int	size_a;
 	int	i;
 
 	size_a = ft_stacksize(*a);
 	i = 0;
-	// pass 0 and 1 to b
 	while (i < size_a)
 	{
-		if (((*a)->number / (1 << (2 * d)) % 4) == 0 || ((*a)->number / (1 << (2 * d)) % 4) == 1)
+		n = ft_itoa_base((*a)->number, "012");
+		if (n[d] == '0')
+		{
+			ft_printf("pb\n");
+			push(a, b);
+			ft_printf("rb\n");
+			rotate(b);
+		}
+		else if (n[d] == '1')
 		{
 			ft_printf("pb\n");
 			push(a, b);
@@ -158,50 +173,15 @@ void	radix_base4(t_stack **a, t_stack **b, int d)
 		}
 		i++;
 	}
-
-	//order 3 and 4
-	size_a = ft_stacksize(*a);
-	i = 0;
-	while (i < size_a)
-	{
-		if (((*a)->number / (1 << (2 * d)) % 4) == 3)
-		{
-			ft_printf("pb\n");
-			push(a, b);
-		}
-		else
-		{
-			ft_printf("ra\n");
-			rotate(a);
-		}
-		i++;
-	}
-	while (((*b)->number / (1 << (2 * d)) % 4) == 3)
+	while (ft_itoa_base((*b)->number, "012")[d] == '1')
 	{
 		ft_printf("pa\n");
 		push(b, a);
 	}
-	//order 0 and 1 
-	int	size_b = ft_stacksize(*b);
-
-	i = 0;
-	while (i < size_b)
+	while (*b)
 	{
-		if (((*a)->number / (1 << (2 * d)) % 4) == 1)
-		{
-			ft_printf("pa\n");
-			push(b, a);
-		}
-		else
-		{
-			ft_printf("rb");
-			rotate(b);
-		}
-		i++;
-	}
-	// put 00 back
-	while  (*b)
-	{
+		ft_printf("rrb\n");
+		reverse_rotate(b);
 		ft_printf("pa\n");
 		push(b, a);
 	}
@@ -266,150 +246,3 @@ void	radix_opt(t_stack **a, t_stack **b, int d) //it has a problem
 		push(b, a);      
 	}
 }
-
-void	radix_optimize(t_stack **a, t_stack **b, int d)
-{
-	int	size_a;
-	int	i;
-
-	size_a = ft_stacksize(*a);
-	i = 0;
-	while (i < size_a)
-	{
-		if (((((*a)->number) >> d) & 1) == 0 && !is_sorted_rows(*a, size_a - i))
-		{
-			ft_printf("pb\n");
-			push(a, b);
-		}
-		else if (((((*a)->number) >> d) & 1) == 1 && are_more_one_in_digit((*a)->next, d))
-		{
-			ft_printf("ra\n");
-			rotate(a);
-		}
-		else
-			ft_printf("");
-		i++;
-	}
-	while (*b && are_more_one_in_digit(*b, d - 1))
-	{
-		if (d > 0 && ((*b)->number >> (d - 1) & 1) == 0)
-		{
-			ft_printf("rb\n");
-			rotate(b);      
-		}
-		ft_printf("pa\n");
-		push(b, a);      
-	}
-}
-
-
-void	radix2(t_stack **src, t_stack **dst, int d, int pivot)
-{
-	int	size_src;
-	int	i;
-
-	size_src = ft_stacksize(*src);
-	i = 0;
-	while (i < size_src)
-	{
-		if (((((*src)->number) >> d) & 1) == 0 && !is_sorted_rows(*src, size_src - i))
-		{
-			ft_printf("pb\n");
-			push(src, dst);
-		}
-		else if (((((*src)->number) >> d) & 1) == 1 && are_more_one_in_digit((*src)->next, d))
-		{
-			ft_printf("ra\n");
-			rotate(src);
-		}
-		else
-			ft_printf("");
-		i++;
-	}
-	while (*dst && (*dst)->number > pivot)
-	{
-		ft_printf("pa\n");
-		push(dst, src);      
-	}
-	//ft_printf("current size of a %i\nand current size of b %i\n", ft_stacksize(*a), ft_stacksize(*b));
-	// while (*dst)
-	// {
-	// 	ft_printf("pa\n");
-	// 	push(dst, src);      
-	// }
-}
-
-void	radix_down(t_stack **src, t_stack **dst, int d, int pivot)
-{
-	int	size_src;
-	int	i;
-
-	size_src = ft_stacksize(*src);
-	i = 0;
-	while (i < size_src)
-	{
-		if (((((*src)->number) >> d) & 1) == 0 && !is_sorted_rows(*src, size_src - i))
-		{
-			ft_printf("pb\n");
-			push(src, dst);
-		}
-		else if (((((*src)->number) >> d) & 1) == 1 && are_more_one_in_digit((*src)->next, d))
-		{
-			ft_printf("ra\n");
-			rotate(src);
-		}
-		else
-			ft_printf("");
-		i++;
-	}
-	while (*dst && (*dst)->number < pivot)
-	{
-		ft_printf("pa\n");
-		push(dst, src);      
-	}
-}
-
-void	radix_limit(t_stack **src, t_stack **dst, int d, int max, int min)
-{
-	int	size_src;
-	int	i;
-	int	count_rotate;
-
-	count_rotate = 0;
-	size_src = ft_stacksize(*src);
-	i = 0;
-	while (i < size_src && (*src)->number < max)
-	{
-		if (((((*src)->number) >> d) & 1) == 0 && !is_sorted_rows(*src, size_src - i))
-		{
-			ft_printf("pb\n");
-			push(src, dst);
-		}
-		else if (((((*src)->number) >> d) & 1) == 1 && are_more_one_in_digit((*src)->next, d))
-		{
-			ft_printf("ra\n");
-			rotate(src);
-			count_rotate++;
-		}
-		else
-			ft_printf("");
-		i++;
-	}
-	while (count_rotate > 0)
-	{
-		ft_printf("rra\n");
-		reverse_rotate(src);
-		count_rotate--;
-	}
-	while (*dst && (*dst)->number > min)
-	{
-		ft_printf("pa\n");
-		push(dst, src);      
-	}
-}
-
-// int main(void)
-// {
-// 	ft_printf("bit menos %i\n", (1 >> 0) & 1);
-// 	print_binary(100, 7);
-// }

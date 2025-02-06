@@ -43,11 +43,17 @@ static char	is_valid_integer(char *arg)
 
 static char	is_not_duplicate(t_stack *a, int n)
 {
-	while (a != NULL)
+	int	size;
+	int	i;
+
+	size = ft_stacksize(a);
+	i = 0;
+	while (i < size)
 	{
-		if (n == a->number)
+		if (n == a->num)
 			return (0);
 		a = a->next;
+		i++;
 	}
 	return (1);
 }

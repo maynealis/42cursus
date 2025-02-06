@@ -171,34 +171,6 @@ int	which_pos_move(t_stack *a, t_stack *b)
 	return (pos);
 }
 
-/*
-// suponiendo que el stack esta ordenado
-int	get_number_of_moves(t_stack *stack, int n)
-{
-	int	moves;
-	int	size;
-//	int	lit;
-//	int	big;
-
-	moves = 0;
-	size = ft_stacksize(stack);
-//	lit = get_smallest_number_stack(stack);
-//	big = get_biggest_number_stack(stack);
-	
-	if (ft_stacklast(stack)->number < n)
-		return (2);
-	while (moves < (size / 2 + (size % 2))) // + 1 per impars?
-	{
-		if (n < stack->number)
-			break ;
-			//return (moves + 1);
-		moves++;
-		stack = stack->next;
-	}
-	return (moves + 1); //minimum 1 push
-}
-*/
-
 int	get_number(t_stack *stack, int pos)
 {
 	int	i;
@@ -285,6 +257,44 @@ void	sort_stack_three(t_stack **stack)
 		ft_printf("rra\n");
 		reverse_rotate(stack);
 	}
+}
+
+
+
+void	divide_three(t_stack **a, t_stack **b)
+{
+	
+
+	int	biggest = get_biggest_number_stack(*a);
+	int	big = get_smallest_number_stack(*a) + (biggest / 3 * 2);
+	int	mid = get_smallest_number_stack(*a) + (biggest / 3);
+	int	i;
+
+
+	i = 0;
+	int	size = ft_stacksize(*a);
+	while(i < size)
+	{
+		if ((*a)->number > big)
+		{
+			ft_printf("ra\n");
+			rotate(a);
+		}
+		else if ((*a)->number > mid)
+		{
+			ft_printf("pb\n");
+			push(a, b);
+		}
+		else
+		{
+			ft_printf("pb\n");
+			push(a, b);
+			ft_printf("rb\n");
+			rotate(b);
+		}
+		i++;
+	}
+	//divide_three(a, b);
 }
 
 

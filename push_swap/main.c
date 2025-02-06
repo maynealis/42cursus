@@ -14,7 +14,6 @@
 #include "ft_printf_bonus.h"
 #include "push_swap.h"
 
-
 char	add_number(t_stack **a, int n)
 {
 	t_stack	*new;
@@ -30,25 +29,33 @@ char	add_number(t_stack **a, int n)
 #include <stdio.h> //TODO: change to my printf
 void	print_stacks(t_stack *a, t_stack *b)
 {
+	int	size_a;
+	int	size_b;
+	int	i;
+
+	size_a = ft_stacksize(a);
+	size_b = ft_stacksize(b);
 	printf("---- a ----\t---- b ----\n");
-	while (a != NULL || b != NULL)
+	i = 0;
+	while (i < size_a || i < size_b)
 	{
-		if (a)
+		if (i < size_a)
 		{
 			//print_binary(a->number, 7);
-			printf("% 11i", a->number);
+			printf("% 11i", a->num);
 			a = a->next;
 		}
 		else
 			printf("           "); //TODO
 		printf("\t");
-		if (b)
+		if (i < size_b)
 		{
 			//print_binary(a->number, 7);
-			printf("% 11i", b->number);
+			printf("% 11i", b->num);
 			b = b->next;
 		}
 		printf("\n");
+		i++;
 	}
 	printf("--------------------------\n");
 }
@@ -56,10 +63,13 @@ void	print_stacks(t_stack *a, t_stack *b)
 char	print_error_message_and_clean(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_putendl_fd("Error", 2);
-	free_stack(stack_a);
-	free_stack(stack_b);
+	ft_stackfree(stack_a);
+	ft_stackfree(stack_b);
 	return (1);
 }
+
+
+
 
 int	main(int argc, char **argv)
 {
@@ -81,146 +91,58 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	//print_stacks(stack_a, stack_b);
-	/*
-	// WORST???
-	// pass first bucket
-	radix_bucket_between(&stack_a, &stack_b, 63);
 
-	// order 64-100 in b
-	int	d = 0;
-	while (d < 6)
-	{
-		radix2(&stack_b, &stack_a, d, 63);
-		d++;
-	}
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
 
-	// pass second bucket
-	radix_bucket_between(&stack_a, &stack_b, 31);
-
-	// order 00-31 in a
-	d = 0;
-	while (d < 5)
-	{
-		radix_down(&stack_a, &stack_b, d, 32);
-		d++;
-	}
-
-	// order the middle
-	d = 0;
-	while (d < 5)
-	{
-		radix_limit(&stack_b, &stack_a, d, 64, 31);
-		d++;
-	}
-
-	// return to a
-	while (stack_b)
-	{
-		ft_printf("pa\n");
-		push(&stack_b, &stack_a);
-		ft_printf("ra\n");
-		rotate(&stack_a);
-	}
-	*/
-
-	//print_stacks(stack_a, stack_b);
-	// radix(&stack_a, &stack_b, 6);
-	// radix(&stack_a, &stack_b, 5);
-	// radix(&stack_a, &stack_b, 4);
-
+	sort_three_desc(&stack_b);
 	
-	// WORKING RADIX SORT
-	int	d = 0;
-	while (d < 4)
-	{
-		radix(&stack_a, &stack_b, d);
-		d++;
-	}
-	//while (stack_b) //for the radix_opt
-	//{
-	//	ft_printf("pa\n");
-	// 	push(&stack_b, &stack_a);
-	//}
-//	print_stacks(stack_a, stack_b);
-	/*
-	// VARIATION THAT DOESNT REALLY IMPROVE WWITH D < 6
-	//int last = ft_stacklast(stack_a)->number;
-	while (!is_sorted(stack_a))
-	{
-		if (stack_a->number > ft_stacklast(stack_a)->number)
-		{
-			ft_printf("ra\n");
-			rotate(&stack_a);
-		}
-		else
-		{
-			ft_printf("pb\n");
-			push(&stack_a, &stack_b);
-		}
-	}
-	while (stack_b)
-	{
-		ft_printf("pa\n");
-		push(&stack_b, &stack_a);
-	}
-	*/
-	//print_stacks(stack_a, stack_b);
-	
-	/*
-	// ALGORITHM TURK?
-	if (ft_stacksize(stack_a) <= 3)
-	{
-		sort_stack_three(&stack_a);
-		print_stacks(stack_a, stack_b);
-
-		return (0);
-	}
-	else if (ft_stacksize(stack_a) <= 6)
-	{
-		ft_printf("pb\n");
-		ft_printf("pb\n");
-		ft_printf("pb\n");
-		push(&stack_a, &stack_b);
-		push(&stack_a, &stack_b);
-		push(&stack_a, &stack_b);
-		sort_stack_three(&stack_a);
-		sort_stack_three(&stack_b);
-		while (ft_stacksize(stack_b) > 0)
-			insert_number(&stack_b, &stack_a);
-		set_stack_ordered(&stack_a);
-		print_stacks(stack_a, stack_b);
-		
-		return (0);
-	}
-
-	ft_printf("pb\n");
-	ft_printf("pb\n");
-	ft_printf("pb\n");
-	push(&stack_a, &stack_b);
-	push(&stack_a, &stack_b);
-	push(&stack_a, &stack_b);
-	sort_stack_three(&stack_b);
-
 	//print_stacks(stack_a, stack_b);
 
 	while (ft_stacksize(stack_a) > 3)
 	{
-		insert_number(&stack_a, &stack_b);
+		t_seq	seq = get_best_move(stack_a, stack_b);
+		//ft_printf("number of moves %i\n", seq.moves);
+		//ft_printf("number to move %i\n", seq.number);
+		
+		aply_seq(&stack_a, &stack_b, seq);
 		//print_stacks(stack_a, stack_b);
 	}
-	sort_stack_three(&stack_a);
+
+	sort_three_asc(&stack_a);
+	get_min_on_top(&stack_a, 'a');
+
+	get_max_on_top(&stack_b, 'b');
 	//print_stacks(stack_a, stack_b);
-	while (ft_stacksize(stack_b) > 0)
+	while (stack_b)
 	{
-		insert_number(&stack_b, &stack_a);
-	//	print_stacks(stack_a, stack_b);
+		if ((stack_a->prev->num < stack_a->num && stack_b->num < stack_a->num && stack_b->num > stack_a->prev->num)
+			|| (stack_a->prev->num > stack_a->num && (stack_b->num < stack_a->num || stack_b->num > stack_a->prev->num)))
+		{
+			ft_printf("pa\n");
+			push(&stack_b, &stack_a);
+		}
+		else
+		{
+			ft_printf("rra\n");
+			reverse_rotate(&stack_a);
+		}
 	}
-	set_stack_ordered(&stack_a);
 	//print_stacks(stack_a, stack_b);
+	//get_min_on_top(&stack_a, 'a');
+	print_stacks(stack_a, stack_b);
+	/*
+	// WORKING RADIX SORT
+	int	d = 0;
+	while (d < 7)
+	{
+		radix(&stack_a, &stack_b, d);
+		d++;
+	}
 	*/
 
-
-	free_stack(&stack_a);
-	free_stack(&stack_b);
+	ft_stackfree(&stack_a);
+	ft_stackfree(&stack_b);
 	return (0);
 }

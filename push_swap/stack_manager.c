@@ -1,16 +1,24 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   stack_manager.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 11:16:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/30 13:00:44 by cmayne-p         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include <stdio.h> //TODO printf
+#include "push_swap.h"
 
-#include "push_swap.h" //for the structure
+int	ft_stacksize(t_stack *stack)
+{
+	t_stack	*first;
+	int		size;
+
+	if (!stack)
+		return (0);
+	first = stack;
+	size = 1;
+	while (stack)
+	{
+		stack = stack->next;
+		if (stack == first)
+			break ;
+		size++;
+	}
+	return (size);
+}
 
 t_stack	*ft_stacknew(int number)
 {
@@ -19,67 +27,113 @@ t_stack	*ft_stacknew(int number)
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (new == NULL)
 		return (NULL);
-	new->number = number;
+	new->num = number;
 	new->next = NULL;
+	new->prev = NULL;
 	return (new);
-}
-
-t_stack	*ft_stacklast(t_stack *stack)
-{
-	if (stack == NULL)
-		return (NULL);
-	while (stack->next != NULL)
-		stack = stack->next;
-	return (stack);
 }
 
 void	ft_stackadd_back(t_stack **stack, t_stack *new)
 {
-	t_stack	*last;
+	t_stack *first;
+	t_stack *last;
 
-	if (stack == NULL)
+	if (!stack || !new)
 		return ;
-	if (*stack == NULL)
+	if (!*stack)
 	{
 		*stack = new;
+		new->next = new;
+		new->prev = new;
 		return ;
 	}
-	last = ft_stacklast(*stack);
+	first = *stack;
+	last = first->prev;
 	last->next = new;
+	first->prev = new;
+	new->next = first;
+	new->prev = last; 
 }
 
 void	ft_stackadd_front(t_stack **stack, t_stack *new)
 {
-	if (stack == NULL)
+	t_stack *first;
+	t_stack *last;
+
+	if (!stack || !new)
 		return ;
-	new->next = *stack;
+	if (!*stack)
+	{
+		*stack = new;
+		new->next = new;
+		new->prev = new;
+		return ;
+	}
+	first = *stack;
+	last = first->prev;
+	new->next = first;
+	new->prev = last;
+	first->prev = new;
+	last->next = new;
 	*stack = new;
 }
 
-int	ft_stacksize(t_stack *stack)
+t_stack	*ft_stackremove_front(t_stack **stack)
 {
-	int	size;
-
-	size = 0;
-	while (stack != NULL)
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*last;
+	
+	if(!stack || !*stack)
+		return (NULL);
+	first = *stack;
+	second = first->next;
+	last = first->prev;
+	first->next = NULL;
+	first->prev = NULL;
+	if (second == first)
 	{
-		size++;
-		stack = stack->next;
+		*stack = NULL;
+		return (first);
 	}
-	return (size);
+	second->prev = last;
+	last->next = second;
+	*stack = second;
+	return (first);
 }
 
-void	free_stack(t_stack **stack)
+//TODO: revisar esto
+void	ft_stackfree(t_stack **stack)
 {
-	t_stack	*current;
+	t_stack	*next;
+	int		size;
+	int		i;
 
-	if (stack == NULL)
+	if (!stack)
 		return ;
-	while (*stack != NULL)
+	size = ft_stacksize(*stack);
+	i = 0;
+	while (i < size)
 	{
-		current = *stack;
-		*stack = (*stack)->next;
-		current->next = NULL;
-		free(current);
+		next = (*stack)->next;
+		free(*stack);
+		*stack = next;
+		i++;
 	}
+	*stack = NULL;
 }
+
+// TODO borrar
+// void	print_stack(t_stack *stack)
+// {
+// 	t_stack *first;
+
+// 	first = stack;
+// 	while (stack)
+// 	{
+// 		printf("%i\n", stack->num);
+// 		stack = stack->next;
+// 		if (stack == first)
+// 			break ;
+// 	}
+// }

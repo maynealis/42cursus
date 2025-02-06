@@ -24,7 +24,7 @@ PRINTF = $(PRINTF_DIR)/libftprintf.a
 
 INCLUDES = $(INCLUDES_DIR)/libft.h $(INCLUDES_DIR)/ft_printf.h $(INCLUDES_DIR)/ft_printf_bonus.h
 
-SRCS = main.c stack_manager.c parse_arguments.c rules.c algorithm.c radix_sort.c
+SRCS = main.c parse_arguments.c stack_manager.c rules.c turk.c #algorithm.c radix_sort.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
