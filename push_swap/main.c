@@ -95,6 +95,9 @@ int	main(int argc, char **argv)
 	push(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
+	ft_printf("pb\n");
+	ft_printf("pb\n");
+	ft_printf("pb\n");
 
 	sort_three_desc(&stack_b);
 	

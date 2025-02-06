@@ -236,21 +236,23 @@ int	moves_with_rotate(int n, t_stack *stack)
 		if (stack->prev->num < stack->num && (n > stack->num || n < stack->prev->num))
 		{
 			//push
-			moves += 1;
+			//moves += 1;
 			break ;
 		}
 		else if (stack->prev->num > stack->num && n > stack->num && n < stack->prev->num)
 		{
 			//push
-			moves += 1;
+			//moves += 1;
 			break ;
 		}
 		else
 		{
 			//rotate
 			rotate(&stack);
+			//stack = stack->next;
 			moves+=1;
 		}
+		i++;
 	}
 	return (moves);
 }
@@ -269,20 +271,22 @@ int	moves_with_reverse_rotate(int n, t_stack *stack)
 		if (stack->prev->num < stack->num && (n > stack->num || n < stack->prev->num))
 		{
 			//push
-			moves += 1;
+			//moves += 1;
 			break ;
 		}
 		else if (stack->prev->num > stack->num && n > stack->num && n < stack->prev->num)
 		{
 			//push
-			moves += 1;
+			//moves += 1;
 			break ;
 		}
 		else
 		{
 			reverse_rotate(&stack);
+			//stack = stack->prev;
 			moves += 1;
 		}
+		i++;
 	}
 	return (moves);
 }
@@ -317,25 +321,30 @@ t_seq	get_min_moves_r_r(t_stack *stack_a, t_stack *stack_b)
 	size_b = ft_stacksize(stack_b);
 	moves_b = moves_with_rotate(stack_a->num, stack_b);
 	moves_a = i;
+	seq.moves = moves_b;
 	seq.number = stack_a->num;
 	while (i < size_a && i < size_b)
 	{
-		if(moves_with_rotate(stack_a->num, stack_b) < moves_b)
+		if(moves_with_rotate(stack_a->num, stack_b) < seq.moves && i < seq.moves)
 		{
 			moves_b = moves_with_rotate(stack_a->num, stack_b);
 			moves_a = i;
 			seq.number = stack_a->num;
+			if (moves_b >= moves_a)
+				seq.moves = moves_b;
+			else
+				seq.moves = moves_a;
 		}
 		if (i >= size_a)
 			break ;
 		stack_a = stack_a->next;
 		i++;
 	}
-	if (moves_b >= moves_a + 1)
+	if (moves_b >= moves_a)
 		seq.moves = moves_b;
 	else
-		seq.moves = moves_a + 1;
-	seq.rb = moves_b - 1;
+		seq.moves = moves_a;
+	seq.rb = moves_b;
 	seq.ra = moves_a;
 	seq.pb = 1;
 	return (seq);
@@ -356,14 +365,16 @@ t_seq	get_min_moves_r_rr(t_stack *stack_a, t_stack *stack_b)
 	size_b = ft_stacksize(stack_b);
 	moves_b = moves_with_reverse_rotate(stack_a->num, stack_b);
 	moves_a = i;
+	seq.moves = moves_a + moves_b;
 	seq.number = stack_a->num;
 	while (i < size_a && i < size_b)
 	{
-		if(moves_with_reverse_rotate(stack_a->num, stack_b) < moves_b)
+		if(moves_with_reverse_rotate(stack_a->num, stack_b) + i < seq.moves)
 		{
 			moves_b = moves_with_reverse_rotate(stack_a->num, stack_b);
 			moves_a = i;
 			seq.number = stack_a->num;
+			seq.moves = moves_a + moves_b;
 		}
 		if (i >= size_a)
 			break ;
@@ -371,7 +382,7 @@ t_seq	get_min_moves_r_rr(t_stack *stack_a, t_stack *stack_b)
 		i++;
 	}
 	seq.moves = moves_b + moves_a;
-	seq.rrb = moves_b - 1;
+	seq.rrb = moves_b;
 	seq.ra = moves_a;
 	seq.pb = 1;
 	return (seq);
@@ -392,14 +403,16 @@ t_seq	get_min_moves_rr_r(t_stack *stack_a, t_stack *stack_b)
 	size_b = ft_stacksize(stack_b);
 	moves_b = moves_with_rotate(stack_a->num, stack_b);
 	moves_a = i;
+	seq.moves = moves_a + moves_b;
 	seq.number = stack_a->num;
 	while (i < size_a && i < size_b)
 	{
-		if(moves_with_rotate(stack_a->num, stack_b) < moves_b)
+		if(moves_with_rotate(stack_a->num, stack_b) + i < seq.moves)
 		{
 			moves_b = moves_with_rotate(stack_a->num, stack_b);
 			moves_a = i;
 			seq.number = stack_a->num;
+			seq.moves = moves_a + moves_b;
 		}
 		if (i >= size_a)
 			break ;
@@ -407,7 +420,7 @@ t_seq	get_min_moves_rr_r(t_stack *stack_a, t_stack *stack_b)
 		i++;
 	}
 	seq.moves = moves_b + moves_a;
-	seq.rb = moves_b - 1;
+	seq.rb = moves_b;
 	seq.pb = 1;
 	seq.rra = moves_a;
 	return (seq);
@@ -428,26 +441,31 @@ t_seq	get_min_moves_rr_rr(t_stack *stack_a, t_stack *stack_b)
 	size_b = ft_stacksize(stack_b);
 	moves_b = moves_with_reverse_rotate(stack_a->num, stack_b);
 	moves_a = i;
+	seq.moves = moves_b;
 	seq.number = stack_a->num;
 	while (i < size_a && i < size_b)
 	{
-		if(moves_with_reverse_rotate(stack_a->num, stack_b) < moves_b)
+		if(moves_with_reverse_rotate(stack_a->num, stack_b) < seq.moves && i < seq.moves)
 		{
 			moves_b = moves_with_reverse_rotate(stack_a->num, stack_b);
 			moves_a = i;
 			seq.number = stack_a->num;
+			if (moves_b >= moves_a)
+				seq.moves = moves_b;
+			else
+				seq.moves = moves_a;
 		}
 		if (i >= size_a)
 			break ;
 		stack_a = stack_a->prev;
 		i++;
 	}
-	if (moves_b >= moves_a + 1)
+	if (moves_b >= moves_a)
 		seq.moves = moves_b;
 	else
-		seq.moves = moves_a + 1;
+		seq.moves = moves_a;
 	seq.pb = 1;
-	seq.rrb = moves_b - 1;
+	seq.rrb = moves_b;
 	seq.rra = moves_a;
 	return (seq);
 }
