@@ -20,6 +20,9 @@
 	- void reverse\_rotate(t_stack **stack)
 	
 	
+	
+[Generator random numbers](https://numbergenerator.org/randomnumbergenerator#!numbers=500&low=-2147483648&high=2147483647&unique=true&csv=&oddeven=&oddqty=0&sorted=false&addfilters=)
+	
 ## References
 [First idea](https://m4nnb3ll.medium.com/my-journey-to-find-a-good-sorting-algorithm-for-the-push-swap-42-project-4a18bc38b474)
 

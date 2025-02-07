@@ -1,4 +1,15 @@
-#include <stdio.h> //TODO printf
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_manager.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/07 11:52:50 by cmayne-p          #+#    #+#             */
+/*   Updated: 2025/02/07 12:25:39 by cmayne-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	ft_stacksize(t_stack *stack)
@@ -35,8 +46,8 @@ t_stack	*ft_stacknew(int number)
 
 void	ft_stackadd_back(t_stack **stack, t_stack *new)
 {
-	t_stack *first;
-	t_stack *last;
+	t_stack	*first;
+	t_stack	*last;
 
 	if (!stack || !new)
 		return ;
@@ -52,13 +63,13 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 	last->next = new;
 	first->prev = new;
 	new->next = first;
-	new->prev = last; 
+	new->prev = last;
 }
 
 void	ft_stackadd_front(t_stack **stack, t_stack *new)
 {
-	t_stack *first;
-	t_stack *last;
+	t_stack	*first;
+	t_stack	*last;
 
 	if (!stack || !new)
 		return ;
@@ -83,8 +94,8 @@ t_stack	*ft_stackremove_front(t_stack **stack)
 	t_stack	*first;
 	t_stack	*second;
 	t_stack	*last;
-	
-	if(!stack || !*stack)
+
+	if (!stack || !*stack)
 		return (NULL);
 	first = *stack;
 	second = first->next;
@@ -122,18 +133,3 @@ void	ft_stackfree(t_stack **stack)
 	}
 	*stack = NULL;
 }
-
-// TODO borrar
-// void	print_stack(t_stack *stack)
-// {
-// 	t_stack *first;
-
-// 	first = stack;
-// 	while (stack)
-// 	{
-// 		printf("%i\n", stack->num);
-// 		stack = stack->next;
-// 		if (stack == first)
-// 			break ;
-// 	}
-// }

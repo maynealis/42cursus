@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:04:48 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/03 13:04:17 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:55:59 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ void	push(t_stack **src, t_stack **dst);
 void	rotate(t_stack **stack);
 void	reverse_rotate(t_stack **stack);
 void	swap(t_stack **stack);
+void	push_print(t_stack **src, t_stack **dst, char letter);
+void	rotate_print(t_stack **stack, char letter);
+void	reverse_rotate_print(t_stack **stack, char letter);
+void	swap_print(t_stack **stack, char letter);
+
+
 
 // Algorithm basics
 void	sort_three_desc(t_stack **stack);

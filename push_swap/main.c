@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:42:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/03 19:15:11 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:29:05 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,15 @@ int	main(int argc, char **argv)
 			return (print_error_message_and_clean(&stack_a, &stack_b));
 		i++;
 	}
+
+	//print_stacks(stack_a, stack_b);
+	//get_max_on_top(&stack_a, 'a');
+	
+
 	//print_stacks(stack_a, stack_b);
 
+	
+	// ALGORITHM DONE
 	push(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
@@ -100,24 +107,17 @@ int	main(int argc, char **argv)
 	ft_printf("pb\n");
 
 	sort_three_desc(&stack_b);
-	
-	//print_stacks(stack_a, stack_b);
 
 	while (ft_stacksize(stack_a) > 3)
 	{
 		t_seq	seq = get_best_move(stack_a, stack_b);
-		//ft_printf("number of moves %i\n", seq.moves);
-		//ft_printf("number to move %i\n", seq.number);
-		
 		aply_seq(&stack_a, &stack_b, seq);
-		//print_stacks(stack_a, stack_b);
 	}
 
 	sort_three_asc(&stack_a);
 	get_min_on_top(&stack_a, 'a');
 
 	get_max_on_top(&stack_b, 'b');
-	//print_stacks(stack_a, stack_b);
 	while (stack_b)
 	{
 		if ((stack_a->prev->num < stack_a->num && stack_b->num < stack_a->num && stack_b->num > stack_a->prev->num)
@@ -133,8 +133,8 @@ int	main(int argc, char **argv)
 		}
 	}
 	//print_stacks(stack_a, stack_b);
-	//get_min_on_top(&stack_a, 'a');
-	print_stacks(stack_a, stack_b);
+	
+
 	/*
 	// WORKING RADIX SORT
 	int	d = 0;

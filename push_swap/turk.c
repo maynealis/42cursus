@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:30:29 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/03 18:02:24 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:54:32 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	get_pos_max_num(t_stack *stack)
 	first = stack;
 	max = first->num;
 	pos = 0;
-	i = 0;
+	i = 1;
 	while (stack)
 	{
 		stack = stack->next;
@@ -85,7 +85,7 @@ int	get_pos_min_num(t_stack *stack)
 	first = stack;
 	min = first->num;
 	pos = 0;
-	i = 0;
+	i = 1;
 	while (stack)
 	{
 		stack = stack->next;
@@ -170,10 +170,12 @@ void	get_max_on_top(t_stack **stack, char stack_letter)
 
 	pos = get_pos_max_num(*stack);
 	size = ft_stacksize(*stack);
+	if (pos == 0)
+		return ;
 	if (pos <= (size / 2))
 	{
 		i = 0;
-		while (i <= pos)
+		while (i < pos)
 		{
 			ft_printf("r%c\n", stack_letter);
 			rotate(stack); 
@@ -182,11 +184,11 @@ void	get_max_on_top(t_stack **stack, char stack_letter)
 	}
 	else
 	{
-		i = size - 1;
+		i = size;
 		while (i > pos)
 		{
-			ft_printf("rrb\n");
 			ft_printf("rr%c\n", stack_letter);
+			reverse_rotate(stack);
 			i--;
 		}
 	}
@@ -199,11 +201,13 @@ void	get_min_on_top(t_stack **stack, char stack_letter)
 	int	i;
 
 	pos = get_pos_min_num(*stack);
+	if (pos == 0)
+		return ;
 	size = ft_stacksize(*stack);
 	if (pos <= (size / 2))
 	{
 		i = 0;
-		while (i < pos + 1)
+		while (i < pos)
 		{
 			ft_printf("r%c\n", stack_letter);
 			rotate(stack); 
@@ -212,7 +216,7 @@ void	get_min_on_top(t_stack **stack, char stack_letter)
 	}
 	else
 	{
-		i = size - 1;
+		i = size;
 		while (i > pos)
 		{
 			ft_printf("rr%c\n", stack_letter);
@@ -309,6 +313,52 @@ t_seq	init_seq(void)
 t_seq	get_min_moves_r_r(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
+	//int	size_a;
+	//int	size_b;
+	//int	moves_b;
+	//int	moves_a;
+	t_seq	seq;
+
+	seq = init_seq();
+	i = 0;
+	//size_a = ft_stacksize(stack_a);
+	//size_b = ft_stacksize(stack_b);
+	//moves_b = moves_with_rotate(stack_a->num, stack_b);
+	//moves_a = i;
+	seq.moves = moves_with_rotate(stack_a->num, stack_b);
+	//seq.number = stack_a->num;
+	while (i < ft_stacksize(stack_a) && i < ft_stacksize(stack_b))
+	{
+		if(moves_with_rotate(stack_a->num, stack_b) < seq.moves 
+		&& i < seq.moves)
+		{
+			seq.rb = moves_with_rotate(stack_a->num, stack_b);
+			seq.ra = i;
+			//seq.number = stack_a->num;
+			if (seq.rb >= seq.ra)
+				seq.moves = seq.rb;
+			else
+				seq.moves = seq.ra;
+		}
+		if (i >= ft_stacksize(stack_a))
+			break ;
+		stack_a = stack_a->next;
+		i++;
+	}
+	//if (moves_b >= moves_a)
+	//	seq.moves = moves_b;
+	//else
+	//	seq.moves = moves_a;
+	//seq.rb = moves_b;
+	//seq.ra = moves_a;
+	seq.pb = 1;
+	return (seq);
+}
+
+/*
+t_seq	get_min_moves_r_r(t_stack *stack_a, t_stack *stack_b)
+{
+	int	i;
 	int	size_a;
 	int	size_b;
 	int	moves_b;
@@ -349,7 +399,7 @@ t_seq	get_min_moves_r_r(t_stack *stack_a, t_stack *stack_b)
 	seq.pb = 1;
 	return (seq);
 }
-
+*/
 t_seq	get_min_moves_r_rr(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
