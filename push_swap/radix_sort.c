@@ -3,7 +3,7 @@
 
 #include <math.h>
 
-// width is the number of bits to represent. I think the maximum for a int is 32?
+// width is the num of bits to represent. I think the maximum for a int is 32?
 void	print_binary(int num, int width)
 {
 	int	bit;
@@ -22,7 +22,7 @@ char	are_more_one_in_digit(t_stack *stack, int d)
 {
 	while (stack)
 	{
-		if (((stack->number >> d) & 1) == 1)
+		if (((stack->num >> d) & 1) == 1)
 			return (1);
 		stack = stack->next;
 	}
@@ -33,7 +33,7 @@ char	are_more_one_in_digit_limit(t_stack *stack, int d, int max_rows)
 {
 	while (stack && --max_rows >= 0)
 	{
-		if (((stack->number >> d) & 1) == 1)
+		if (((stack->num >> d) & 1) == 1)
 			return (1);
 		stack = stack->next;
 	}
@@ -44,7 +44,7 @@ char	are_more_zero_in_digit(t_stack *stack, int d)
 {
 	while (stack)
 	{
-		if (((stack->number >> d) & 1) == 0)
+		if (((stack->num >> d) & 1) == 0)
 			return (1);
 		stack = stack->next;
 	}
@@ -55,7 +55,7 @@ char	are_only_zero_left_in_bit(t_stack *stack, int d, int max_rows)
 {
 	while (stack && --max_rows >= 0)
 	{
-		if (((stack->number >> d) & 1) == 1)
+		if (((stack->num >> d) & 1) == 1)
 			return (0);
 		stack = stack->next;
 	}
@@ -69,7 +69,7 @@ int	pos_next_one(t_stack *stack, int d)
 	pos = 0;
 	while (stack)
 	{
-		if (((stack->number >> d) & 1) == 1)
+		if (((stack->num >> d) & 1) == 1)
 			return (pos);
 		pos++;
 		stack = stack->next;
@@ -84,7 +84,7 @@ char	check_bit(t_stack *stack, int bit, int d)
 	found = 0;
 	while (stack)
 	{
-		if (((stack->number >> d) & 1) == bit)
+		if (((stack->num >> d) & 1) == bit)
 		{
 			found = 1;
 			break ;
@@ -95,7 +95,7 @@ char	check_bit(t_stack *stack, int bit, int d)
 	{
 		while (stack)
 		{
-			if (((stack->number >> d) & 1) != bit)
+			if (((stack->num >> d) & 1) != bit)
 				return (1);
 			stack = stack->next;
 		}
@@ -142,7 +142,7 @@ char	*ft_itoa_base(int n, char *base)
 	}
 	return (result);
 }
-
+/*
 void	radix_base3(t_stack **a, t_stack **b, int d)
 {
 	char	*n;
@@ -153,7 +153,7 @@ void	radix_base3(t_stack **a, t_stack **b, int d)
 	i = 0;
 	while (i < size_a)
 	{
-		n = ft_itoa_base((*a)->number, "012");
+		n = ft_itoa_base((*a)->num, "012");
 		if (n[d] == '0')
 		{
 			ft_printf("pb\n");
@@ -173,7 +173,7 @@ void	radix_base3(t_stack **a, t_stack **b, int d)
 		}
 		i++;
 	}
-	while (ft_itoa_base((*b)->number, "012")[d] == '1')
+	while (ft_itoa_base((*b)->num, "012")[d] == '1')
 	{
 		ft_printf("pa\n");
 		push(b, a);
@@ -186,7 +186,7 @@ void	radix_base3(t_stack **a, t_stack **b, int d)
 		push(b, a);
 	}
 }
-
+*/
 void	radix(t_stack **a, t_stack **b, int d)
 {
 	int	size_a;
@@ -196,12 +196,12 @@ void	radix(t_stack **a, t_stack **b, int d)
 	i = 0;
 	while (i < size_a)
 	{
-		if (((((*a)->number) >> d) & 1) == 0 && !is_sorted_rows(*a, size_a - i))
+		if (((((*a)->num) >> d) & 1) == 0)// && !is_sorted_rows(*a, size_a - i))
 		{
 			ft_printf("pb\n");
 			push(a, b);
 		}
-		else if (((((*a)->number) >> d) & 1) == 1 && are_more_one_in_digit((*a)->next, d))
+		else if (((((*a)->num) >> d) & 1) == 1 && are_more_one_in_digit((*a)->next, d))
 		{
 			ft_printf("ra\n");
 			rotate(a);
@@ -216,7 +216,7 @@ void	radix(t_stack **a, t_stack **b, int d)
 		push(b, a);      
 	}
 }
-
+/*
 void	radix_opt(t_stack **a, t_stack **b, int d) //it has a problem
 {
 	int	size_a;
@@ -226,12 +226,12 @@ void	radix_opt(t_stack **a, t_stack **b, int d) //it has a problem
 	i = 0;
 	while (i < size_a)
 	{
-		if (((((*a)->number) >> d) & 1) == 0 && check_bit(*a, 1, d)) // && !are_only_zero_left_in_bit(*a, d, size_a - rotations))
+		if (((((*a)->num) >> d) & 1) == 0 && check_bit(*a, 1, d)) // && !are_only_zero_left_in_bit(*a, d, size_a - rotations))
 		{
 			ft_printf("pb\n");
 			push(a, b);
 		}
-		else if (((((*a)->number) >> d) & 1) == 1 && check_bit(*a, 0, d))
+		else if (((((*a)->num) >> d) & 1) == 1 && check_bit(*a, 0, d))
 		{
 			ft_printf("ra\n");
 			rotate(a);
@@ -246,3 +246,4 @@ void	radix_opt(t_stack **a, t_stack **b, int d) //it has a problem
 		push(b, a);      
 	}
 }
+*/

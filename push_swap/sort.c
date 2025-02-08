@@ -6,11 +6,12 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 12:48:33 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/07 13:36:01 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/08 12:16:41 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf_bonus.h"
 
 void	sort_three_desc(t_stack **stack, char stack_letter)
 {

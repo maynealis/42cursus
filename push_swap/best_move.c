@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:54:01 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/07 18:13:42 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/08 15:05:16 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_seq	get_min_moves_r_rr(t_stack *stack_a, t_stack *stack_b)
 	seq.moves = seq.rrb;
 	while (i < ft_stacksize(stack_a) && i < ft_stacksize(stack_b))
 	{
-		if (moves_with_rr(stack_a->num, stack_b) < seq.moves && i < seq.moves)
+		if (moves_with_rr(stack_a->num, stack_b) + i < seq.moves)
 		{
 			seq.rrb = moves_with_rr(stack_a->num, stack_b);
 			seq.ra = i;
@@ -78,7 +78,7 @@ t_seq	get_min_moves_rr_r(t_stack *stack_a, t_stack *stack_b)
 	seq.moves = seq.rb;
 	while (i < ft_stacksize(stack_a) && i < ft_stacksize(stack_b))
 	{
-		if (moves_with_r(stack_a->num, stack_b) < seq.moves && i < seq.moves)
+		if (moves_with_r(stack_a->num, stack_b) + i < seq.moves)
 		{
 			seq.rb = moves_with_r(stack_a->num, stack_b);
 			seq.rra = i;

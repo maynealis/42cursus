@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:42:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/07 15:29:05 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:51:29 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	main(int argc, char **argv)
 
 	//print_stacks(stack_a, stack_b);
 
-	
+
 	// ALGORITHM DONE
 	push(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
@@ -106,18 +106,21 @@ int	main(int argc, char **argv)
 	ft_printf("pb\n");
 	ft_printf("pb\n");
 
-	sort_three_desc(&stack_b);
+	sort_three_desc(&stack_b, 'b');
 
 	while (ft_stacksize(stack_a) > 3)
 	{
 		t_seq	seq = get_best_move(stack_a, stack_b);
+		seq = opt_seq(seq);
 		aply_seq(&stack_a, &stack_b, seq);
+		//print_stacks(stack_a, stack_b);
 	}
 
-	sort_three_asc(&stack_a);
+	sort_three_asc(&stack_a, 'a');
 	get_min_on_top(&stack_a, 'a');
 
 	get_max_on_top(&stack_b, 'b');
+	//print_stacks(stack_a, stack_b);
 	while (stack_b)
 	{
 		if ((stack_a->prev->num < stack_a->num && stack_b->num < stack_a->num && stack_b->num > stack_a->prev->num)
@@ -135,15 +138,16 @@ int	main(int argc, char **argv)
 	//print_stacks(stack_a, stack_b);
 	
 
-	/*
+/*	
 	// WORKING RADIX SORT
 	int	d = 0;
-	while (d < 7)
+	while (d < 9)
 	{
 		radix(&stack_a, &stack_b, d);
 		d++;
 	}
-	*/
+*/	
+	//print_stacks(stack_a, stack_b);
 
 	ft_stackfree(&stack_a);
 	ft_stackfree(&stack_b);

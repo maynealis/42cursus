@@ -6,11 +6,12 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:14:16 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/07 19:00:24 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:50:31 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf_bonus.h"
 
 t_seq	init_seq(void)
 {
@@ -19,33 +20,74 @@ t_seq	init_seq(void)
 	seq.moves = 0;
 	seq.rb = 0;
 	seq.ra = 0;
+	seq.rr = 0;
 	seq.pb = 0;
 	seq.pa = 0;
 	seq.rra = 0;
 	seq.rrb = 0;
+	seq.rrr = 0;
+	seq.sa = 0;
+	seq.sb = 0;
 	seq.number = -1; 
 	return (seq);
 }
 
 t_seq	opt_seq(t_seq seq)
 {
-	int	i;
-
 	if (seq.rb > 0 && seq.ra > 0)
 	{
-		i = 0;
-		while (i < seq.moves)
+		while (seq.ra > 0 && seq.rb > 0)
 		{
-			// TODO
-			i++;
+			seq.rr ++;
+			seq.ra--;
+			seq.rb--;
 		}
 	}
+	if (seq.rrb > 0 && seq.rra > 0) //TODO if is not necessary
+	{
+		while (seq.rra > 0 && seq.rrb > 0)
+		{
+			seq.rrr++;
+			seq.rra--;
+			seq.rrb--;
+		}
+	}
+	return (seq);
 }
 
 void	aply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move)
 {
-	int	i;
-
+	//int	i;
+	while (best_move.rrr-- > 0)
+	{
+		reverse_rotate(stack_a);
+		reverse_rotate(stack_b);
+		ft_printf("rrr\n");
+	}
+	while (best_move.rr-- > 0)
+	{
+		rotate(stack_a);
+		rotate(stack_b);
+		ft_printf("rr\n");
+	}
+	while (best_move.ra-- > 0)
+		rotate_print(stack_a, 'a');
+	while (best_move.rb-- > 0)
+		rotate_print(stack_b, 'b');
+	while (best_move.rra-- > 0)
+		reverse_rotate_print(stack_a, 'a');
+	while (best_move.rrb-- > 0)
+		reverse_rotate_print(stack_b, 'b');
+	if (best_move.sa)
+		swap_print(stack_a, 'a');
+	if (best_move.sb)
+		swap_print(stack_b, 'b');
+	if (best_move.pa)
+		push_print(stack_b, stack_a, 'a');
+	if (best_move.pb)
+		push_print(stack_a, stack_b, 'b');
+	
+/*
 	if (best_move.rb > 0 && best_move.ra > 0)
 	{
 		i = 0;
@@ -137,4 +179,5 @@ void	aply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move)
 	}
 	ft_printf("pb\n");
 	push(stack_a, stack_b);
+	*/
 }

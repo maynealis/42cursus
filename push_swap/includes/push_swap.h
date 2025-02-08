@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:04:48 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/07 14:55:59 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/08 12:26:16 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@ typedef struct s_seq
 	int	moves;
 	int	rb;
 	int	ra;
+	int	rr;
 	int	pb;
 	int	rra;
 	int	rrb;
+	int	rrr;
 	int	pa;
+	int	sa;
+	int	sb;
 	int	number;
 }	t_seq;
 
@@ -58,24 +62,39 @@ void	rotate_print(t_stack **stack, char letter);
 void	reverse_rotate_print(t_stack **stack, char letter);
 void	swap_print(t_stack **stack, char letter);
 
+// Stack utils
 
+int	get_max_num(t_stack *stack);
+int	get_min_num(t_stack *stack);
+int	get_pos_max_num(t_stack *stack);
+int	get_pos_min_num(t_stack *stack);
+
+char	is_reverse_sorted(t_stack *stack);
+char	is_sorted(t_stack *stack);
 
 // Algorithm basics
-void	sort_three_desc(t_stack **stack);
-void	sort_three_asc(t_stack **stack);
 
 void	get_max_on_top(t_stack **stack, char stack_letter);
 void	get_min_on_top(t_stack **stack, char stack_letter);
 
+void	sort_three_desc(t_stack **stack, char stack_letter);
+void	sort_three_asc(t_stack **stack, char stack_letter);
+void	get_max_on_top(t_stack **stack, char stack_letter);
+void	get_min_on_top(t_stack **stack, char stack_letter);
 
 // Algorithm turk
+int	moves_with_r(int n, t_stack *stack);
+int	moves_with_rr(int n, t_stack *stack);
 t_seq	get_best_move(t_stack *stack_a, t_stack *stack_b);
+
+t_seq	init_seq(void);
+t_seq	opt_seq(t_seq seq);
 void	aply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move);
 
 
 #endif
 
-/* ##################### OLD #####################
+//##################### OLD #####################
 // Struct t_stack
 // typedef struct s_stack
 // {
@@ -92,11 +111,11 @@ void	aply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move);
 // void	free_stack(t_stack **stack);
 
 // Functions to parse the arguments
-char	is_valid_argument(char *arg, t_stack *a);
+//char	is_valid_argument(char *arg, t_stack *a);
 
 // To print for me
-void	print_stacks(t_stack *a, t_stack *b);
-void	print_binary(int num, int width);
+//void	print_stacks(t_stack *a, t_stack *b);
+//void	print_binary(int num, int width);
 
 
 // Rules
@@ -117,9 +136,9 @@ void	print_binary(int num, int width);
 // void	set_stack_ordered(t_stack **stack);
 
 // // Radix
-// void	radix(t_stack **a, t_stack **b, int d);
+void	radix(t_stack **a, t_stack **b, int d);
 // void	radix_opt(t_stack **a, t_stack **b, int d);
 // void	radix_base3(t_stack **a, t_stack **b, int d);
-*/
+
 
 
