@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 12:48:33 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/08 12:16:41 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/08 18:37:31 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	get_max_on_top(t_stack **stack, char stack_letter)
 	}
 	else
 	{
-		i = size;
-		while (i-- > pos)
+		i = 0;
+		while (i++ < size - pos)
 		{
 			reverse_rotate_print(stack, stack_letter);
 			//ft_printf("rr%c\n", stack_letter);
@@ -71,7 +71,7 @@ void	get_min_on_top(t_stack **stack, char stack_letter)
 	int	size;
 	int	i;
 
-	pos = get_pos_max_num(*stack);
+	pos = get_pos_min_num(*stack);
 	size = ft_stacksize(*stack);
 	if (pos == 0)
 		return ;
@@ -88,8 +88,8 @@ void	get_min_on_top(t_stack **stack, char stack_letter)
 	}
 	else
 	{
-		i = size;
-		while (i-- > pos)
+		i = 0;
+		while (i++ < size - pos)
 		{
 			reverse_rotate_print(stack, stack_letter);
 			//ft_printf("rr%c\n", stack_letter);
