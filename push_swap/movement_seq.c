@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:14:16 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/08 14:50:31 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/08 19:13:46 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_seq	init_seq(void)
 	seq.sa = 0;
 	seq.sb = 0;
 	seq.number = -1; 
+	seq.next_moves = 21475829;
 	return (seq);
 }
 

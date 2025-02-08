@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 11:04:48 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/08 12:26:16 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/08 19:07:36 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_seq
 	int	sa;
 	int	sb;
 	int	number;
+	int	next_moves;
 }	t_seq;
 
 

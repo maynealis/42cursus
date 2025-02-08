@@ -6,11 +6,12 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 14:54:01 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/08 15:05:16 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/08 19:25:53 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "ft_printf_bonus.h" //DEGUB
 
 t_seq	get_min_moves_r_r(t_stack *stack_a, t_stack *stack_b)
 {
@@ -38,6 +39,12 @@ t_seq	get_min_moves_r_r(t_stack *stack_a, t_stack *stack_b)
 		i++;
 	}
 	seq.pb = 1;
+	
+	//opt deepsearch
+	seq = opt_seq(seq);
+	aply_seq(&stack_a, &stack_b, seq);
+	seq.next_moves = get_best_move(stack_a, stack_b).moves;
+	ft_printf("here\n");
 	return (seq);
 }
 
@@ -64,6 +71,11 @@ t_seq	get_min_moves_r_rr(t_stack *stack_a, t_stack *stack_b)
 		i++;
 	}
 	seq.pb = 1;
+	
+	//opt deepsearch
+	seq = opt_seq(seq);
+	aply_seq(&stack_a, &stack_b, seq);
+	seq.next_moves = get_best_move(stack_a, stack_b).moves;
 	return (seq);
 }
 
@@ -90,6 +102,11 @@ t_seq	get_min_moves_rr_r(t_stack *stack_a, t_stack *stack_b)
 		i++;
 	}
 	seq.pb = 1;
+	
+	//opt deepsearch
+	seq = opt_seq(seq);
+	aply_seq(&stack_a, &stack_b, seq);
+	seq.next_moves = get_best_move(stack_a, stack_b).moves;
 	return (seq);
 }
 
@@ -119,6 +136,13 @@ t_seq	get_min_moves_rr_rr(t_stack *stack_a, t_stack *stack_b)
 		i++;
 	}
 	seq.pb = 1;
+	
+	//opt deepsearch
+	seq = opt_seq(seq);
+	aply_seq(&stack_a, &stack_b, seq);
+	seq.next_moves = get_best_move(stack_a, stack_b).moves;
+	
+
 	return (seq);
 }
 
@@ -127,11 +151,14 @@ t_seq	get_best_move(t_stack *stack_a, t_stack *stack_b)
 	t_seq	best_seq;
 
 	best_seq = get_min_moves_r_r(stack_a, stack_b);
-	if (get_min_moves_r_rr(stack_a, stack_b).moves < best_seq.moves)
+	if (get_min_moves_r_rr(stack_a, stack_b).moves < best_seq.moves
+	|| (get_min_moves_r_rr(stack_a, stack_b).moves == best_seq.moves && get_min_moves_r_rr(stack_a, stack_b).next_moves < best_seq.next_moves))
 		best_seq = get_min_moves_r_rr(stack_a, stack_b);
-	else if (get_min_moves_rr_r(stack_a, stack_b).moves < best_seq.moves)
+	else if (get_min_moves_rr_r(stack_a, stack_b).moves < best_seq.moves
+	|| (get_min_moves_r_rr(stack_a, stack_b).moves == best_seq.moves && get_min_moves_r_rr(stack_a, stack_b).next_moves < best_seq.next_moves))
 		best_seq = get_min_moves_rr_r(stack_a, stack_b);
-	else if (get_min_moves_rr_rr(stack_a, stack_b).moves < best_seq.moves)
+	else if (get_min_moves_rr_rr(stack_a, stack_b).moves < best_seq.moves
+	|| (get_min_moves_r_rr(stack_a, stack_b).moves == best_seq.moves && get_min_moves_r_rr(stack_a, stack_b).next_moves < best_seq.next_moves))
 		best_seq = get_min_moves_rr_rr(stack_a, stack_b);
 	return (best_seq);
 }

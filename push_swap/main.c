@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:42:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/08 18:41:17 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/08 18:48:51 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,13 @@ int	main(int argc, char **argv)
 		t_seq	seq = get_best_move(stack_a, stack_b);
 		seq = opt_seq(seq);
 		aply_seq(&stack_a, &stack_b, seq);
-		print_stacks(stack_a, stack_b);
+		//print_stacks(stack_a, stack_b);
 	}
 
 	sort_three_asc(&stack_a, 'a');
+
+
+
 	get_min_on_top(&stack_a, 'a');
 
 	//get_max_on_top(&stack_b, 'b');
