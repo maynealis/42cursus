@@ -6,11 +6,11 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:52:50 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/08 13:28:46 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:09:08 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "stack.h"
 
 int	ft_stacksize(t_stack *stack)
 {
@@ -44,76 +44,6 @@ t_stack	*ft_stacknew(int number)
 	return (new);
 }
 
-void	ft_stackadd_back(t_stack **stack, t_stack *new)
-{
-	t_stack	*first;
-	t_stack	*last;
-
-	if (!stack || !new)
-		return ;
-	if (!*stack)
-	{
-		*stack = new;
-		new->next = new;
-		new->prev = new;
-		return ;
-	}
-	first = *stack;
-	last = first->prev;
-	last->next = new;
-	first->prev = new;
-	new->next = first;
-	new->prev = last;
-}
-
-void	ft_stackadd_front(t_stack **stack, t_stack *new)
-{
-	t_stack	*first;
-	t_stack	*last;
-
-	if (!stack || !new)
-		return ;
-	if (!*stack)
-	{
-		*stack = new;
-		new->next = new;
-		new->prev = new;
-		return ;
-	}
-	first = *stack;
-	last = first->prev;
-	new->next = first;
-	new->prev = last;
-	first->prev = new;
-	last->next = new;
-	*stack = new;
-}
-
-t_stack	*ft_stackremove_front(t_stack **stack)
-{
-	t_stack	*first;
-	t_stack	*second;
-	t_stack	*last;
-
-	if (!stack || !*stack)
-		return (NULL);
-	first = *stack;
-	second = first->next;
-	last = first->prev;
-	first->next = NULL;
-	first->prev = NULL;
-	if (second == first)
-	{
-		*stack = NULL;
-		return (first);
-	}
-	second->prev = last;
-	last->next = second;
-	*stack = second;
-	return (first);
-}
-
-//TODO: revisar esto
 void	ft_stackfree(t_stack **stack)
 {
 	t_stack	*next;

@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:14:16 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/08 14:50:31 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:29:42 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,4 +180,37 @@ void	aply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move)
 	ft_printf("pb\n");
 	push(stack_a, stack_b);
 	*/
+}
+
+void	aply_seq_no_print(t_stack **stack_a, t_stack **stack_b, t_seq best_move)
+{
+	//int	i;
+	while (best_move.rrr-- > 0)
+	{
+		reverse_rotate(stack_a);
+		reverse_rotate(stack_b);
+		//ft_printf("rrr\n");
+	}
+	while (best_move.rr-- > 0)
+	{
+		rotate(stack_a);
+		rotate(stack_b);
+		//ft_printf("rr\n");
+	}
+	while (best_move.ra-- > 0)
+		rotate(stack_a);
+	while (best_move.rb-- > 0)
+		rotate(stack_b);
+	while (best_move.rra-- > 0)
+		reverse_rotate(stack_a);
+	while (best_move.rrb-- > 0)
+		reverse_rotate(stack_b);
+	if (best_move.sa)
+		swap(stack_a);
+	if (best_move.sb)
+		swap(stack_b);
+	if (best_move.pa)
+		push(stack_b, stack_a);
+	if (best_move.pb)
+		push(stack_a, stack_b);
 }

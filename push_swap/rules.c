@@ -6,10 +6,11 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 12:26:06 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/07 12:29:28 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:06:33 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "stack.h"
 #include "push_swap.h"
 
 void	push(t_stack **src, t_stack **dst)

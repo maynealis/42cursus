@@ -6,11 +6,11 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 12:50:11 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/01/29 15:00:28 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:08:29 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "stack.h"
 #include "libft.h"
 
 static char	is_valid_integer(char *arg)

@@ -6,7 +6,7 @@
 /*   By: cmayne-p <cmayne-p@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:42:53 by cmayne-p          #+#    #+#             */
-/*   Updated: 2025/02/08 18:41:17 by cmayne-p         ###   ########.fr       */
+/*   Updated: 2025/02/09 16:57:33 by cmayne-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,12 +108,12 @@ int	main(int argc, char **argv)
 
 	sort_three_desc(&stack_b, 'b');
 
-	while (ft_stacksize(stack_a) > 3)
+	while (ft_stacksize(stack_a) > 3 || !is_sorted(stack_a)) //TODO is sorted?
 	{
 		t_seq	seq = get_best_move(stack_a, stack_b);
 		seq = opt_seq(seq);
 		aply_seq(&stack_a, &stack_b, seq);
-		print_stacks(stack_a, stack_b);
+		//print_stacks(stack_a, stack_b);
 	}
 
 	sort_three_asc(&stack_a, 'a');
