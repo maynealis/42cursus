@@ -68,8 +68,39 @@ char	print_error_message_and_clean(t_stack **stack_a, t_stack **stack_b)
 	return (1);
 }
 
+void	turk_algorithm(t_stack **stack_a, t_stack **stack_b)
+{
+	t_seq	seq;
+	int		l;
+	int		f;
 
-
+	push_print(stack_a, stack_b, 'b');
+	push_print(stack_a, stack_b, 'b');
+	push_print(stack_a, stack_b, 'b');
+	sort_three_desc(stack_b, 'b');
+	while (ft_stacksize(*stack_a) > 3)
+	{
+		seq = get_best_move(*stack_a, *stack_b);
+		seq = opt_seq(seq);
+		//ft_printf("Number of moves: %i\n", seq.moves);
+		//ft_printf("Number to move: %i\n", seq.number);
+		apply_seq(stack_a, stack_b, seq);
+		//print_stacks(*stack_a, *stack_b);
+	}
+	sort_three_asc(stack_a, 'a');
+	get_min_on_top(stack_a, 'a');
+	while (*stack_b)
+	{
+		l = (*stack_a)->prev->num;
+		f = (*stack_a)->num;
+		if ((l < f && (*stack_b)->num < f && (*stack_b)->num > l)
+		|| (l > f && ((*stack_b)->num < f || (*stack_b)->num > l)))
+			push_print(stack_b, stack_a, 'a');
+		else
+			reverse_rotate_print(stack_a, 'a');
+	}
+	get_min_on_top(stack_a, 'a');
+}
 
 int	main(int argc, char **argv)
 {
@@ -90,67 +121,15 @@ int	main(int argc, char **argv)
 			return (print_error_message_and_clean(&stack_a, &stack_b));
 		i++;
 	}
-
-	//print_stacks(stack_a, stack_b);
-	//get_max_on_top(&stack_a, 'a');
-	
-
-	//print_stacks(stack_a, stack_b);
-
-
-	// ALGORITHM DONE
-	push(&stack_a, &stack_b);
-	push(&stack_a, &stack_b);
-	push(&stack_a, &stack_b);
-	ft_printf("pb\n");
-	ft_printf("pb\n");
-	ft_printf("pb\n");
-
-	sort_three_desc(&stack_b, 'b');
-
-	while (ft_stacksize(stack_a) > 3)
+	if (ft_stacksize(stack_a) <= 3)
 	{
-		t_seq	seq = get_best_move(stack_a, stack_b);
-		seq = opt_seq(seq);
-		aply_seq(&stack_a, &stack_b, seq);
-		print_stacks(stack_a, stack_b);
+		sort_three_asc(&stack_a, 'a'); //TODO check for fewer than 3
+		get_min_on_top(&stack_a, 'a');
 	}
-
-	sort_three_asc(&stack_a, 'a');
-	get_min_on_top(&stack_a, 'a');
-
-	//get_max_on_top(&stack_b, 'b');
-	//print_stacks(stack_a, stack_b);
-	while (stack_b)
-	{
-		if ((stack_a->prev->num < stack_a->num && stack_b->num < stack_a->num && stack_b->num > stack_a->prev->num)
-			|| (stack_a->prev->num > stack_a->num && (stack_b->num < stack_a->num || stack_b->num > stack_a->prev->num)))
-		{
-			ft_printf("pa\n");
-			push(&stack_b, &stack_a);
-		}
-		else
-		{
-			ft_printf("rra\n");
-			reverse_rotate(&stack_a);
-		}
-	}
-	//print_stacks(stack_a, stack_b);
-	get_min_on_top(&stack_a, 'a');
-	//print_stacks(stack_a, stack_b);
-	
-
-/*	
-	// WORKING RADIX SORT
-	int	d = 0;
-	while (d < 9)
-	{
-		radix(&stack_a, &stack_b, d);
-		d++;
-	}
-*/	
-	//print_stacks(stack_a, stack_b);
-
+	else if (ft_stacksize(stack_a) < 6)
+		sort_three_asc(&stack_a, 'a');//TODO for 5 numb
+	else
+		turk_algorithm(&stack_a, &stack_b);
 	ft_stackfree(&stack_a);
 	ft_stackfree(&stack_b);
 	return (0);

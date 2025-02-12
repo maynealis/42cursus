@@ -10,25 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+//#include "stack.h"
+#include "push_swap.h" //include stack
 #include "ft_printf_bonus.h"
 
 void	sort_three_desc(t_stack **stack, char stack_letter)
 {
-	if (!is_reverse_sorted(*stack))
-	{
-		ft_printf("s%c\n", stack_letter);
-		swap(stack);
-	}
+	if (!is_reverse_sorted(*stack))	
+		swap_print(stack, stack_letter);
 }
 
 void	sort_three_asc(t_stack **stack, char stack_letter)
 {
 	if (!is_sorted(*stack))
-	{
-		ft_printf("s%c\n", stack_letter);
-		swap(stack);
-	}
+		swap_print(stack, stack_letter);
 }
 
 void	get_max_on_top(t_stack **stack, char stack_letter)
@@ -41,27 +36,16 @@ void	get_max_on_top(t_stack **stack, char stack_letter)
 	size = ft_stacksize(*stack);
 	if (pos == 0)
 		return ;
+	i = 0;
 	if (pos <= (size / 2))
 	{
-		i = 0;
 		while (i++ < pos)
-		{
 			rotate_print(stack, stack_letter);
-			//ft_printf("r%c\n", stack_letter);
-			//rotate(stack); 
-			//i++;
-		}
 	}
 	else
 	{
-		i = 0;
 		while (i++ < size - pos)
-		{
 			reverse_rotate_print(stack, stack_letter);
-			//ft_printf("rr%c\n", stack_letter);
-			//reverse_rotate(stack);
-			//i--;
-		}
 	}
 }
 
@@ -75,26 +59,15 @@ void	get_min_on_top(t_stack **stack, char stack_letter)
 	size = ft_stacksize(*stack);
 	if (pos == 0)
 		return ;
+	i = 0;
 	if (pos <= (size / 2))
 	{
-		i = 0;
 		while (i++ < pos)
-		{
 			rotate_print(stack, stack_letter);
-			//ft_printf("r%c\n", stack_letter);
-			//rotate(stack); 
-			//i++;
-		}
 	}
 	else
 	{
-		i = 0;
 		while (i++ < size - pos)
-		{
 			reverse_rotate_print(stack, stack_letter);
-			//ft_printf("rr%c\n", stack_letter);
-			//reverse_rotate(stack);
-			//i--;
-		}
 	}
 }

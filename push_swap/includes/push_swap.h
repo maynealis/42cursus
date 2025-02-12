@@ -14,15 +14,16 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h> // for malloc
+# include "stack.h"
 
 // double linked list
-typedef struct s_stack
-{
-	int				num;
-	//int			normal_n;
-	struct s_stack	*next;
-	struct s_stack	*prev;
-}	t_stack;
+// typedef struct s_stack
+// {
+// 	int				num;
+// 	//int			normal_n;
+// 	struct s_stack	*next;
+// 	struct s_stack	*prev;
+// }	t_stack;
 
 typedef struct s_seq
 {
@@ -37,17 +38,18 @@ typedef struct s_seq
 	int	pa;
 	int	sa;
 	int	sb;
+	int	ss;
 	int	number;
 }	t_seq;
 
 
 // Auxiliar function to manage the t_stack
-int		ft_stacksize(t_stack *stack);
-t_stack	*ft_stacknew(int number);
-void	ft_stackadd_back(t_stack **stack, t_stack *new);
-void	ft_stackadd_front(t_stack **stack, t_stack *new);
-t_stack	*ft_stackremove_front(t_stack **stack);
-void	ft_stackfree(t_stack **stack);
+// int		ft_stacksize(t_stack *stack);
+// t_stack	*ft_stacknew(int number);
+// void	ft_stackadd_back(t_stack **stack, t_stack *new);
+// void	ft_stackadd_front(t_stack **stack, t_stack *new);
+// t_stack	*ft_stackremove_front(t_stack **stack);
+// void	ft_stackfree(t_stack **stack);
 
 // Functions to parse the arguments
 char	is_valid_argument(char *arg, t_stack *a);
@@ -89,7 +91,7 @@ t_seq	get_best_move(t_stack *stack_a, t_stack *stack_b);
 
 t_seq	init_seq(void);
 t_seq	opt_seq(t_seq seq);
-void	aply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move);
+void	apply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move);
 
 
 #endif

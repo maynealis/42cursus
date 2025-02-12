@@ -28,7 +28,8 @@ t_seq	init_seq(void)
 	seq.rrr = 0;
 	seq.sa = 0;
 	seq.sb = 0;
-	seq.number = -1; 
+	seq.ss = 0;
+	seq.number = 0;
 	return (seq);
 }
 
@@ -55,9 +56,8 @@ t_seq	opt_seq(t_seq seq)
 	return (seq);
 }
 
-void	aply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move)
+void	apply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move)
 {
-	//int	i;
 	while (best_move.rrr-- > 0)
 	{
 		reverse_rotate(stack_a);
@@ -86,98 +86,4 @@ void	aply_seq(t_stack **stack_a, t_stack **stack_b, t_seq best_move)
 		push_print(stack_b, stack_a, 'a');
 	if (best_move.pb)
 		push_print(stack_a, stack_b, 'b');
-	
-/*
-	if (best_move.rb > 0 && best_move.ra > 0)
-	{
-		i = 0;
-		while (i < best_move.rb && i < best_move.ra)
-		{
-			ft_printf("rr\n");
-			rotate(stack_a);
-			rotate(stack_b);
-			i++;
-		}
-		while (i < best_move.rb)
-		{
-			ft_printf("rb\n");
-			rotate(stack_b);
-			i++;
-		}
-		while (i < best_move.ra)
-		{
-			ft_printf("ra\n");
-			rotate(stack_a);
-			i++;
-		}
-	}
-	else if (best_move.rrb > 0 && best_move.rra > 0)
-	{
-		i = 0;
-		while (i < best_move.rrb && i < best_move.rra)
-		{
-			ft_printf("rrr\n");
-			reverse_rotate(stack_a);
-			reverse_rotate(stack_b);
-			i++;
-		}
-		while (i < best_move.rrb)
-		{
-			ft_printf("rrb\n");
-			reverse_rotate(stack_b);
-			i++;
-		}
-		while (i < best_move.rra)
-		{
-			ft_printf("ra\n");
-			reverse_rotate(stack_a);
-			i++;
-		}
-	}
-	else
-	{
-		if (best_move.rb > 0)
-		{
-			i = 0;
-			while (i < best_move.rb)
-			{
-				ft_printf("rb\n");
-				rotate(stack_b);
-				i++;
-			}
-		}
-		if (best_move.ra > 0)
-		{
-			i = 0;
-			while (i < best_move.ra)
-			{
-				ft_printf("ra\n");
-				rotate(stack_a);
-				i++;
-			}
-		}
-		if (best_move.rra > 0)
-		{
-			i = 0;
-			while (i < best_move.rra)
-			{
-				ft_printf("rra\n");
-				reverse_rotate(stack_a);
-				i++;
-			}
-		}
-		if (best_move.rrb > 0)
-		{
-			i = 0;
-			while (i < best_move.rrb)
-			{
-				ft_printf("rrb\n");
-				reverse_rotate(stack_b);
-				i++;
-			}
-		}
-	}
-	ft_printf("pb\n");
-	push(stack_a, stack_b);
-	*/
 }

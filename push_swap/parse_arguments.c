@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "stack.h"
 #include "libft.h"
 
 static char	is_valid_integer(char *arg)

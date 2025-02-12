@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "stack.h"
 #include "push_swap.h"
 #include "ft_printf_bonus.h"
 
